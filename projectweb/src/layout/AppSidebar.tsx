@@ -106,6 +106,7 @@ const governanceNavItems: NavItem[] = [
     name: "Finansial & Budget",
     subItems: [
       { name: "Overview Finansial", path: "/finance", new: true },
+      { name: "Laporan Keuangan Terpadu", path: "/finance/reports", new: true },
       { name: "Finansial Dapur SPPG", path: "/finance/kitchen", new: true },
       { name: "Alokasi Anggaran", path: "/finance/budgets" },
       { name: "Pencatatan Pengeluaran", path: "/finance/expenditures" },

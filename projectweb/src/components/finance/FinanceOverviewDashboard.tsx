@@ -345,6 +345,12 @@ export const FinanceOverviewDashboard: React.FC = () => {
           </div>
 
           <div className="flex flex-wrap gap-2">
+            <Link
+              href="/finance/reports"
+              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold bg-amber-400 hover:bg-amber-300 text-gray-900 rounded-xl shadow-md transition"
+            >
+              <span>📜</span> Laporan Keuangan Lengkap
+            </Link>
             <button
               onClick={() => setIsSimulatorOpen(true)}
               className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl shadow-md transition"

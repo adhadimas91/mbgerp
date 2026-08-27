@@ -17,8 +17,9 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - **Modul 6: Finansial & Anggaran:** ✅ Selesai (100% - UI & Rekonsiliasi)
 - **Modul 7: Kualitas, ISO & Audit Trail:** ✅ Selesai (100% - UI & CAPA Form)
 - **Modul 8: SDM, Tenaga Kerja & Payroll:** ✅ Selesai (100% - UI, Shift, MCU & Slip Gaji)
-- **Modul 9: Pengguna & Sistem (RBAC):** 🟡 Parsial (Layout Siap)
+- **Modul 9: Pengguna & Sistem (RBAC):** ✅ Selesai (100% - UI, RBAC Matrix, Session & Cetak SK)
 - **Backend (NestJS + Prisma + PostgreSQL):** ⚪ Menunggu Fase Integrasi
+
 
 ---
 
@@ -95,7 +96,8 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 ---
 
 ### 💰 Modul 6: Finansial & Anggaran (`07_MODULE_FINANSIAL_&_BUDGET.md`)
-- [x] Layout & Rute Halaman Finansial (`/finance/budgets`, `/finance/expenditures`, `/finance/payments`, `/finance/kitchen`).
+- [x] Layout & Rute Halaman Finansial (`/finance/budgets`, `/finance/expenditures`, `/finance/payments`, `/finance/kitchen`, `/finance/reports`).
+- [x] **Pusat Laporan Keuangan Terpadu & Akuntabilitas BPK/BGN (`ComprehensiveFinancialReports.tsx` & `OfficialFinancialReportPrintModal.tsx`):** Pelaporan keuangan terpadu 6 pilar berstandar SAP Akrual (Laporan Realisasi Anggaran LRA, Laporan Operasional LO/Laba Rugi, Neraca Keuangan Posisi Aset/Kewajiban, Laporan Arus Kas LAK, Analisis Unit Cost HPP per Porsi, dan Kepatuhan Setoran Pajak NTPN PPh 22/23/PPN 11%), grafik tren penyerapan bulanan & komposisi 4 pos belanja BGN, ekspor data CSV/Excel, serta cetak dokumen resmi Laporan Keuangan ber-QR Code integritas & tanda tangan digital KPA, PPK, dan Bendahara.
 - [x] **Dashboard Finansial & Biaya Operasional Dapur Sentral SPPG (`KitchenFinancialDashboard.tsx`, `KitchenExpenseRecordModal.tsx`, `KitchenCostAnalysisModal.tsx`, & `KitchenFinancialReportPrintModal.tsx`):** Pusat kendali Kepala MBG / Kepala SPPG untuk memantau HPP riil per porsi vs pagu BGN (Rp 15.000), breakdown struktur 5 komponen biaya, telemetri biaya energi utilitas (LPG 50kg, listrik cold chain, air RO), buku kas kecil (petty cash) dapur, simulasi What-If skenario biaya, dan cetak Laporan Pertanggungjawaban Finansial SPPG resmi ber-QR Code.
 - [x] **Alokasi Anggaran per Wilayah & Monitoring Realisasi DPA (`BudgetManagement.tsx`, `CreateBudgetModal.tsx`, `BudgetDetailModal.tsx`, & `BudgetReportPrintModal.tsx`):** Plafon pagu DPA per kabupaten/kota, rincian pos belanja standar BGN (Bahan Baku 75%, Operasional 15%, Logistik 8%, Mutu 2%), tracking serapan SP2D vs Komitmen PO, serta cetak dokumen resmi DPA & LRA.
 - [x] **Pencatatan Biaya Operasional & Belanja Bahan Baku (`ExpenditureManagement.tsx`, `CreateExpenditureModal.tsx`, `ExpenditureDetailModal.tsx`, & `ExpenditureReceiptPrintModal.tsx`):** Pencatatan belanja multi-item, kalkulasi otomatis potongan PPh 22/23 dan PPN 11%, alur otorisasi SPJ PPK, dan cetak Kuitansi Resmi / Bukti Kas Keluar (BKK).
@@ -120,18 +122,21 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ---
 
-### ⚙️ Modul 9: Pengguna, Keamanan (RBAC) & Backend (`01_TECH_STACK_&_INFRA.md` & `02_DATABASE_SCHEMA.md`)
+### ⚙️ Modul 9: Pengguna, Keamanan (RBAC) & Sistem (`01_TECH_STACK_&_INFRA.md` & `02_DATABASE_SCHEMA.md`)
 - [x] Layout & Rute Manajemen Pengguna (`/settings/users`, `/profile`).
-- [ ] **[TODO]** Manajemen Pengguna berbasis Peran (ADMIN_PUSAT, ADMIN_REGIONAL, SUPPLIER, PENGELOLA).
-- [ ] **[TODO]** Setup Backend NestJS + Prisma ORM + PostgreSQL Schema Migration.
-- [ ] **[TODO]** Integrasi TanStack Query (React Query) antara Frontend & REST API Backend.
+- [x] **Tabel Master Pengguna & Kredensial Sistem (`UserManagementTable.tsx`):** Manajemen 10 peran pengguna (ADMIN_PUSAT, ADMIN_REGIONAL, KEPALA_SPPG, AHLI_GIZI, INSPEKTUR_MUTU_QC, BENDAHARA_PPK, TIM_LOGISTIK_DRIVER, PETUGAS_GUDANG, SUPPLIER_VENDOR, AUDITOR_EKSTERNAL), tracking 2FA TOTP ISO 27001, status akun, IP/lokasi login terakhir, dan quick status toggle.
+- [x] **Form Registrasi & Edit Pengguna (`UserFormModal.tsx`):** Form pembuatan akun baru dengan generator password acak yang aman, penugasan wilayah/SPPG, konfigurasi kewajiban 2FA, dan tanggal kedaluwarsa akun.
+- [x] **Matriks Hak Akses Granular / RBAC Matrix (`RolePermissionMatrixModal.tsx`):** Konfigurasi izin 7 aksi (Read, Create, Update, Delete, Approve, Export, Print) lintas 9 modul ERP MBG berprinsip *Least Privilege*.
+- [x] **Monitoring Sesi Login & Keamanan ISO 27001 (`UserSecuritySessionsModal.tsx`):** Manajemen multi-sesi token aktif, fitur putuskan sesi (kick/revoke session), riwayat event login/2FA, proteksi brute-force, dan reset counter kegagalan.
+- [x] **Profil Rincian Pengguna & Wewenang (`UserDetailModal.tsx`):** Viewer komprehensif identitas pegawai, unit penugasan, status keamanan, dan pintasan konfigurasi wewenang.
+- [x] **Cetak Surat Keputusan Otorisasi Hak Akses Sistem Resmi (`UserAccessReportPrintModal.tsx`):** Generator SK Otorisasi RBAC berstandar ISO 27001 lengkap dengan kop BGN, matriks izin, QR Code SHA-256, dan tanda tangan digital CISO & Pegawai.
 
 ---
 
 ## 🎯 Pilihan Prioritas untuk Task Selanjutnya
 
-1. **Opsi 1: Setup Backend NestJS & Prisma ORM Migration**
-   - Skema database PostgreSQL terpadu (Suppliers, Inventory, Recipes, Shipments, Assets, Budgets, AuditLogs, Employees, Users) dengan Prisma Studio dan seed data komprehensif.
+1. **Opsi 1: Setup Backend Architecture (NestJS + Prisma ORM + PostgreSQL)**
+   - Desain skema `schema.prisma` terpadu mencakup 10 domain entity (Users, Roles, Suppliers, Inventory, Recipes, Shipments, Assets, Budgets, AuditLogs, Employees) dengan Prisma Studio dan seed data komprehensif.
 2. **Opsi 2: Integrasi REST API & State Management TanStack Query**
-   - Endpoint CRUD terenkripsi JWT & RBAC untuk menghubungkan seluruh frontend interaktif ke database PostgreSQL.
-   - Immutable audit log viewer dengan diff JSONB, form CAPA insiden mutu, skema database Prisma PostgreSQL, dan integrasi API.
+   - Implementasi endpoint REST API CRUD terproteksi JWT Bearer & RBAC Guard, menghubungkan UI frontend ke PostgreSQL secara real-time.
+
