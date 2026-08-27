@@ -33,3 +33,4 @@ Membangun sistem ERP yang transparan, akurat, dan scalable untuk mengelola distr
 - [10_AUDIT_TRAIL_MGMT.md](tasks/10_AUDIT_TRAIL_MGMT.md): Pencatatan log aktivitas untuk transparansi.
 - [11_ISO_COMPLIANCE_&_QUALITY.md](tasks/11_ISO_COMPLIANCE_&_QUALITY.md): Standar kualitas dan keamanan.
 - [12_MODULE_ASSET_MGMT.md](tasks/12_MODULE_ASSET_MGMT.md): Pengelolaan alat masak, kendaraan, dan aset tetap.
+- [13_CHECKLIST_TASK.md](13_CHECKLIST_TASK.md): Master checklist status progres & roadmap task.
