@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import ModulePageLayout from "@/components/common/ModulePageLayout";
+import AuditLogViewer from "@/components/compliance/AuditLogViewer";
 
 export const metadata: Metadata = {
   title: "Audit Trail (Immutable System Logs) | ERP MBG",
@@ -14,6 +15,8 @@ export default function AuditLogsPage() {
       badgeText="Append-Only Immutable"
       pageTitle="Audit Trail & Riwayat Perubahan Sistem (Immutable)"
       description="Pencatatan mutlak seluruh aktivitas sensitif sistem (Perubahan Stok, Status Resi, Transaksi Anggaran, Verifikasi Vendor) dengan diff nilai lama & baru (JSONB), IP address, dan user agent."
-    />
+    >
+      <AuditLogViewer />
+    </ModulePageLayout>
   );
 }

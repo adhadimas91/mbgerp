@@ -90,9 +90,9 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ### 🛡️ Modul 7: Kualitas, ISO & Audit Trail (`10_AUDIT_TRAIL_MGMT.md` & `11_ISO_COMPLIANCE_&_QUALITY.md`)
 - [x] Layout & Rute Halaman Kepatuhan (`/compliance/audit-logs`, `/compliance/iso-standards`, `/compliance/incident-reports`).
-- [ ] **[TODO]** Tampilan Audit Trail Log Viewer (Immutable) dengan Diff Nilai Lama vs Baru (JSON Viewer) (`/compliance/audit-logs`).
-- [ ] **[TODO]** Matriks Monitoring Sertifikasi Kepatuhan ISO (`/compliance/iso-standards`).
-- [ ] **[TODO]** Form Pelaporan Insiden Mutu & Tindakan Perbaikan (CAPA) (`/compliance/incident-reports`).
+- [x] **Tampilan Audit Trail Log Viewer (Immutable) dengan Diff Nilai Lama vs Baru (`AuditLogViewer.tsx`, `AuditLogDetailModal.tsx`, & `AuditReportPrintModal.tsx`):** Append-only stream log forensik audit BPK/Inspektorat, viewer JSONB diff perbandingan nilai lama vs baru secara visual, validasi integritas kriptografi SHA-256 rantai hash, filter multi-entitas, dan cetak dokumen resmi Laporan Hasil Audit Trail Sistem.
+- [x] **Matriks Monitoring Sertifikasi Kepatuhan ISO & Halal (`IsoComplianceMatrix.tsx`, `AddCertificateModal.tsx`, `CertificateDetailModal.tsx`, & `IsoAuditReportPrintModal.tsx`):** Dashboard kepatuhan ISO 22000 (Food Safety/HACCP), ISO 9001:2015 (Mutu & SOP), ISO 27001:2022 (Keamanan Informasi & Log), Halal BPJPH (HAS 23000), pelacak jadwal surveillance audit KAN, dan cetak dokumen Matriks Kepatuhan Standar Mutu.
+- [x] **Form Pelaporan Insiden Mutu & Tindakan Perbaikan CAPA (`IncidentReportManagement.tsx`, `CreateIncidentReportModal.tsx`, `IncidentDetailModal.tsx`, & `IncidentReportPrintModal.tsx`):** Pencatatan insiden mutu (anomali CCP suhu >60°C, kerusakan kemasan, ketidaksesuaian bahan baku), investigasi 5-Whys Root Cause Analysis (RCA), penetapan tindakan Corrective & Preventive Action (CAPA), **Kanvas Interaktif Tanda Tangan Digital Lead Auditor**, dan cetak Berita Acara Form LKTK / CAPA resmi MBG.
 
 ---
 

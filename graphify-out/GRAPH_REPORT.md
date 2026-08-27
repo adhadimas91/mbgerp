@@ -1,16 +1,16 @@
 # Graph Report - mbgerp  (2026-08-27)
 
 ## Corpus Check
-- 318 files · ~768,897 words
+- 329 files · ~785,527 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1224 nodes · 1969 edges · 111 communities (71 shown, 40 thin omitted)
+- 1260 nodes · 2034 edges · 143 communities (87 shown, 56 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `ad86eb53`
+- Built from commit: `0fb2b7a4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,18 +20,18 @@
 - dependencies
 - Database Schema Design
 - useModal
-- uiweb/src/app/(admin)/page.tsx
+- uiweb/src/components/ecommerce/RecentOrders.tsx
 - compilerOptions
 - uiweb/src/components/common/PageBreadCrumb.tsx
 - projectweb/src/layout/AppHeader.tsx
 - devDependencies
-- verification/page.tsx
 - projectweb/src/components/ui/badge/Badge.tsx
+- projectweb/src/components/ui/modal/index.tsx
 - projectweb/src/app/(admin)/page.tsx
 - projectweb/src/components/tables/BasicTableOne.tsx
 - AssetRegistryTable.tsx
 - Changelog
-- projectweb/src/app/(admin)/(others-pages)/(forms)/form-elements/page.tsx
+- projectweb/src/components/common/ComponentCard.tsx
 - ERP MBG System Overview
 - uiweb/src/components/common/ComponentCard.tsx
 - Deployment, High Availability & Scalability
@@ -60,12 +60,12 @@
 - projectweb/src/app/(admin)/(ui-elements)/avatars/page.tsx
 - projectweb/src/app/(admin)/(ui-elements)/images/page.tsx
 - projectweb/src/app/(admin)/(ui-elements)/videos/page.tsx
-- proof-of-delivery/page.tsx
-- ModulePageLayout.tsx
+- ProofOfDeliveryViewer.tsx
+- DistributionPointsTable.tsx
 - projectweb/src/app/(admin)/(others-pages)/(chart)/bar-chart/page.tsx
 - projectweb/src/app/(admin)/(others-pages)/(chart)/line-chart/page.tsx
 - projectweb/src/app/(admin)/(ui-elements)/alerts/page.tsx
-- movements/page.tsx
+- ModulePageLayout.tsx
 - uiweb/src/app/(admin)/(ui-elements)/videos/page.tsx
 - projectweb/.eslintrc.json
 - uiweb/package.json
@@ -76,7 +76,7 @@
 - @fullcalendar/core
 - uiweb/src/app/(admin)/(ui-elements)/avatars/page.tsx
 - @fullcalendar/daygrid
-- menu/page.tsx
+- MenuPlannerCalendar.tsx
 - ColdChainTelemetry.tsx
 - uiweb/src/app/(admin)/(others-pages)/(chart)/bar-chart/page.tsx
 - uiweb/src/app/(admin)/(others-pages)/(chart)/line-chart/page.tsx
@@ -86,7 +86,7 @@
 - RecipeBuilder.tsx
 - @fullcalendar/react
 - catalog/page.tsx
-- suppliers/page.tsx
+- SupplierTable.tsx
 - performance/page.tsx
 - @fullcalendar/timegrid
 - projectweb/src/components/form/Form.tsx
@@ -106,9 +106,41 @@
 - @react-jvectormap/core
 - swiper
 - @tailwindcss/forms
+- projectweb/src/components/form/Label.tsx
+- projectweb/src/components/ui/button/Button.tsx
+- IncidentReportManagement.tsx
+- IsoComplianceMatrix.tsx
+- uiweb/src/app/(admin)/page.tsx
+- AuditLogViewer.tsx
+- uiweb/src/components/ecommerce/DemographicCard.tsx
+- projectweb/src/components/auth/SignInForm.tsx
 - projectweb/src/svg.d.ts
 - uiweb/src/app/(admin)/(ui-elements)/alerts/page.tsx
-- projectweb/src/app/(admin)/(others-pages)/(tables)/basic-tables/page.tsx
+- projectweb/package.json
+- uiweb/src/components/ui/badge/Badge.tsx
+- overrides
+- projectweb/src/components/form/form-elements/InputGroup.tsx
+- uiweb/src/components/ecommerce/CountryMap.tsx
+- uiweb/src/app/(admin)/(others-pages)/(tables)/basic-tables/page.tsx
+- MonthlySalesChart
+- NotificationDropdown
+- UserDropdown
+- apexcharts
+- @fullcalendar/core
+- @fullcalendar/interaction
+- @fullcalendar/list
+- @fullcalendar/react
+- next
+- react
+- react-apexcharts
+- react-dnd
+- react-dom
+- react-dropzone
+- @react-jvectormap/core
+- @react-jvectormap/world
+- swiper
+- tailwind-merge
+- @tailwindcss/postcss
 
 ## God Nodes (most connected - your core abstractions)
 1. `ModulePageLayout()` - 27 edges
@@ -141,15 +173,15 @@
 - **MBG Governance, Audit Trail & ISO Compliance Framework** — task_md_07_module_finansial_budget_finance_module, task_md_10_audit_trail_mgmt_audit_module, task_md_11_iso_compliance_quality_compliance_module, task_md_08_module_dashboard_report_dashboard_module [INFERRED 0.85]
 - **MBG End-to-End Supply Chain & Distribution Pipeline** — task_md_03_module_supplier_mgmt_supplier_management, task_md_04_module_inventory_mgmt_inventory_management, task_md_05_module_menu_nutrisi_menu_management, task_md_06_module_logistik_distribusi_logistics_module [INFERRED 0.85]
 
-## Communities (111 total, 40 thin omitted)
+## Communities (143 total, 56 thin omitted)
 
 ### Community 0 - "uiweb/src/components/form/Label.tsx"
 Cohesion: 0.15
 Nodes (13): metadata, SignUpForm(), DatePicker(), PropsType, InputGroup(), InputStates(), CountryCode, PhoneInput() (+5 more)
 
 ### Community 1 - "uiweb/src/layout/AppHeader.tsx"
-Cohesion: 0.07
-Nodes (24): AdminLayout(), metadata, outfit, GridShape(), ThemeToggleButton(), ThemeTogglerTwo(), NotificationDropdown(), UserDropdown() (+16 more)
+Cohesion: 0.09
+Nodes (22): AdminLayout(), metadata, outfit, GridShape(), ThemeToggleButton(), ThemeTogglerTwo(), SidebarContext, SidebarContextType (+14 more)
 
 ### Community 2 - "dependencies"
 Cohesion: 0.13
@@ -163,41 +195,41 @@ Nodes (44): Fixed Assets & Maintenance Schema, Audit Logs Schema, Budget & Payme
 Cohesion: 0.17
 Nodes (17): metadata, metadata, Calendar(), CalendarEvent, DefaultModal(), FormInModal(), FullScreenModal(), ModalBasedAlerts() (+9 more)
 
-### Community 5 - "uiweb/src/app/(admin)/page.tsx"
-Cohesion: 0.05
-Nodes (40): metadata, metadata, ChartTab(), CountryMap(), CountryMapProps, Marker, MarkerStyle, VectorMap (+32 more)
+### Community 5 - "uiweb/src/components/ecommerce/RecentOrders.tsx"
+Cohesion: 0.18
+Nodes (15): Product, RecentOrders(), tableData, Order, tableData, Table(), TableBody(), TableBodyProps (+7 more)
 
 ### Community 6 - "compilerOptions"
 Cohesion: 0.07
 Nodes (27): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+19 more)
 
 ### Community 7 - "uiweb/src/components/common/PageBreadCrumb.tsx"
-Cohesion: 0.19
-Nodes (6): metadata, metadata, metadata, BreadcrumbProps, PageBreadcrumb(), BasicTableOne()
+Cohesion: 0.21
+Nodes (5): metadata, metadata, metadata, BreadcrumbProps, PageBreadcrumb()
 
 ### Community 8 - "projectweb/src/layout/AppHeader.tsx"
-Cohesion: 0.08
-Nodes (24): AdminLayout(), metadata, outfit, BrandLogo(), BrandLogoProps, GridShape(), ThemeToggleButton(), ThemeTogglerTwo() (+16 more)
+Cohesion: 0.07
+Nodes (26): AdminLayout(), metadata, outfit, BrandLogo(), BrandLogoProps, GridShape(), ThemeToggleButton(), ThemeTogglerTwo() (+18 more)
 
 ### Community 9 - "devDependencies"
 Cohesion: 0.09
 Nodes (23): devDependencies, eslint, eslint-config-next, @eslint/eslintrc, postcss, @svgr/webpack, tailwindcss, @types/node (+15 more)
 
-### Community 10 - "verification/page.tsx"
-Cohesion: 0.33
-Nodes (4): metadata, initialQueue, SupplierVerificationQueue(), VerificationItem
+### Community 10 - "projectweb/src/components/ui/badge/Badge.tsx"
+Cohesion: 0.16
+Nodes (9): metadata, initialQueue, SupplierVerificationQueue(), VerificationItem, Badge(), BadgeColor, BadgeProps, BadgeSize (+1 more)
 
-### Community 11 - "projectweb/src/components/ui/badge/Badge.tsx"
-Cohesion: 0.05
-Nodes (60): metadata, metadata, metadata, metadata, Calendar(), CalendarEvent, ComponentCard(), ComponentCardProps (+52 more)
+### Community 11 - "projectweb/src/components/ui/modal/index.tsx"
+Cohesion: 0.16
+Nodes (16): metadata, metadata, CalendarEvent, DefaultModal(), FormInModal(), FullScreenModal(), ModalBasedAlerts(), VerticallyCenteredModal() (+8 more)
 
 ### Community 12 - "projectweb/src/app/(admin)/page.tsx"
-Cohesion: 0.05
-Nodes (27): metadata, metadata, metadata, ChartTab(), CountryMap(), CountryMapProps, Marker, MarkerStyle (+19 more)
+Cohesion: 0.06
+Nodes (25): metadata, metadata, metadata, ChartTab(), CountryMap(), CountryMapProps, Marker, MarkerStyle (+17 more)
 
 ### Community 13 - "projectweb/src/components/tables/BasicTableOne.tsx"
-Cohesion: 0.18
-Nodes (14): Product, tableData, Order, tableData, Table(), TableBody(), TableBodyProps, TableCell() (+6 more)
+Cohesion: 0.16
+Nodes (15): Product, tableData, BasicTableOne(), Order, tableData, Table(), TableBody(), TableBodyProps (+7 more)
 
 ### Community 14 - "AssetRegistryTable.tsx"
 Cohesion: 0.11
@@ -207,9 +239,9 @@ Nodes (19): metadata, metadata, AssetDetailModal(), AssetDetailModalProps, Asset
 Cohesion: 0.06
 Nodes (31): Breaking Changes, Changelog, Cloning the Repository, Components, Demos, Feature Comparison, Free Version, Installation (+23 more)
 
-### Community 16 - "projectweb/src/app/(admin)/(others-pages)/(forms)/form-elements/page.tsx"
-Cohesion: 0.05
-Nodes (38): metadata, metadata, metadata, SignInForm(), SignUpForm(), DatePicker(), PropsType, CheckboxComponents() (+30 more)
+### Community 16 - "projectweb/src/components/common/ComponentCard.tsx"
+Cohesion: 0.11
+Nodes (18): metadata, ComponentCard(), ComponentCardProps, DefaultInputs(), DropzoneComponent(), FileInputExample(), InputStates(), RadioButtons() (+10 more)
 
 ### Community 17 - "ERP MBG System Overview"
 Cohesion: 0.40
@@ -232,20 +264,20 @@ Cohesion: 0.15
 Nodes (14): metadata, BankReconciliationEntry, BankReconciliationModal(), BankReconciliationModalProps, INITIAL_BANK_MUTATIONS, PaymentInvoiceDetailModal(), PaymentInvoiceDetailModalProps, INITIAL_INVOICES (+6 more)
 
 ### Community 41 - "devDependencies"
-Cohesion: 0.05
-Nodes (38): devDependencies, eslint, eslint-config-next, @eslint/eslintrc, postcss, @svgr/webpack, tailwindcss, @types/node (+30 more)
+Cohesion: 0.09
+Nodes (23): devDependencies, eslint, eslint-config-next, @eslint/eslintrc, postcss, @svgr/webpack, tailwindcss, @types/node (+15 more)
 
 ### Community 42 - "📋 Checklist Lengkap Modul & Task"
 Cohesion: 0.14
 Nodes (13): 📋 Checklist Lengkap Modul & Task, 🏗️ Fase 0: Setup Proyek & Arsitektur Frontend UI, Master Checklist & Progress Review ERP MBG, 📦 Modul 1: Supplier & Vendor Management (`03_MODULE_SUPPLIER_MGMT.md`), 🏬 Modul 2: Gudang & Inventory (`04_MODULE_INVENTORY_MGMT.md`), 🥗 Modul 3: Menu & Nutrisi (`05_MODULE_MENU_&_NUTRISI.md`), 🚚 Modul 4: Logistik & Distribusi (`06_MODULE_LOGISTIK_DISTRIBUSI.md`), 🍳 Modul 5: Manajemen Aset Tetap (`12_MODULE_ASSET_MGMT.md`) (+5 more)
 
 ### Community 43 - "dependencies"
-Cohesion: 0.04
-Nodes (45): dependencies, apexcharts, autoprefixer, flatpickr, @fullcalendar/core, @fullcalendar/daygrid, @fullcalendar/interaction, @fullcalendar/list (+37 more)
+Cohesion: 0.15
+Nodes (13): dependencies, autoprefixer, flatpickr, @fullcalendar/daygrid, @fullcalendar/timegrid, react-dnd-html5-backend, @tailwindcss/forms, autoprefixer (+5 more)
 
 ### Community 44 - "projectweb/src/components/common/PageBreadCrumb.tsx"
-Cohesion: 0.21
-Nodes (5): metadata, metadata, metadata, BreadcrumbProps, PageBreadcrumb()
+Cohesion: 0.16
+Nodes (7): metadata, metadata, metadata, metadata, Calendar(), BreadcrumbProps, PageBreadcrumb()
 
 ### Community 45 - "ExpenditureManagement.tsx"
 Cohesion: 0.19
@@ -283,9 +315,13 @@ Nodes (4): metadata, ResponsiveImage(), ThreeColumnImageGrid(), TwoColumnImageGr
 Cohesion: 0.28
 Nodes (5): metadata, VideosExample(), AspectRatio, YouTubeEmbed(), YouTubeEmbedProps
 
-### Community 55 - "ModulePageLayout.tsx"
-Cohesion: 0.13
-Nodes (8): metadata, metadata, metadata, metadata, metadata, ModulePageLayout(), ModulePageLayoutProps, DistributionPointsTable()
+### Community 54 - "ProofOfDeliveryViewer.tsx"
+Cohesion: 0.22
+Nodes (9): metadata, PodDetailModal(), PodDetailModalProps, PodRecord, PodSubmissionModal(), PodSubmissionModalProps, waybillOptions, initialPods (+1 more)
+
+### Community 55 - "DistributionPointsTable.tsx"
+Cohesion: 0.24
+Nodes (8): metadata, DistributionPoint, DistributionPointModal(), DistributionPointModalProps, DistributionPointsTable(), initialPoints, DistributionRouteMap(), DistributionRouteMapProps
 
 ### Community 56 - "projectweb/src/app/(admin)/(others-pages)/(chart)/bar-chart/page.tsx"
 Cohesion: 0.40
@@ -299,9 +335,9 @@ Nodes (3): metadata, LineChartOne(), ReactApexChart
 Cohesion: 0.40
 Nodes (3): metadata, Alert(), AlertProps
 
-### Community 59 - "movements/page.tsx"
-Cohesion: 0.29
-Nodes (3): metadata, metadata, InventoryTable()
+### Community 59 - "ModulePageLayout.tsx"
+Cohesion: 0.14
+Nodes (10): metadata, metadata, metadata, metadata, ModulePageLayout(), ModulePageLayoutProps, initialStocks, InventoryTable() (+2 more)
 
 ### Community 60 - "uiweb/src/app/(admin)/(ui-elements)/videos/page.tsx"
 Cohesion: 0.28
@@ -327,6 +363,10 @@ Nodes (5): metadata, SignInForm(), CheckboxComponents(), Checkbox(), CheckboxPro
 Cohesion: 0.25
 Nodes (6): metadata, Avatar(), AvatarProps, sizeClasses, statusColorClasses, statusSizeClasses
 
+### Community 70 - "MenuPlannerCalendar.tsx"
+Cohesion: 0.33
+Nodes (4): metadata, DailyMenuPlan, MenuPlannerCalendar(), mockMenuPlans
+
 ### Community 71 - "ColdChainTelemetry.tsx"
 Cohesion: 0.29
 Nodes (5): metadata, ColdChainTelemetry(), ReactApexChart, sensors, SensorUnit
@@ -351,32 +391,88 @@ Nodes (7): metadata, IngredientMaster, masterIngredients, presets, RecipeBuilder
 Cohesion: 0.33
 Nodes (4): metadata, CatalogItem, initialCatalog, SupplierCatalogGrid()
 
+### Community 80 - "SupplierTable.tsx"
+Cohesion: 0.24
+Nodes (6): metadata, SupplierRegistrationModal(), SupplierRegistrationModalProps, initialSuppliers, SupplierData, SupplierTable()
+
 ### Community 81 - "performance/page.tsx"
 Cohesion: 0.33
 Nodes (4): metadata, SupplierPerformanceScorecard(), VendorPerformance, vendorScores
+
+### Community 100 - "projectweb/src/components/form/Label.tsx"
+Cohesion: 0.14
+Nodes (13): metadata, SignUpForm(), DatePicker(), PropsType, SelectInputs(), Label(), LabelProps, MultiSelect() (+5 more)
+
+### Community 101 - "projectweb/src/components/ui/button/Button.tsx"
+Cohesion: 0.18
+Nodes (13): metadata, StockMovementModal(), StockMovementModalProps, CreateShipmentModal(), CreateShipmentModalProps, Shipment, LiveTrackingModal(), LiveTrackingModalProps (+5 more)
+
+### Community 102 - "IncidentReportManagement.tsx"
+Cohesion: 0.22
+Nodes (10): metadata, CreateIncidentReportModal(), CreateIncidentReportModalProps, IncidentReport, IncidentDetailModal(), IncidentDetailModalProps, IncidentReportManagement(), INITIAL_INCIDENTS (+2 more)
+
+### Community 103 - "IsoComplianceMatrix.tsx"
+Cohesion: 0.22
+Nodes (10): metadata, AddCertificateModal(), AddCertificateModalProps, IsoCertificate, CertificateDetailModal(), CertificateDetailModalProps, IsoAuditReportPrintModal(), IsoAuditReportPrintModalProps (+2 more)
+
+### Community 104 - "uiweb/src/app/(admin)/page.tsx"
+Cohesion: 0.16
+Nodes (6): metadata, ChartTab(), DemographicCard(), MonthlyTarget(), Chart, StatisticsChart()
+
+### Community 105 - "AuditLogViewer.tsx"
+Cohesion: 0.24
+Nodes (8): metadata, AuditLogDetailModal(), AuditLogDetailModalProps, AuditLogEntry, AuditLogViewer(), INITIAL_AUDIT_LOGS, AuditReportPrintModal(), AuditReportPrintModalProps
+
+### Community 106 - "uiweb/src/components/ecommerce/DemographicCard.tsx"
+Cohesion: 0.33
+Nodes (6): ReactApexChart, ReactApexChart, Dropdown(), DropdownProps, DropdownItem(), DropdownItemProps
+
+### Community 107 - "projectweb/src/components/auth/SignInForm.tsx"
+Cohesion: 0.27
+Nodes (5): metadata, SignInForm(), CheckboxComponents(), Checkbox(), CheckboxProps
 
 ### Community 117 - "uiweb/src/app/(admin)/(ui-elements)/alerts/page.tsx"
 Cohesion: 0.40
 Nodes (3): metadata, Alert(), AlertProps
 
+### Community 118 - "projectweb/package.json"
+Cohesion: 0.22
+Nodes (8): name, private, scripts, build, dev, lint, start, version
+
+### Community 119 - "uiweb/src/components/ui/badge/Badge.tsx"
+Cohesion: 0.29
+Nodes (6): EcommerceMetrics(), Badge(), BadgeColor, BadgeProps, BadgeSize, BadgeVariant
+
+### Community 120 - "overrides"
+Cohesion: 0.29
+Nodes (7): overrides, @react-jvectormap/core, @react-jvectormap/world, react, react-dom, react, react-dom
+
+### Community 121 - "projectweb/src/components/form/form-elements/InputGroup.tsx"
+Cohesion: 0.40
+Nodes (4): InputGroup(), CountryCode, PhoneInput(), PhoneInputProps
+
+### Community 122 - "uiweb/src/components/ecommerce/CountryMap.tsx"
+Cohesion: 0.33
+Nodes (5): CountryMap(), CountryMapProps, Marker, MarkerStyle, VectorMap
+
 ## Knowledge Gaps
-- **462 isolated node(s):** `extends`, `next/core-web-vitals`, `eslintConfig`, `jsvectormap`, `nextConfig` (+457 more)
+- **468 isolated node(s):** `extends`, `next/core-web-vitals`, `eslintConfig`, `jsvectormap`, `nextConfig` (+463 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **40 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **56 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ModulePageLayout()` connect `ModulePageLayout.tsx` to `menu/page.tsx`, `ColdChainTelemetry.tsx`, `PaymentManagement.tsx`, `verification/page.tsx`, `projectweb/src/components/ui/badge/Badge.tsx`, `projectweb/src/app/(admin)/page.tsx`, `ExpenditureManagement.tsx`, `BudgetManagement.tsx`, `AssetRegistryTable.tsx`, `HygieneInspectionsAudit.tsx`, `cost-analysis/page.tsx`, `inventory/alerts/page.tsx`, `RecipeBuilder.tsx`, `catalog/page.tsx`, `suppliers/page.tsx`, `proof-of-delivery/page.tsx`, `performance/page.tsx`, `movements/page.tsx`?**
-  _High betweenness centrality (0.070) - this node is a cross-community bridge._
-- **Why does `PageBreadcrumb()` connect `projectweb/src/components/common/PageBreadCrumb.tsx` to `projectweb/src/components/ui/badge/Badge.tsx`, `projectweb/src/app/(admin)/(others-pages)/(forms)/form-elements/page.tsx`, `projectweb/src/app/(admin)/(ui-elements)/avatars/page.tsx`, `projectweb/src/app/(admin)/(ui-elements)/images/page.tsx`, `projectweb/src/app/(admin)/(ui-elements)/videos/page.tsx`, `projectweb/src/app/(admin)/(others-pages)/(tables)/basic-tables/page.tsx`, `ModulePageLayout.tsx`, `projectweb/src/app/(admin)/(others-pages)/(chart)/bar-chart/page.tsx`, `projectweb/src/app/(admin)/(others-pages)/(chart)/line-chart/page.tsx`, `projectweb/src/app/(admin)/(ui-elements)/alerts/page.tsx`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
-- **Why does `Badge()` connect `projectweb/src/components/ui/badge/Badge.tsx` to `ColdChainTelemetry.tsx`, `verification/page.tsx`, `cost-analysis/page.tsx`, `projectweb/src/app/(admin)/page.tsx`, `projectweb/src/components/common/PageBreadCrumb.tsx`, `projectweb/src/components/tables/BasicTableOne.tsx`, `RecipeBuilder.tsx`, `catalog/page.tsx`, `performance/page.tsx`, `inventory/alerts/page.tsx`?**
-  _High betweenness centrality (0.028) - this node is a cross-community bridge._
+- **Why does `ModulePageLayout()` connect `ModulePageLayout.tsx` to `projectweb/src/components/ui/badge/Badge.tsx`, `projectweb/src/app/(admin)/page.tsx`, `AssetRegistryTable.tsx`, `PaymentManagement.tsx`, `ExpenditureManagement.tsx`, `BudgetManagement.tsx`, `HygieneInspectionsAudit.tsx`, `inventory/alerts/page.tsx`, `ProofOfDeliveryViewer.tsx`, `DistributionPointsTable.tsx`, `MenuPlannerCalendar.tsx`, `ColdChainTelemetry.tsx`, `cost-analysis/page.tsx`, `RecipeBuilder.tsx`, `catalog/page.tsx`, `SupplierTable.tsx`, `performance/page.tsx`, `IncidentReportManagement.tsx`, `IsoComplianceMatrix.tsx`, `AuditLogViewer.tsx`?**
+  _High betweenness centrality (0.079) - this node is a cross-community bridge._
+- **Why does `PageBreadcrumb()` connect `projectweb/src/components/common/PageBreadCrumb.tsx` to `projectweb/src/components/ui/button/Button.tsx`, `projectweb/src/components/ui/modal/index.tsx`, `projectweb/src/components/common/ComponentCard.tsx`, `projectweb/src/app/(admin)/(ui-elements)/avatars/page.tsx`, `projectweb/src/app/(admin)/(ui-elements)/images/page.tsx`, `projectweb/src/app/(admin)/(ui-elements)/videos/page.tsx`, `projectweb/src/app/(admin)/(others-pages)/(chart)/bar-chart/page.tsx`, `projectweb/src/app/(admin)/(others-pages)/(chart)/line-chart/page.tsx`, `projectweb/src/app/(admin)/(ui-elements)/alerts/page.tsx`, `ModulePageLayout.tsx`?**
+  _High betweenness centrality (0.041) - this node is a cross-community bridge._
+- **Why does `ComponentCard()` connect `uiweb/src/components/common/ComponentCard.tsx` to `uiweb/src/components/form/Label.tsx`, `uiweb/src/components/auth/SignInForm.tsx`, `uiweb/src/app/(admin)/(ui-elements)/avatars/page.tsx`, `useModal`, `uiweb/src/app/(admin)/(others-pages)/(chart)/bar-chart/page.tsx`, `uiweb/src/app/(admin)/(others-pages)/(chart)/line-chart/page.tsx`, `uiweb/src/app/(admin)/(ui-elements)/images/page.tsx`, `uiweb/src/components/form/form-elements/SelectInputs.tsx`, `uiweb/src/app/(admin)/(ui-elements)/alerts/page.tsx`, `uiweb/src/app/(admin)/(others-pages)/(tables)/basic-tables/page.tsx`, `uiweb/src/app/(admin)/(ui-elements)/videos/page.tsx`?**
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
 - **What connects `extends`, `next/core-web-vitals`, `eslintConfig` to the rest of the system?**
-  _462 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _468 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `uiweb/src/layout/AppHeader.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07149758454106281 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08717948717948718 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `Database Schema Design` be split into smaller, more focused modules?**

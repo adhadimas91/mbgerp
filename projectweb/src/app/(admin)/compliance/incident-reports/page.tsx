@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import ModulePageLayout from "@/components/common/ModulePageLayout";
+import IncidentReportManagement from "@/components/compliance/IncidentReportManagement";
 
 export const metadata: Metadata = {
   title: "Pelaporan Insiden Mutu & Keamanan Pangan | ERP MBG",
@@ -13,7 +14,9 @@ export default function IncidentReportsPage() {
       moduleName="Modul 11: ISO Compliance"
       badgeText="CAPA & Corrective Actions"
       pageTitle="Pelaporan Insiden Mutu & Investigasi Keamanan Pangan"
-      description="Pencatatan temuan ketidaksesuaian mutu di lapangan (kemasan rusak, bahan kadaluarsa, anomali suhu), investigasi akar masalah, dan Corrective & Preventive Actions (CAPA)."
-    />
+      description="Pencatatan temuan ketidaksesuaian mutu di lapangan (kemasan rusak, anomali batas kritis suhu CCP, bahan baku supplier tidak sesuai standar), investigasi 5-Whys akar masalah, dan Corrective & Preventive Actions (CAPA)."
+    >
+      <IncidentReportManagement />
+    </ModulePageLayout>
   );
 }
