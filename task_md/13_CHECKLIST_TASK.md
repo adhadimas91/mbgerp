@@ -13,7 +13,7 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - **Modul 3: Menu, Resep & Nutrisi AKG:** ✅ Selesai (100% - UI & Kalkulator)
 - **Modul 4: Logistik & Distribusi:** ✅ Selesai (100% - UI & Live Tracking)
 - **Modul 5: Manajemen Aset Tetap:** ✅ Selesai (100% - UI & QR Label)
-- **Modul 6: Finansial & Anggaran:** 🟡 Parsial (Layout Siap)
+- **Modul 6: Finansial & Anggaran:** ✅ Selesai (100% - UI & Rekonsiliasi)
 - **Modul 7: Kualitas, ISO & Audit Trail:** 🟡 Parsial (Layout Siap)
 - **Backend (NestJS + Prisma + PostgreSQL):** ⚪ Menunggu Fase Integrasi
 
@@ -82,9 +82,9 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ### 💰 Modul 6: Finansial & Anggaran (`07_MODULE_FINANSIAL_&_BUDGET.md`)
 - [x] Layout & Rute Halaman Finansial (`/finance/budgets`, `/finance/expenditures`, `/finance/payments`).
-- [ ] **[TODO]** Tabel Alokasi Anggaran per Wilayah & Sisa Pagu Dana (`/finance/budgets`).
-- [ ] **[TODO]** Form Pencatatan Biaya Operasional & Faktur Pembelian (`/finance/expenditures`).
-- [ ] **[TODO]** Monitoring Pembayaran Faktur Supplier & Rekonsiliasi (`/finance/payments`).
+- [x] **Alokasi Anggaran per Wilayah & Monitoring Realisasi DPA (`BudgetManagement.tsx`, `CreateBudgetModal.tsx`, `BudgetDetailModal.tsx`, & `BudgetReportPrintModal.tsx`):** Plafon pagu DPA per kabupaten/kota, rincian pos belanja standar BGN (Bahan Baku 75%, Operasional 15%, Logistik 8%, Mutu 2%), tracking serapan SP2D vs Komitmen PO, serta cetak dokumen resmi DPA & LRA.
+- [x] **Pencatatan Biaya Operasional & Belanja Bahan Baku (`ExpenditureManagement.tsx`, `CreateExpenditureModal.tsx`, `ExpenditureDetailModal.tsx`, & `ExpenditureReceiptPrintModal.tsx`):** Pencatatan belanja multi-item, kalkulasi otomatis potongan PPh 22/23 dan PPN 11%, alur otorisasi SPJ PPK, dan cetak Kuitansi Resmi / Bukti Kas Keluar (BKK).
+- [x] **Manajemen Pembayaran Supplier & Rekonsiliasi Bank (`PaymentManagement.tsx`, `ProcessPaymentModal.tsx`, `PaymentInvoiceDetailModal.tsx`, `BankReconciliationModal.tsx`, & `PaymentProofPrintModal.tsx`):** Validasi 3-Way Matching (PO ↔ BAST ↔ Faktur), eksekusi pembayaran SP2D transfer bank BUMN, rekonsiliasi mutasi rekening koran bank vs buku kas ERP, dan cetak Bank Payment Voucher (BPV).
 
 ---
 

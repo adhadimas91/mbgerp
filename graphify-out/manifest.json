@@ -882,21 +882,21 @@
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/assets/hygiene-inspections/page.tsx": {
-    "mtime": 1787805441.4586723,
-    "seen": 1787806846.394864,
-    "ast_hash": "3833aa20c9b42a2ce55e8db438e351b1",
+    "mtime": 1787823417.204692,
+    "seen": 1787824336.2532196,
+    "ast_hash": "7a813eb0305d3c4f45b0c357e647bad4",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/assets/maintenance/page.tsx": {
-    "mtime": 1787805438.379704,
-    "seen": 1787806846.394864,
-    "ast_hash": "c85a1c1dd26dc0f373c1deae7bdc6783",
+    "mtime": 1787823411.7557669,
+    "seen": 1787824336.2532196,
+    "ast_hash": "2f63d8d87b8fcbdc83d47f1affa04815",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/assets/page.tsx": {
-    "mtime": 1787805434.5593069,
-    "seen": 1787806846.394864,
-    "ast_hash": "d5ceac2b6b66d8f1ba3a6314fdf9fee8",
+    "mtime": 1787823406.310109,
+    "seen": 1787824336.2532196,
+    "ast_hash": "efe0f14461b15499c3ff28199a27766a",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/compliance/audit-logs/page.tsx": {
@@ -930,21 +930,21 @@
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/finance/budgets/page.tsx": {
-    "mtime": 1787805445.002959,
-    "seen": 1787806846.394864,
-    "ast_hash": "d1482d485811ec92c1647a194429574d",
+    "mtime": 1787823890.9514933,
+    "seen": 1787824336.2532196,
+    "ast_hash": "0713e96b00e1a2b6664239642285c403",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/finance/expenditures/page.tsx": {
-    "mtime": 1787805449.1872406,
-    "seen": 1787806846.394864,
-    "ast_hash": "9928e3b41aad356e9b8b6d36b3f1bd9c",
+    "mtime": 1787823961.373911,
+    "seen": 1787824336.2532196,
+    "ast_hash": "b03ffac71c2939f1e3337f61b606d635",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/finance/payments/page.tsx": {
-    "mtime": 1787805452.52563,
-    "seen": 1787806846.394864,
-    "ast_hash": "66ce6b123c842592e5f9b8c0016bb3f7",
+    "mtime": 1787824026.1956146,
+    "seen": 1787824336.2532196,
+    "ast_hash": "081e1c42db47717cda64fc8d050d2f99",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/inventory/alerts/page.tsx": {
@@ -978,20 +978,20 @@
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/logistics/distribution-points/page.tsx": {
-    "mtime": 1787821259.8914554,
-    "seen": 1787821401.2033024,
+    "mtime": 1787822174.8460608,
+    "seen": 1787824336.2532196,
     "ast_hash": "737c1d008a41e76f73e3a9fefa8c0b8e",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/logistics/proof-of-delivery/page.tsx": {
-    "mtime": 1787821268.735014,
-    "seen": 1787821401.2033024,
+    "mtime": 1787822188.8814096,
+    "seen": 1787824336.2532196,
     "ast_hash": "a02738a1448ce4d375175406416e5242",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/logistics/shipments/page.tsx": {
-    "mtime": 1787821264.267375,
-    "seen": 1787821401.2033024,
+    "mtime": 1787822182.5487273,
+    "seen": 1787824336.2532196,
     "ast_hash": "3250b2c1293bec4e4d55c817170ab3bd",
     "semantic_hash": ""
   },
@@ -1632,9 +1632,9 @@
     "semantic_hash": ""
   },
   "task_md/13_CHECKLIST_TASK.md": {
-    "mtime": 1787821352.907372,
-    "seen": 1787821401.2033024,
-    "ast_hash": "3ef1bd77792f9028d2cbada62f0fc75c",
+    "mtime": 1787824071.6643453,
+    "seen": 1787824336.2532196,
+    "ast_hash": "68100b53037b592b456d45502be2cbc7",
     "semantic_hash": ""
   },
   "projectweb/banner.png": {
@@ -3801,6 +3801,144 @@
     "mtime": 1787821196.8768468,
     "seen": 1787821401.2033024,
     "ast_hash": "e65b25bfe021fda884a25016b562344f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/AssetDetailModal.tsx": {
+    "mtime": 1787823289.5868037,
+    "seen": 1787824336.2532196,
+    "ast_hash": "d7d80d1b4e56f8b636b00d91ebaecb8d",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/AssetMaintenanceSchedule.tsx": {
+    "mtime": 1787823359.042568,
+    "seen": 1787824336.2532196,
+    "ast_hash": "0036e1fae8e0114e35c870cf6337474a",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/AssetQrPrintModal.tsx": {
+    "mtime": 1787823255.406685,
+    "seen": 1787824336.2532196,
+    "ast_hash": "66fbb5cd3ff11f0c3785b6cdc8f9cfd8",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/AssetRegistrationModal.tsx": {
+    "mtime": 1787823269.5857148,
+    "seen": 1787824336.2532196,
+    "ast_hash": "98706f6b655e69bad5b23751bd3ac633",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/AssetRegistryTable.tsx": {
+    "mtime": 1787823316.134167,
+    "seen": 1787824336.2532196,
+    "ast_hash": "826cbb19ba903feb924a3232a746365d",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/CreateMaintenanceModal.tsx": {
+    "mtime": 1787823330.8563528,
+    "seen": 1787824336.2532196,
+    "ast_hash": "b7fde4a504d6295a8f029ef40fa4760c",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/HygieneInspectionDetailModal.tsx": {
+    "mtime": 1787823384.6658661,
+    "seen": 1787824336.2532196,
+    "ast_hash": "aca2f9c1a1723cbe7c5b623ce309b64f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/HygieneInspectionsAudit.tsx": {
+    "mtime": 1787823401.4103496,
+    "seen": 1787824336.2532196,
+    "ast_hash": "b87e07d8f00616ce0d98514514d0517f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/MaintenanceDetailModal.tsx": {
+    "mtime": 1787823340.0511918,
+    "seen": 1787824336.2532196,
+    "ast_hash": "74fb67507b31ebd2082e5393b5dca216",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/assets/NewHygieneInspectionModal.tsx": {
+    "mtime": 1787823374.6834707,
+    "seen": 1787824336.2532196,
+    "ast_hash": "73c02be7ce1c3a2d810fed69213d9c87",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/BankReconciliationModal.tsx": {
+    "mtime": 1787823995.2072053,
+    "seen": 1787824336.2532196,
+    "ast_hash": "5435f9938d67c8a0ae80fe7a016bc5ca",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/BudgetDetailModal.tsx": {
+    "mtime": 1787823849.6448143,
+    "seen": 1787824336.2532196,
+    "ast_hash": "5e9aa1ee70bab761dd7d3c1837e5a055",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/BudgetManagement.tsx": {
+    "mtime": 1787823885.9812536,
+    "seen": 1787824336.2532196,
+    "ast_hash": "4e504a2379787fd1669168cb2a961833",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/BudgetReportPrintModal.tsx": {
+    "mtime": 1787823862.7348814,
+    "seen": 1787824336.2532196,
+    "ast_hash": "7f3010b99d2bc79ce9a1280136e57b08",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/CreateBudgetModal.tsx": {
+    "mtime": 1787823834.9348867,
+    "seen": 1787824336.2532196,
+    "ast_hash": "39662291a5fafc72b5f87bac1789f9bf",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/CreateExpenditureModal.tsx": {
+    "mtime": 1787823911.4745276,
+    "seen": 1787824336.2532196,
+    "ast_hash": "94376b9a16ed1d90b263c49a9dfc40a2",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/ExpenditureDetailModal.tsx": {
+    "mtime": 1787823923.556075,
+    "seen": 1787824336.2532196,
+    "ast_hash": "093856453ee84dd366cc04f43b6773ef",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/ExpenditureManagement.tsx": {
+    "mtime": 1787823956.8296487,
+    "seen": 1787824336.2532196,
+    "ast_hash": "feb99d43c07de2315cc4f78e9a9c4e13",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/ExpenditureReceiptPrintModal.tsx": {
+    "mtime": 1787823934.5187025,
+    "seen": 1787824336.2532196,
+    "ast_hash": "fa9e65a7ad1cfe33f795f928f3269313",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/PaymentInvoiceDetailModal.tsx": {
+    "mtime": 1787823985.640951,
+    "seen": 1787824336.2532196,
+    "ast_hash": "2dbe8e95cbb6c43d25cc7a4edf39d745",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/PaymentManagement.tsx": {
+    "mtime": 1787824021.9673238,
+    "seen": 1787824336.2532196,
+    "ast_hash": "3a7d970f7809365d84e824fc659e9b47",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/PaymentProofPrintModal.tsx": {
+    "mtime": 1787824004.9008844,
+    "seen": 1787824336.2532196,
+    "ast_hash": "64191f1c40bbf8999509f5ef72a908ec",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/ProcessPaymentModal.tsx": {
+    "mtime": 1787823973.8132677,
+    "seen": 1787824336.2532196,
+    "ast_hash": "f76ea8bd01ea16b9171f36f6da9f5596",
     "semantic_hash": ""
   }
 }
