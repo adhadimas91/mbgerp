@@ -34,6 +34,8 @@ const operationalNavItems: NavItem[] = [
     name: "Dashboard",
     subItems: [
       { name: "Overview Eksekutif", path: "/" },
+      { name: "Dashboard Dapur SPPG", path: "/dashboard/kitchen", new: true },
+      { name: "Finansial Dapur SPPG", path: "/finance/kitchen", new: true },
       { name: "Monitoring Logistik & Peta", path: "/dashboard/logistics" },
       { name: "Analisis Nutrisi Harian", path: "/dashboard/nutrition" },
     ],
@@ -103,6 +105,8 @@ const governanceNavItems: NavItem[] = [
     icon: <DollarLineIcon />,
     name: "Finansial & Budget",
     subItems: [
+      { name: "Overview Finansial", path: "/finance", new: true },
+      { name: "Finansial Dapur SPPG", path: "/finance/kitchen", new: true },
       { name: "Alokasi Anggaran", path: "/finance/budgets" },
       { name: "Pencatatan Pengeluaran", path: "/finance/expenditures" },
       { name: "Pembayaran Supplier", path: "/finance/payments" },

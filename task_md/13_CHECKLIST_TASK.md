@@ -11,6 +11,7 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - **Modul 1: Supplier & Vendor Management:** ✅ Selesai (100% - UI & Interaktif)
 - **Modul 2: Gudang, Stok & Cold Chain:** ✅ Selesai (100% - UI & Telemetri)
 - **Modul 3: Menu, Resep & Nutrisi AKG:** ✅ Selesai (100% - UI & Kalkulator)
+- **Modul Dapur: Dashboard Dapur Sentral SPPG:** ✅ Selesai (100% - UI, Lini Masak, Telemetri CCP & Organoleptik)
 - **Modul 4: Logistik & Distribusi:** ✅ Selesai (100% - UI & Live Tracking)
 - **Modul 5: Manajemen Aset Tetap:** ✅ Selesai (100% - UI & QR Label)
 - **Modul 6: Finansial & Anggaran:** ✅ Selesai (100% - UI & Rekonsiliasi)
@@ -65,6 +66,17 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ---
 
+### 🍳 Modul Dashboard Dapur Sentral SPPG MBG (`/dashboard/kitchen`)
+- [x] Layout & Rute Dashboard Dapur Sentral SPPG (`KitchenOverviewDashboard.tsx` & `/dashboard/kitchen`).
+- [x] **Monitoring Real-time Lini Masak & Batch Produksi (`UpdateProductionBatchModal.tsx`):** Pantau Lini 1 (Karbohidrat), Lini 2 (Protein Hewani), Lini 3 (Sayuran Segar), Lini 4 (Protein Nabati), dan Lini 5 (Packaging & Sealing Tray), kapasitas output porsi, dan countdown waktu muat armada (Departure Lock).
+- [x] **Sensor Telemetri CCP HACCP Suhu Masak ISO 22000:** Kontrol Suhu Inti Masak (≥ 75°C), Hot Holding Warmer (≥ 60°C), Chiller Bahan Segar (1°C - 4°C), dan Steam Sanitizer Ompreng (≥ 100°C).
+- [x] **Formulir Uji Organoleptik & Quality Release Ahli Gizi (`OrganolepticQualityModal.tsx`):** Uji 4 pilar sensorik (Rasa, Aroma, Tekstur, Penampilan Visual), verifikasi Sampel Retensi 2x24 Jam di kulkas QC `CH-RET-01`, dan **Kanvas Tanda Tangan Digital Ahli Gizi PIC**.
+- [x] **Cetak Surat Perintah Masak (SPM) / Work Order SPPG Resmi (`KitchenSpkPrintModal.tsx`):** Rincian menu MBG, komposisi takaran bahan baku, jadwal timeline produksi, serta tanda tangan resmi Kepala SPPG & Head Chef.
+- [x] **Voucher Permintaan Tambahan Bahan Baku ke Gudang (`KitchenRequisitionModal.tsx`):** Kitchen Ingredient Requisition Slip darurat dengan tingkat urgensi (Normal, Urgent, Kritis) dan notifikasi instan.
+- [x] **Kitchen Brigade & Health Gatekeeper Check:** Struktur tim shift dapur (Head Chef, Sous Chef, Ahli Gizi, Helper & Packaging) dengan skrining presensi higiene 100% lulus suhu <37.3°C dan APD steril lengkap.
+
+---
+
 ### 🚚 Modul 4: Logistik & Distribusi (`06_MODULE_LOGISTIK_DISTRIBUSI.md`)
 - [x] Layout & Rute Halaman Logistik (`/distribution-points`, `/shipments`, `/proof-of-delivery`).
 - [x] Tabel Stream Pengiriman Terkini di Dashboard Utama.
@@ -83,7 +95,8 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 ---
 
 ### 💰 Modul 6: Finansial & Anggaran (`07_MODULE_FINANSIAL_&_BUDGET.md`)
-- [x] Layout & Rute Halaman Finansial (`/finance/budgets`, `/finance/expenditures`, `/finance/payments`).
+- [x] Layout & Rute Halaman Finansial (`/finance/budgets`, `/finance/expenditures`, `/finance/payments`, `/finance/kitchen`).
+- [x] **Dashboard Finansial & Biaya Operasional Dapur Sentral SPPG (`KitchenFinancialDashboard.tsx`, `KitchenExpenseRecordModal.tsx`, `KitchenCostAnalysisModal.tsx`, & `KitchenFinancialReportPrintModal.tsx`):** Pusat kendali Kepala MBG / Kepala SPPG untuk memantau HPP riil per porsi vs pagu BGN (Rp 15.000), breakdown struktur 5 komponen biaya, telemetri biaya energi utilitas (LPG 50kg, listrik cold chain, air RO), buku kas kecil (petty cash) dapur, simulasi What-If skenario biaya, dan cetak Laporan Pertanggungjawaban Finansial SPPG resmi ber-QR Code.
 - [x] **Alokasi Anggaran per Wilayah & Monitoring Realisasi DPA (`BudgetManagement.tsx`, `CreateBudgetModal.tsx`, `BudgetDetailModal.tsx`, & `BudgetReportPrintModal.tsx`):** Plafon pagu DPA per kabupaten/kota, rincian pos belanja standar BGN (Bahan Baku 75%, Operasional 15%, Logistik 8%, Mutu 2%), tracking serapan SP2D vs Komitmen PO, serta cetak dokumen resmi DPA & LRA.
 - [x] **Pencatatan Biaya Operasional & Belanja Bahan Baku (`ExpenditureManagement.tsx`, `CreateExpenditureModal.tsx`, `ExpenditureDetailModal.tsx`, & `ExpenditureReceiptPrintModal.tsx`):** Pencatatan belanja multi-item, kalkulasi otomatis potongan PPh 22/23 dan PPN 11%, alur otorisasi SPJ PPK, dan cetak Kuitansi Resmi / Bukti Kas Keluar (BKK).
 - [x] **Manajemen Pembayaran Supplier & Rekonsiliasi Bank (`PaymentManagement.tsx`, `ProcessPaymentModal.tsx`, `PaymentInvoiceDetailModal.tsx`, `BankReconciliationModal.tsx`, & `PaymentProofPrintModal.tsx`):** Validasi 3-Way Matching (PO ↔ BAST ↔ Faktur), eksekusi pembayaran SP2D transfer bank BUMN, rekonsiliasi mutasi rekening koran bank vs buku kas ERP, dan cetak Bank Payment Voucher (BPV).

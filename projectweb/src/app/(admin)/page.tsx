@@ -7,6 +7,8 @@ import MonthlySalesChart from "@/components/ecommerce/MonthlySalesChart";
 import MonthlyTarget from "@/components/ecommerce/MonthlyTarget";
 import DemographicCard from "@/components/ecommerce/DemographicCard";
 
+import Link from "next/link";
+
 export const metadata: Metadata = {
   title: "Dashboard Monitoring | ERP Manajemen MBG (Makanan Bergizi Gratis)",
   description: "Sistem ERP Terpadu untuk Monitoring Pengadaan, Gudang, Nutrisi, Logistik, dan Kepatuhan ISO MBG",
@@ -28,7 +30,13 @@ export default function MbgDashboardOverview() {
             Pemantauan real-time pengadaan bahan baku, standar nutrisi pangan (ISO 22000), logistik pengiriman sekolah, dan akuntabilitas anggaran.
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href="/dashboard/kitchen"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs shadow-md transition"
+          >
+            <span>🍳</span> Buka Dapur SPPG
+          </Link>
           <div className="px-4 py-2 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-center">
             <span className="text-[11px] uppercase tracking-wider text-emerald-200 block">Titik Sasaran</span>
             <span className="text-lg font-bold text-white">428 Sekolah</span>
