@@ -1584,9 +1584,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/layout/AppSidebar.tsx": {
-    "mtime": 1787825269.2124448,
-    "seen": 1787826220.007622,
-    "ast_hash": "c46fbd5596e9373158fa16e8097efcb1",
+    "mtime": 1787826343.2483916,
+    "seen": 1787826900.6381857,
+    "ast_hash": "e0bfc4199e038bfbecc2199bd7968779",
     "semantic_hash": ""
   },
   "projectweb/src/layout/Backdrop.tsx": {
@@ -4008,27 +4008,27 @@
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/employees/certifications/page.tsx": {
-    "mtime": 1787825502.0737753,
-    "seen": 1787826220.007622,
-    "ast_hash": "c7561b3803e4e3953a02288782a98025",
+    "mtime": 1787826374.004764,
+    "seen": 1787826900.6381857,
+    "ast_hash": "1bd2fec67f64d9f27ad48de53a37c22a",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/employees/page.tsx": {
-    "mtime": 1787825486.562862,
-    "seen": 1787826220.007622,
-    "ast_hash": "fbe167f87411d1fbc90ed2c1c67b5764",
+    "mtime": 1787826357.654801,
+    "seen": 1787826900.6381857,
+    "ast_hash": "4cda6c2db90dc47354c5b628729c4749",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/employees/payroll/page.tsx": {
-    "mtime": 1787825495.8933055,
-    "seen": 1787826220.007622,
-    "ast_hash": "00344b085ad57aaeac32bc139539017e",
+    "mtime": 1787826367.785006,
+    "seen": 1787826900.6381857,
+    "ast_hash": "96c5704df5b7135caa7391fdb9b2e3fe",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/employees/shifts/page.tsx": {
-    "mtime": 1787825491.509187,
-    "seen": 1787826220.007622,
-    "ast_hash": "0d98fd290d077fa0d0460fb99f6ca43f",
+    "mtime": 1787826362.5260322,
+    "seen": 1787826900.6381857,
+    "ast_hash": "e54e638a96056f8153b4cf3861959010",
     "semantic_hash": ""
   },
   "projectweb/src/components/employees/AddCertificationModal.tsx": {
@@ -4062,9 +4062,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/components/employees/EmployeeDetailModal.tsx": {
-    "mtime": 1787825335.143319,
-    "seen": 1787826220.007622,
-    "ast_hash": "009fe64b792291928846fc20d753ab30",
+    "mtime": 1787826406.9099388,
+    "seen": 1787826900.6381857,
+    "ast_hash": "e98302a794fadab9a093d426da6e8430",
     "semantic_hash": ""
   },
   "projectweb/src/components/employees/EmployeeIdCardPrintModal.tsx": {
@@ -4080,9 +4080,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/components/employees/EmployeeRegistryTable.tsx": {
-    "mtime": 1787825303.6481776,
-    "seen": 1787826220.007622,
-    "ast_hash": "ec60fe30dfa8e28c63206b06551eb8d5",
+    "mtime": 1787826805.043994,
+    "seen": 1787826900.6381857,
+    "ast_hash": "9fe25687c0e2c7098b3c2462df49ee06",
     "semantic_hash": ""
   },
   "projectweb/src/components/employees/FoodHandlerCompliancePrintModal.tsx": {
@@ -4098,9 +4098,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/components/employees/PayrollManagement.tsx": {
-    "mtime": 1787825407.2156613,
-    "seen": 1787826220.007622,
-    "ast_hash": "1c1cb699fcb5e26dbd99e530cb743f3d",
+    "mtime": 1787826865.1967413,
+    "seen": 1787826900.6381857,
+    "ast_hash": "7ec7514791d6534f940def5bb8d3b16d",
     "semantic_hash": ""
   },
   "projectweb/src/components/employees/PayrollSlipPrintModal.tsx": {
@@ -4131,6 +4131,18 @@
     "mtime": 1787825236.045423,
     "seen": 1787826220.007622,
     "ast_hash": "10a705db616573f1ceb18b254db7ab3f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/EmployeeNavigationTabs.tsx": {
+    "mtime": 1787826351.7442722,
+    "seen": 1787826900.6381857,
+    "ast_hash": "571c9e86cf7573e0534e50a1e6981848",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/SalaryStructureSetupModal.tsx": {
+    "mtime": 1787826759.4502144,
+    "seen": 1787826900.6381857,
+    "ast_hash": "07a185a2ca0e9eda0fc81a6f86ee049d",
     "semantic_hash": ""
   }
 }
