@@ -1,0 +1,12 @@
+<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="32" height="32" rx="8" fill="url(#mbg_icon_grad)" />
+  <path d="M9 19C9 24.5228 13.4772 27 17 27C20.5228 27 25 24.5228 25 19H9Z" fill="white" />
+  <path d="M17 9C17 9 13 11.5 13 16H21C21 11.5 17 9 17 9Z" fill="white" fill-opacity="0.85" />
+  <circle cx="17" cy="7" r="1.5" fill="#FBBF24" />
+  <defs>
+    <linearGradient id="mbg_icon_grad" x1="1" y1="1" x2="33" y2="33" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#059669" />
+      <stop offset="1" stop-color="#2563EB" />
+    </linearGradient>
+  </defs>
+</svg>
