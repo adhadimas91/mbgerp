@@ -12,7 +12,7 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - **Modul 2: Gudang, Stok & Cold Chain:** ✅ Selesai (100% - UI & Telemetri)
 - **Modul 3: Menu, Resep & Nutrisi AKG:** ✅ Selesai (100% - UI & Kalkulator)
 - **Modul 4: Logistik & Distribusi:** ✅ Selesai (100% - UI & Live Tracking)
-- **Modul 5: Manajemen Aset Tetap:** 🟡 Parsial (Layout Siap)
+- **Modul 5: Manajemen Aset Tetap:** ✅ Selesai (100% - UI & QR Label)
 - **Modul 6: Finansial & Anggaran:** 🟡 Parsial (Layout Siap)
 - **Modul 7: Kualitas, ISO & Audit Trail:** 🟡 Parsial (Layout Siap)
 - **Backend (NestJS + Prisma + PostgreSQL):** ⚪ Menunggu Fase Integrasi
@@ -50,7 +50,7 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - [x] **Tabel Master Stok Bahan Baku (`InventoryTable.tsx`):** Klasifikasi Cold Storage (-18°C ~ 4°C) vs Dry Storage, level stok aman/menipis/kritis terhadap buffer, dan tracking Batch/Lot.
 - [x] **Form Mutasi Stok Masuk & Keluar (`StockMovementModal.tsx`):** Penerimaan PO `IN`, pengeluaran masak `OUT`, penyesuaian `ADJUST`, pencatatan suhu terima, dan tanggal kadaluarsa.
 - [x] **Telemetri Suhu Cold Chain Real-time (`ColdChainTelemetry.tsx`):** Widget sensor IoT ruang pendingin/freezer, batas ambang ISO 22000, dan grafik tren suhu 24 jam dengan ApexCharts.
-- [x] **Sistem Peringatan Dini Stok & Kadaluarsa (`LowStockAlerts.tsx`):** Early Warning Reorder Point, countdown kedaluwarsa (&lt; 7 hari) untuk alur masak FIFO, dan generator PO Darurat.
+- [x] **Sistem Peringatan Dini Stok & Kadaluarsa (`LowStockAlerts.tsx`):** Early Warning Reorder Point, countdown kedaluwarsa (< 7 hari) untuk alur masak FIFO, dan generator PO Darurat.
 
 ---
 
@@ -74,9 +74,9 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ### 🍳 Modul 5: Manajemen Aset Tetap (`12_MODULE_ASSET_MGMT.md`)
 - [x] Layout & Rute Halaman Aset (`/assets`, `/maintenance`, `/hygiene-inspections`).
-- [ ] **[TODO]** Master Data Aset & Generator Label QR Code (`/assets`).
-- [ ] **[TODO]** Jadwal Servis Berkala & Riwayat Perbaikan Armada / Mesin Dapur (`/maintenance`).
-- [ ] **[TODO]** Formulir Checklist Inspeksi Higienitas Alat Masak Harian ISO 22000 (`/hygiene-inspections`).
+- [x] **Master Data Aset & Generator Label QR Code (`AssetRegistryTable.tsx`, `AssetRegistrationModal.tsx`, `AssetDetailModal.tsx`, & `AssetQrPrintModal.tsx`):** Database aset dapur & armada, perhitungan depresiasi garis lurus (Straight-line Depreciation), filter kondisi/status, dan generator preview cetak stiker label QR Code barcode MBG.
+- [x] **Jadwal Servis Berkala & Riwayat Perbaikan Armada / Mesin Dapur (`AssetMaintenanceSchedule.tsx`, `CreateMaintenanceModal.tsx`, & `MaintenanceDetailModal.tsx`):** Manajemen Work Order pemeliharaan (Preventive Service vs Corrective Repair), pelacak suku cadang & estimasi biaya perbaikan, serta log histori kalibrasi alat.
+- [x] **Formulir Checklist Inspeksi Higienitas Alat Masak Harian ISO 22000 (`HygieneInspectionsAudit.tsx`, `NewHygieneInspectionModal.tsx`, & `HygieneInspectionDetailModal.tsx`):** 8 kriteria audit sanitasi alat ISO 22000/HACCP, kalkulator skor mutu instan (Grade A/B/C), formulir CAPA temuan audit, dan **Kanvas Tanda Tangan Digital Lead Auditor**.
 
 ---
 
