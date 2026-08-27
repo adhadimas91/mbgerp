@@ -14,6 +14,7 @@ import {
   DollarLineIcon,
   CheckCircleIcon,
   UserCircleIcon,
+  UserIcon,
   ChevronDownIcon,
   HorizontaLDots,
 } from "../icons/index";
@@ -82,6 +83,16 @@ const operationalNavItems: NavItem[] = [
       { name: "Master Aset & QR Code", path: "/assets" },
       { name: "Jadwal Servis & Perbaikan", path: "/assets/maintenance" },
       { name: "Inspeksi Kelaikan Masak", path: "/assets/hygiene-inspections" },
+    ],
+  },
+  {
+    icon: <UserIcon />,
+    name: "SDM & Karyawan",
+    subItems: [
+      { name: "Direktori Karyawan & ID", path: "/employees" },
+      { name: "Shift & Presensi Higiene", path: "/employees/shifts" },
+      { name: "Kelola Gaji & Payroll", path: "/employees/payroll", new: true },
+      { name: "Sertifikasi & MCU Higiene", path: "/employees/certifications" },
     ],
   },
 ];

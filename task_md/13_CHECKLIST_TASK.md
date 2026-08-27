@@ -14,7 +14,9 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - **Modul 4: Logistik & Distribusi:** ✅ Selesai (100% - UI & Live Tracking)
 - **Modul 5: Manajemen Aset Tetap:** ✅ Selesai (100% - UI & QR Label)
 - **Modul 6: Finansial & Anggaran:** ✅ Selesai (100% - UI & Rekonsiliasi)
-- **Modul 7: Kualitas, ISO & Audit Trail:** 🟡 Parsial (Layout Siap)
+- **Modul 7: Kualitas, ISO & Audit Trail:** ✅ Selesai (100% - UI & CAPA Form)
+- **Modul 8: SDM, Tenaga Kerja & Payroll:** ✅ Selesai (100% - UI, Shift, MCU & Slip Gaji)
+- **Modul 9: Pengguna & Sistem (RBAC):** 🟡 Parsial (Layout Siap)
 - **Backend (NestJS + Prisma + PostgreSQL):** ⚪ Menunggu Fase Integrasi
 
 ---
@@ -96,7 +98,16 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ---
 
-### ⚙️ Modul 8: Pengguna, Keamanan (RBAC) & Backend (`01_TECH_STACK_&_INFRA.md` & `02_DATABASE_SCHEMA.md`)
+### 👥 Modul 8: SDM, Tenaga Kerja & Payroll (`14_MODULE_HR_EMPLOYEE_MGMT.md`)
+- [x] Layout & Rute Halaman Karyawan (`/employees`, `/employees/shifts`, `/employees/payroll`, `/employees/certifications`).
+- [x] **Master Data Karyawan & ID Card MBG (`EmployeeRegistryTable.tsx`, `EmployeeRegistrationModal.tsx`, `EmployeeDetailModal.tsx`, & `EmployeeIdCardPrintModal.tsx`):** Direktori tenaga kerja dapur SPPG, ahli gizi, helper, driver & QC, status legalitas BPJS & bank, kelaikan food handler, serta generator cetak ID Card resmi ber-QR Code.
+- [x] **Penjadwalan Shift & Presensi Higiene Harian (`ShiftScheduleManager.tsx`, `CreateShiftModal.tsx`, `DailyAttendanceModal.tsx`, & `ShiftSchedulePrintModal.tsx`):** Manajemen 3 shift dapur sentral (02:00-07:00, 05:00-11:00, 09:00-16:00), health gatekeeper harian (skrining suhu <37.3°C & bebas luka/gejala sakit sebelum masuk dapur steril), dan cetak jadwal tugas mingguan resmi.
+- [x] **Penggajian (Payroll) & Insentif Kerja Dapur (`PayrollManagement.tsx`, `ProcessPayrollModal.tsx`, `PayrollDetailModal.tsx`, & `PayrollSlipPrintModal.tsx`):** Perhitungan gaji pokok, tunjangan higiene, insentif porsi MBG, potongan BPJS & PPh 21, alur otorisasi SPJ/PPK, dan cetak slip gaji resmi berstempel digital.
+- [x] **Matriks Sertifikasi Food Handler & Rekam MCU ISO 22000 (`CertificationMcuMatrix.tsx`, `AddCertificationModal.tsx`, `CertificationDetailModal.tsx`, & `FoodHandlerCompliancePrintModal.tsx`):** Pelacak masa berlaku sertifikat Higiene Kemenkes RI, swab lab bebas TBC/Typhoid/Hepatitis A, countdown kedaluwarsa, dan cetak Berita Acara Kelaikan Higiene Tenaga Kerja Dapur.
+
+---
+
+### ⚙️ Modul 9: Pengguna, Keamanan (RBAC) & Backend (`01_TECH_STACK_&_INFRA.md` & `02_DATABASE_SCHEMA.md`)
 - [x] Layout & Rute Manajemen Pengguna (`/settings/users`, `/profile`).
 - [ ] **[TODO]** Manajemen Pengguna berbasis Peran (ADMIN_PUSAT, ADMIN_REGIONAL, SUPPLIER, PENGELOLA).
 - [ ] **[TODO]** Setup Backend NestJS + Prisma ORM + PostgreSQL Schema Migration.
@@ -106,9 +117,8 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ## 🎯 Pilihan Prioritas untuk Task Selanjutnya
 
-1. **Opsi 1: Modul 4 (Logistik & Distribusi)**
-   - Database master titik distribusi (Sekolah/Panti) dengan koordinat Lat/Lng, form pembuatan resi surat jalan pengiriman, dan halaman Proof of Delivery (PoD) dengan upload foto serah terima & tanda tangan digital.
-2. **Opsi 2: Modul 5 (Manajemen Aset) & Modul 6 (Finansial & Anggaran)**
-   - Generator label QR Code aset dapur/armada, jadwal servis armada pendingin, checklist higienitas alat dapur ISO 22000, dan monitoring pagu anggaran APBN/APBD.
-3. **Opsi 3: Modul 7 (Audit Trail & Kepatuhan ISO) & Setup Database Backend NestJS**
+1. **Opsi 1: Setup Backend NestJS & Prisma ORM Migration**
+   - Skema database PostgreSQL terpadu (Suppliers, Inventory, Recipes, Shipments, Assets, Budgets, AuditLogs, Employees, Users) dengan Prisma Studio dan seed data komprehensif.
+2. **Opsi 2: Integrasi REST API & State Management TanStack Query**
+   - Endpoint CRUD terenkripsi JWT & RBAC untuk menghubungkan seluruh frontend interaktif ke database PostgreSQL.
    - Immutable audit log viewer dengan diff JSONB, form CAPA insiden mutu, skema database Prisma PostgreSQL, dan integrasi API.

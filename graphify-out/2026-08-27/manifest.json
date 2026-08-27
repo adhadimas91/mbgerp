@@ -900,21 +900,21 @@
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/compliance/audit-logs/page.tsx": {
-    "mtime": 1787805456.9211938,
-    "seen": 1787806846.394864,
-    "ast_hash": "10d475df3db31833a082d99193b9253c",
+    "mtime": 1787824518.1559796,
+    "seen": 1787824870.416201,
+    "ast_hash": "fb84cec7171a63c07fe08a2afdbc2870",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/compliance/incident-reports/page.tsx": {
-    "mtime": 1787805463.804527,
-    "seen": 1787806846.394864,
-    "ast_hash": "d391fd35cc776f1c7db99abe06f28e52",
+    "mtime": 1787824666.5942872,
+    "seen": 1787824870.416201,
+    "ast_hash": "010d7c0a68069c5c10807bdad1ef4ecc",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/compliance/iso-standards/page.tsx": {
-    "mtime": 1787805460.237785,
-    "seen": 1787806846.394864,
-    "ast_hash": "f49a22a4b8e384af3f8b369b0e564c6d",
+    "mtime": 1787824593.755619,
+    "seen": 1787824870.416201,
+    "ast_hash": "d7ddc435897dd0a6fee45028c01d841a",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/dashboard/logistics/page.tsx": {
@@ -1584,9 +1584,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/layout/AppSidebar.tsx": {
-    "mtime": 1787805322.6684165,
-    "seen": 1787806846.394864,
-    "ast_hash": "27d8ecf8bf7f62191ecc6c338c052ede",
+    "mtime": 1787825269.2124448,
+    "seen": 1787826220.007622,
+    "ast_hash": "c46fbd5596e9373158fa16e8097efcb1",
     "semantic_hash": ""
   },
   "projectweb/src/layout/Backdrop.tsx": {
@@ -1632,9 +1632,9 @@
     "semantic_hash": ""
   },
   "task_md/13_CHECKLIST_TASK.md": {
-    "mtime": 1787824071.6643453,
-    "seen": 1787824336.2532196,
-    "ast_hash": "68100b53037b592b456d45502be2cbc7",
+    "mtime": 1787825249.5649426,
+    "seen": 1787826220.007622,
+    "ast_hash": "2a365aa496eefd383868e95493aecc15",
     "semantic_hash": ""
   },
   "projectweb/banner.png": {
@@ -3939,6 +3939,198 @@
     "mtime": 1787823973.8132677,
     "seen": 1787824336.2532196,
     "ast_hash": "f76ea8bd01ea16b9171f36f6da9f5596",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/AddCertificateModal.tsx": {
+    "mtime": 1787824535.661011,
+    "seen": 1787824870.416201,
+    "ast_hash": "ccb013ff80fd25f237d8cb4182c1f349",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/AuditLogDetailModal.tsx": {
+    "mtime": 1787824464.2364879,
+    "seen": 1787824870.416201,
+    "ast_hash": "063cb911d0ee5418c90de88c2dbd5391",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/AuditLogViewer.tsx": {
+    "mtime": 1787824509.4587073,
+    "seen": 1787824870.416201,
+    "ast_hash": "f76b85d5ad7cd552b209bc45c93e86ad",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/AuditReportPrintModal.tsx": {
+    "mtime": 1787824477.3848724,
+    "seen": 1787824870.416201,
+    "ast_hash": "b1d3048024a9949ffdca0ff9c3c3075d",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/CertificateDetailModal.tsx": {
+    "mtime": 1787824558.8386126,
+    "seen": 1787824870.416201,
+    "ast_hash": "abd8fa9ebe19548694bf37c00087c50b",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/CreateIncidentReportModal.tsx": {
+    "mtime": 1787824615.473063,
+    "seen": 1787824870.416201,
+    "ast_hash": "1272a07e44ba1a9a3d499acc6b16ecf1",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/IncidentDetailModal.tsx": {
+    "mtime": 1787824630.6750648,
+    "seen": 1787824870.416201,
+    "ast_hash": "9807131f1db40710924364c024a6233d",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/IncidentReportManagement.tsx": {
+    "mtime": 1787824661.7865293,
+    "seen": 1787824870.416201,
+    "ast_hash": "6c4b0a68b2e5b1c8d90f8db035d67f61",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/IncidentReportPrintModal.tsx": {
+    "mtime": 1787824640.8199625,
+    "seen": 1787824870.416201,
+    "ast_hash": "061a293bb8c258381a5dd1d709f489cf",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/IsoAuditReportPrintModal.tsx": {
+    "mtime": 1787824569.360999,
+    "seen": 1787824870.416201,
+    "ast_hash": "9b92da4aed7e23ed6a3782d991b7580f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/compliance/IsoComplianceMatrix.tsx": {
+    "mtime": 1787824587.9632978,
+    "seen": 1787824870.416201,
+    "ast_hash": "2aca7f7d4142f2f50545133ca24107d5",
+    "semantic_hash": ""
+  },
+  "projectweb/src/app/(admin)/employees/certifications/page.tsx": {
+    "mtime": 1787825502.0737753,
+    "seen": 1787826220.007622,
+    "ast_hash": "c7561b3803e4e3953a02288782a98025",
+    "semantic_hash": ""
+  },
+  "projectweb/src/app/(admin)/employees/page.tsx": {
+    "mtime": 1787825486.562862,
+    "seen": 1787826220.007622,
+    "ast_hash": "fbe167f87411d1fbc90ed2c1c67b5764",
+    "semantic_hash": ""
+  },
+  "projectweb/src/app/(admin)/employees/payroll/page.tsx": {
+    "mtime": 1787825495.8933055,
+    "seen": 1787826220.007622,
+    "ast_hash": "00344b085ad57aaeac32bc139539017e",
+    "semantic_hash": ""
+  },
+  "projectweb/src/app/(admin)/employees/shifts/page.tsx": {
+    "mtime": 1787825491.509187,
+    "seen": 1787826220.007622,
+    "ast_hash": "0d98fd290d077fa0d0460fb99f6ca43f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/AddCertificationModal.tsx": {
+    "mtime": 1787825462.414214,
+    "seen": 1787826220.007622,
+    "ast_hash": "e3392d27f4e85b2cc274313dba3be6a5",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/CertificationDetailModal.tsx": {
+    "mtime": 1787825470.9079654,
+    "seen": 1787826220.007622,
+    "ast_hash": "b5594b59567a469521ec5d6b4c9d35d0",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/CertificationMcuMatrix.tsx": {
+    "mtime": 1787825454.1573205,
+    "seen": 1787826220.007622,
+    "ast_hash": "5be658aa4493cd55f4b94b8c003ba448",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/CreateShiftModal.tsx": {
+    "mtime": 1787825370.4193442,
+    "seen": 1787826220.007622,
+    "ast_hash": "e68ee9d095d78fa1f6d750266cb28ca4",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/DailyAttendanceModal.tsx": {
+    "mtime": 1787825379.6087606,
+    "seen": 1787826220.007622,
+    "ast_hash": "f26bd45562f0a24a52b6b9cef8cab0f1",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/EmployeeDetailModal.tsx": {
+    "mtime": 1787825335.143319,
+    "seen": 1787826220.007622,
+    "ast_hash": "009fe64b792291928846fc20d753ab30",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/EmployeeIdCardPrintModal.tsx": {
+    "mtime": 1787825346.9400907,
+    "seen": 1787826220.007622,
+    "ast_hash": "66d3d1b1a413511abb37b5293092b55a",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/EmployeeRegistrationModal.tsx": {
+    "mtime": 1787825322.5058868,
+    "seen": 1787826220.007622,
+    "ast_hash": "b9258895401e10ebbeae05279b38c0c2",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/EmployeeRegistryTable.tsx": {
+    "mtime": 1787825303.6481776,
+    "seen": 1787826220.007622,
+    "ast_hash": "ec60fe30dfa8e28c63206b06551eb8d5",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/FoodHandlerCompliancePrintModal.tsx": {
+    "mtime": 1787825480.460005,
+    "seen": 1787826220.007622,
+    "ast_hash": "beea422905a8030a0d116b5ab7bfd23f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/PayrollDetailModal.tsx": {
+    "mtime": 1787825424.8512497,
+    "seen": 1787826220.007622,
+    "ast_hash": "2c4a0da8b84995b4f5bab9e196d37329",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/PayrollManagement.tsx": {
+    "mtime": 1787825407.2156613,
+    "seen": 1787826220.007622,
+    "ast_hash": "1c1cb699fcb5e26dbd99e530cb743f3d",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/PayrollSlipPrintModal.tsx": {
+    "mtime": 1787825435.3263397,
+    "seen": 1787826220.007622,
+    "ast_hash": "07120e334d4810f0a62a4ec42a14988b",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/ProcessPayrollModal.tsx": {
+    "mtime": 1787825415.5018022,
+    "seen": 1787826220.007622,
+    "ast_hash": "9bcd5087d236f98757a2662b42ee757f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/ShiftScheduleManager.tsx": {
+    "mtime": 1787825363.9021575,
+    "seen": 1787826220.007622,
+    "ast_hash": "83c8f4b99509ce5acb467cc138d86de1",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/employees/ShiftSchedulePrintModal.tsx": {
+    "mtime": 1787825392.2789578,
+    "seen": 1787826220.007622,
+    "ast_hash": "3c8c3d1d6517cb42ebde5b0129d3e3ad",
+    "semantic_hash": ""
+  },
+  "task_md/14_MODULE_HR_EMPLOYEE_MGMT.md": {
+    "mtime": 1787825236.045423,
+    "seen": 1787826220.007622,
+    "ast_hash": "10a705db616573f1ceb18b254db7ab3f",
     "semantic_hash": ""
   }
 }
