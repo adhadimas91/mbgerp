@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import ModulePageLayout from "@/components/common/ModulePageLayout";
+import SupplierTable from "@/components/suppliers/SupplierTable";
 
 export const metadata: Metadata = {
   title: "Daftar Supplier & Vendor | ERP MBG",
@@ -13,7 +14,9 @@ export default function SuppliersPage() {
       moduleName="Modul 1: Supplier Management"
       badgeText="ISO 22000 & BPOM Verified"
       pageTitle="Daftar Supplier & Vendor Terdaftar"
-      description="Kelola data vendor, profil perusahaan, kontak penanggung jawab, dan kelengkapan dokumen legalitas pengadaan bahan pangan MBG."
-    />
+      description="Kelola data vendor resmi, profil perusahaan, kontak penanggung jawab, dan kelengkapan dokumen legalitas pengadaan bahan pangan MBG."
+    >
+      <SupplierTable />
+    </ModulePageLayout>
   );
 }

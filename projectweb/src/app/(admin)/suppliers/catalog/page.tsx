@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import React from "react";
 import ModulePageLayout from "@/components/common/ModulePageLayout";
+import SupplierCatalogGrid from "@/components/suppliers/SupplierCatalogGrid";
 
 export const metadata: Metadata = {
-  title: "Katalog Bahan & Harga Dasar | ERP MBG",
-  description: "Daftar produk, komoditas pangan, dan perbandingan harga dasar per unit",
+  title: "Katalog Bahan Baku & Harga Dasar | ERP MBG",
+  description: "Daftar komoditas bahan baku makanan dan manajemen harga satuan supplier",
 };
 
 export default function SupplierCatalogPage() {
   return (
     <ModulePageLayout
       moduleName="Modul 1: Supplier Management"
-      badgeText="Katalog Bahan Pangan"
-      pageTitle="Katalog Komoditas Pangan & Harga Bahan"
-      description="Daftar produk yang disediakan setiap supplier (Protein, Karbohidrat, Sayur, Buah) beserta unit standar dan harga perolehan."
-    />
+      badgeText="Standar Harga Pangan Nasional"
+      pageTitle="Katalog Komoditas Bahan Baku & Analisis Harga Satuan"
+      description="Katalog bahan pangan (Protein, Karbohidrat, Sayur, Susu) yang disediakan supplier beserta perbandingan terhadap Harga Acuan Pemerintah (HAP Badan Pangan Nasional)."
+    >
+      <SupplierCatalogGrid />
+    </ModulePageLayout>
   );
 }

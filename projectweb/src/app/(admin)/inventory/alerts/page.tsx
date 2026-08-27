@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import React from "react";
 import ModulePageLayout from "@/components/common/ModulePageLayout";
+import LowStockAlerts from "@/components/inventory/LowStockAlerts";
 
 export const metadata: Metadata = {
-  title: "Peringatan Stok Rendah | ERP MBG",
-  description: "Daftar bahan baku yang berada di bawah batas minimum threshold",
+  title: "Peringatan Stok Rendah & Kadaluarsa | ERP MBG",
+  description: "Notifikasi otomatis bahan baku menipis dan mendekati masa kadaluarsa",
 };
 
 export default function StockAlertsPage() {
   return (
     <ModulePageLayout
-      moduleName="Modul 2: Inventory Management"
+      moduleName="Modul 2: Inventory & Gudang"
       badgeText="Early Warning System"
-      pageTitle="Peringatan Stok Rendah & Restock Otomatis"
-      description="Daftar komoditas bahan baku pangan yang berada di bawah ambang batas minimum (Min Stock Threshold) untuk segera diterbitkan PO pengadaan."
-    />
+      pageTitle="Peringatan Dini Stok Rendah & Manajemen Kadaluarsa"
+      description="Sistem deteksi dini ketersediaan bahan baku di bawah batas aman minimum (min stock threshold) serta pelacakan bahan baku yang mendekati masa kadaluarsa (FIFO alur dapur)."
+    >
+      <LowStockAlerts />
+    </ModulePageLayout>
   );
 }

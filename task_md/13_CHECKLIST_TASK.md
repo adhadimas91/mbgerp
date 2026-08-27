@@ -8,10 +8,14 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 - **UI/UX Foundation & Layout (`projectweb`):** ✅ Selesai (100%)
 - **Struktur Rute & Layout Submodul:** ✅ Selesai (100% - Bebas 404)
-- **Komponen Dashboard & Analisis Visual:** 🟡 Berjalan (40%)
-- **Form Interaktif & Data Table Modul:** ⚪ Menunggu Pengerjaan
-- **Backend (NestJS + Prisma + PostgreSQL):** ⚪ Menunggu Pengerjaan
-- **Kepatuhan Standar ISO & Audit Trail:** 🟡 Parsial (Layout & Widget Siap)
+- **Modul 1: Supplier & Vendor Management:** ✅ Selesai (100% - UI & Interaktif)
+- **Modul 2: Gudang, Stok & Cold Chain:** ✅ Selesai (100% - UI & Telemetri)
+- **Modul 3: Menu, Resep & Nutrisi AKG:** 🟡 Berjalan (40%)
+- **Modul 4: Logistik & Distribusi:** 🟡 Berjalan (40%)
+- **Modul 5: Manajemen Aset Tetap:** 🟡 Parsial (Layout Siap)
+- **Modul 6: Finansial & Anggaran:** 🟡 Parsial (Layout Siap)
+- **Modul 7: Kualitas, ISO & Audit Trail:** 🟡 Parsial (Layout Siap)
+- **Backend (NestJS + Prisma + PostgreSQL):** ⚪ Menunggu Fase Integrasi
 
 ---
 
@@ -33,66 +37,62 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ### 📦 Modul 1: Supplier & Vendor Management (`03_MODULE_SUPPLIER_MGMT.md`)
 - [x] Layout & Rute Halaman Supplier (`/suppliers`, `/verification`, `/catalog`, `/performance`).
-- [ ] **[TODO]** Tabel Data Supplier dengan filter status (Pending, Approved, Rejected).
-- [ ] **[TODO]** Form Registrasi Vendor & Upload Dokumen Legal (NIB, NPWP, Sertifikat Halal).
-- [ ] **[TODO]** Verifikasi Kepatuhan Sertifikasi (Masa berlaku ISO 22000, ISO 9001, BPOM).
-- [ ] **[TODO]** UI Katalog Produk & Manajemen Harga Dasar per Satuan (kg, liter, pcs).
-- [ ] **[TODO]** Kartu Evaluasi & Rating Performa Pengiriman Vendor.
+- [x] **Tabel Data Supplier Master (`SupplierTable.tsx`):** Filter status (Approved, Pending, Rejected), filter kategori komoditas, pencarian instan, dan rating bintang.
+- [x] **Form Registrasi Vendor (`SupplierRegistrationModal.tsx`):** NIB, NPWP, legalitas usaha, kapasitas suplai harian, dan upload dokumen sertifikat.
+- [x] **Verifikasi Kepatuhan ISO & Sertifikasi (`SupplierVerificationQueue.tsx`):** Antrean audit dokumen (NIB, Halal, ISO 22000, BPOM), indikator expiry date, dan modal persetujuan/revisi dengan CAPA.
+- [x] **Katalog Produk & Analisis Harga (`SupplierCatalogGrid.tsx`):** Harga satuan bahan pangan vs Harga Acuan Pemerintah (HAP Badan Pangan Nasional) & kuota mingguan.
+- [x] **Evaluasi & Rating Performa Vendor (`SupplierPerformanceScorecard.tsx`):** KPI On-Time Delivery Rate, Quality Acceptance Rate, Skor ISO 22000, dan Leaderboard Platinum/Gold.
 
 ---
 
 ### 🏬 Modul 2: Gudang & Inventory (`04_MODULE_INVENTORY_MGMT.md`)
 - [x] Layout & Rute Halaman Inventory (`/inventory`, `/movements`, `/cold-chain`, `/alerts`).
-- [ ] **[TODO]** Tabel Master Stok Gudang (Kategori: Protein, Karbohidrat, Sayur, Buah).
-- [ ] **[TODO]** Form Mutasi Stok (Penerimaan Barang Masuk `IN`, Pengeluaran Dapur `OUT`, Penyesuaian `ADJUST`).
-- [ ] **[TODO]** Pelacakan Batch / Lot Number & Tanggal Kadaluarsa (*Expiry Date Tracker*).
-- [ ] **[TODO]** Monitoring Telemetri Suhu Cold Chain (-18°C s/d 4°C) dengan grafik & log.
-- [ ] **[TODO]** Sistem Peringatan Dini Stok Rendah (*Low Stock Early Warning*).
+- [x] **Tabel Master Stok Bahan Baku (`InventoryTable.tsx`):** Klasifikasi Cold Storage (-18°C ~ 4°C) vs Dry Storage, level stok aman/menipis/kritis terhadap buffer, dan tracking Batch/Lot.
+- [x] **Form Mutasi Stok Masuk & Keluar (`StockMovementModal.tsx`):** Penerimaan PO `IN`, pengeluaran masak `OUT`, penyesuaian `ADJUST`, pencatatan suhu terima, dan tanggal kadaluarsa.
+- [x] **Telemetri Suhu Cold Chain Real-time (`ColdChainTelemetry.tsx`):** Widget sensor IoT ruang pendingin/freezer, batas ambang ISO 22000, dan grafik tren suhu 24 jam dengan ApexCharts.
+- [x] **Sistem Peringatan Dini Stok & Kadaluarsa (`LowStockAlerts.tsx`):** Early Warning Reorder Point, countdown kedaluwarsa (&lt; 7 hari) untuk alur masak FIFO, dan generator PO Darurat.
 
 ---
 
 ### 🥗 Modul 3: Menu & Nutrisi (`05_MODULE_MENU_&_NUTRISI.md`)
 - [x] Layout & Rute Halaman Menu (`/menu`, `/recipes`, `/cost-analysis`).
 - [x] Widget Ringkasan Kepatuhan AKG Kemenkes (Kalori, Protein, Karbohidrat, Serat).
-- [ ] **[TODO]** Kalender Perencanaan Siklus Menu Harian & Mingguan MBG.
-- [ ] **[TODO]** Form Resep Interaktif (Komposisi bahan baku per porsi).
-- [ ] **[TODO]** Kalkulator Otomatis Makronutrisi & Validasi Batas Minimal Gizi.
-- [ ] **[TODO]** Kalkulator Harga Pokok Porsi (HPP / *Cost per Portion*) real-time vs batas anggaran.
+- [ ] **[TODO]** Kalender Perencanaan Siklus Menu Harian & Mingguan MBG (`/menu`).
+- [ ] **[TODO]** Form Resep Interaktif & Kalkulator Makronutrisi (`/recipes`).
+- [ ] **[TODO]** Kalkulator Harga Pokok Porsi (HPP / *Cost per Portion*) real-time vs pagu anggaran (`/cost-analysis`).
 
 ---
 
 ### 🚚 Modul 4: Logistik & Distribusi (`06_MODULE_LOGISTIK_DISTRIBUSI.md`)
 - [x] Layout & Rute Halaman Logistik (`/distribution-points`, `/shipments`, `/proof-of-delivery`).
 - [x] Tabel Stream Pengiriman Terkini di Dashboard Utama.
-- [ ] **[TODO]** Database Master Titik Distribusi (Sekolah/Panti) dengan Koordinat Geolokasi (Lat/Lng).
-- [ ] **[TODO]** Form Pembuatan Resi Surat Jalan & Alur Status (`PENDING` $\rightarrow$ `SHIPPED` $\rightarrow$ `DELIVERED`).
-- [ ] **[TODO]** Halaman Proof of Delivery (PoD) dengan Upload Foto Serah Terima & Kanvas Tanda Tangan Digital.
+- [ ] **[TODO]** Database Master Titik Distribusi (Sekolah/Panti) dengan Koordinat Geolokasi (Lat/Lng) (`/distribution-points`).
+- [ ] **[TODO]** Form Pembuatan Resi Surat Jalan & Alur Status (`/shipments`).
+- [ ] **[TODO]** Halaman Proof of Delivery (PoD) dengan Upload Foto Serah Terima & Kanvas Tanda Tangan Digital (`/proof-of-delivery`).
 
 ---
 
 ### 🍳 Modul 5: Manajemen Aset Tetap (`12_MODULE_ASSET_MGMT.md`)
 - [x] Layout & Rute Halaman Aset (`/assets`, `/maintenance`, `/hygiene-inspections`).
-- [ ] **[TODO]** Master Data Aset (Peralatan Masak Komersial, Armada Mobil Pendingin, Alat Elektronik).
-- [ ] **[TODO]** Generator & Cetak Label QR Code untuk Identifikasi Fisik Aset.
-- [ ] **[TODO]** Jadwal Servis Berkala & Log Riwayat Perbaikan / Penggantian Suku Cadang.
-- [ ] **[TODO]** Formulir Checklist Inspeksi Higienitas & Sanitasi Alat Masak Harian (ISO 22000).
-- [ ] **[TODO]** Kalkulator Penyusutan Nilai Aset (Depresiasi).
+- [ ] **[TODO]** Master Data Aset & Generator Label QR Code (`/assets`).
+- [ ] **[TODO]** Jadwal Servis Berkala & Riwayat Perbaikan Armada / Mesin Dapur (`/maintenance`).
+- [ ] **[TODO]** Formulir Checklist Inspeksi Higienitas Alat Masak Harian ISO 22000 (`/hygiene-inspections`).
 
 ---
 
 ### 💰 Modul 6: Finansial & Anggaran (`07_MODULE_FINANSIAL_&_BUDGET.md`)
 - [x] Layout & Rute Halaman Finansial (`/finance/budgets`, `/finance/expenditures`, `/finance/payments`).
-- [ ] **[TODO]** Tabel Alokasi Anggaran per Wilayah/Kabupaten dan Sisa Pagu Dana.
-- [ ] **[TODO]** Form Pencatatan Biaya Operasional (BBM, Dapur) & Pembelian Bahan dengan Upload Bukti/Kwitansi.
-- [ ] **[TODO]** Monitoring Pembayaran Faktur Supplier (Pending, Paid, Overdue) & Rekonsiliasi.
+- [ ] **[TODO]** Tabel Alokasi Anggaran per Wilayah & Sisa Pagu Dana (`/finance/budgets`).
+- [ ] **[TODO]** Form Pencatatan Biaya Operasional & Faktur Pembelian (`/finance/expenditures`).
+- [ ] **[TODO]** Monitoring Pembayaran Faktur Supplier & Rekonsiliasi (`/finance/payments`).
 
 ---
 
 ### 🛡️ Modul 7: Kualitas, ISO & Audit Trail (`10_AUDIT_TRAIL_MGMT.md` & `11_ISO_COMPLIANCE_&_QUALITY.md`)
 - [x] Layout & Rute Halaman Kepatuhan (`/compliance/audit-logs`, `/compliance/iso-standards`, `/compliance/incident-reports`).
-- [ ] **[TODO]** Tampilan Audit Trail Log Viewer (Immutable) dengan Diff Nilai Lama vs Baru (JSON Viewer).
-- [ ] **[TODO]** Matriks Monitoring Sertifikasi Kepatuhan ISO (ISO 22000, ISO 9001, ISO 27001).
-- [ ] **[TODO]** Form Pelaporan Insiden Mutu & Tindakan Perbaikan (CAPA - *Corrective and Preventive Action*).
+- [ ] **[TODO]** Tampilan Audit Trail Log Viewer (Immutable) dengan Diff Nilai Lama vs Baru (JSON Viewer) (`/compliance/audit-logs`).
+- [ ] **[TODO]** Matriks Monitoring Sertifikasi Kepatuhan ISO (`/compliance/iso-standards`).
+- [ ] **[TODO]** Form Pelaporan Insiden Mutu & Tindakan Perbaikan (CAPA) (`/compliance/incident-reports`).
 
 ---
 
@@ -106,11 +106,9 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ## 🎯 Pilihan Prioritas untuk Task Selanjutnya
 
-1. **Opsi A: Modul Supplier & Vendor Management (Frontend UI Lengkap)**
-   - Form registrasi vendor, tabel daftar supplier terverifikasi, form upload dokumen ISO/BPOM/Halal, dan katalog produk.
-2. **Opsi B: Modul Gudang, Stok & Cold Chain Monitoring**
-   - Tabel stok bahan baku per kategori, form mutasi IN/OUT/ADJUST, dan monitoring suhu Cold Chain.
-3. **Opsi C: Modul Perencanaan Menu & Kalkulator Gizi AKG**
-   - Recipe builder interaktif, kalkulator otomatis kalori/nutrisi vs AKG Kemenkes, dan kalkulator biaya per porsi (HPP).
-4. **Opsi D: Setup Database Schema & Backend NestJS (Prisma + PostgreSQL)**
-   - Inisialisasi layer backend, skema relasi database lengkap, dan REST API authentication & CRUD.
+1. **Opsi 1: Modul 3 (Menu & Nutrisi) & Modul 4 (Logistik & Distribusi)**
+   - Kalender perencanaan menu siklus MBG, recipe builder dengan kalkulator gizi otomatis & HPP per porsi, master titik distribusi sekolah dengan koordinat peta, dan PoD dengan kanvas tanda tangan.
+2. **Opsi 2: Modul 5 (Manajemen Aset) & Modul 6 (Finansial & Anggaran)**
+   - Master aset dengan generator QR Code label, jadwal servis armada pendingin, checklist higienitas alat dapur ISO 22000, dan monitoring pagu anggaran APBN/APBD.
+3. **Opsi 3: Modul 7 (Audit Trail & Kepatuhan ISO) & Setup Database Backend NestJS**
+   - Immutable audit log viewer dengan diff JSONB, form CAPA insiden mutu, skema database Prisma PostgreSQL, dan integrasi API.
