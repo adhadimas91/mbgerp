@@ -10,8 +10,8 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - **Struktur Rute & Layout Submodul:** ✅ Selesai (100% - Bebas 404)
 - **Modul 1: Supplier & Vendor Management:** ✅ Selesai (100% - UI & Interaktif)
 - **Modul 2: Gudang, Stok & Cold Chain:** ✅ Selesai (100% - UI & Telemetri)
-- **Modul 3: Menu, Resep & Nutrisi AKG:** 🟡 Berjalan (40%)
-- **Modul 4: Logistik & Distribusi:** 🟡 Berjalan (40%)
+- **Modul 3: Menu, Resep & Nutrisi AKG:** ✅ Selesai (100% - UI & Kalkulator)
+- **Modul 4: Logistik & Distribusi:** ✅ Selesai (100% - UI & Live Tracking)
 - **Modul 5: Manajemen Aset Tetap:** 🟡 Parsial (Layout Siap)
 - **Modul 6: Finansial & Anggaran:** 🟡 Parsial (Layout Siap)
 - **Modul 7: Kualitas, ISO & Audit Trail:** 🟡 Parsial (Layout Siap)
@@ -57,18 +57,18 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 ### 🥗 Modul 3: Menu & Nutrisi (`05_MODULE_MENU_&_NUTRISI.md`)
 - [x] Layout & Rute Halaman Menu (`/menu`, `/recipes`, `/cost-analysis`).
 - [x] Widget Ringkasan Kepatuhan AKG Kemenkes (Kalori, Protein, Karbohidrat, Serat).
-- [ ] **[TODO]** Kalender Perencanaan Siklus Menu Harian & Mingguan MBG (`/menu`).
-- [ ] **[TODO]** Form Resep Interaktif & Kalkulator Makronutrisi (`/recipes`).
-- [ ] **[TODO]** Kalkulator Harga Pokok Porsi (HPP / *Cost per Portion*) real-time vs pagu anggaran (`/cost-analysis`).
+- [x] **Kalender Perencanaan Siklus Menu Harian & Mingguan (`MenuPlannerCalendar.tsx`):** Siklus menu harian (Senin s/d Jumat) per kelompok umur, target porsi, rincian 4 Sehat 5 Sempurna, dan persetujuan Ahli Gizi.
+- [x] **Form Resep Interaktif & Kalkulator Makronutrisi (`RecipeBuilder.tsx`):** Form racik komposisi takaran gram/ml per porsi, perhitungan instan Kalori, Protein, Karbohidrat, Lemak, Serat, dan validasi standar AKG Kemenkes RI.
+- [x] **Kalkulator Harga Pokok Porsi & Simulator Anggaran (`MenuCostAnalysis.tsx`):** Breakdown detail struktur biaya per porsi, evaluasi deviasi terhadap pagu nasional (Rp 15.000), dan simulator kebutuhan anggaran bulanan makro.
 
 ---
 
 ### 🚚 Modul 4: Logistik & Distribusi (`06_MODULE_LOGISTIK_DISTRIBUSI.md`)
 - [x] Layout & Rute Halaman Logistik (`/distribution-points`, `/shipments`, `/proof-of-delivery`).
 - [x] Tabel Stream Pengiriman Terkini di Dashboard Utama.
-- [ ] **[TODO]** Database Master Titik Distribusi (Sekolah/Panti) dengan Koordinat Geolokasi (Lat/Lng) (`/distribution-points`).
-- [ ] **[TODO]** Form Pembuatan Resi Surat Jalan & Alur Status (`/shipments`).
-- [ ] **[TODO]** Halaman Proof of Delivery (PoD) dengan Upload Foto Serah Terima & Kanvas Tanda Tangan Digital (`/proof-of-delivery`).
+- [x] **Database Master Titik Distribusi & Optimasi Rute Klaster (`DistributionPointsTable.tsx` & `DistributionRouteMap.tsx`):** Registrasi sekolah/panti, koordinat Lat/Lng, kuota porsi harian, kontak PIC, preferensi drop-off, dan simulator visual klaster rute pengantaran dapur sentral (SPPG Harmoni).
+- [x] **Manajemen Surat Jalan & Tracking Armada Real-time (`ShipmentManagement.tsx`, `CreateShipmentModal.tsx`, `LiveTrackingModal.tsx`, & `ShipmentWaybillPrintModal.tsx`):** Generator surat jalan resi waybill, penugasan driver, pemantauan suhu muat termal (> 60°C ISO 22000), live GPS timeline 5 tahap, dan cetak dokumen resmi Surat Jalan BAST MBG.
+- [x] **Verifikasi Bukti Penerimaan / Proof of Delivery (`ProofOfDeliveryViewer.tsx`, `PodSubmissionModal.tsx`, & `PodDetailModal.tsx`):** Form verifikasi penerimaan porsi, ceklis uji organoleptik, upload foto dokumentasi, **Kanvas Interaktif Tanda Tangan Digital (Signature Pad)**, dan Geotagging GPS presisi.
 
 ---
 
@@ -106,9 +106,9 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ## 🎯 Pilihan Prioritas untuk Task Selanjutnya
 
-1. **Opsi 1: Modul 3 (Menu & Nutrisi) & Modul 4 (Logistik & Distribusi)**
-   - Kalender perencanaan menu siklus MBG, recipe builder dengan kalkulator gizi otomatis & HPP per porsi, master titik distribusi sekolah dengan koordinat peta, dan PoD dengan kanvas tanda tangan.
+1. **Opsi 1: Modul 4 (Logistik & Distribusi)**
+   - Database master titik distribusi (Sekolah/Panti) dengan koordinat Lat/Lng, form pembuatan resi surat jalan pengiriman, dan halaman Proof of Delivery (PoD) dengan upload foto serah terima & tanda tangan digital.
 2. **Opsi 2: Modul 5 (Manajemen Aset) & Modul 6 (Finansial & Anggaran)**
-   - Master aset dengan generator QR Code label, jadwal servis armada pendingin, checklist higienitas alat dapur ISO 22000, dan monitoring pagu anggaran APBN/APBD.
+   - Generator label QR Code aset dapur/armada, jadwal servis armada pendingin, checklist higienitas alat dapur ISO 22000, dan monitoring pagu anggaran APBN/APBD.
 3. **Opsi 3: Modul 7 (Audit Trail & Kepatuhan ISO) & Setup Database Backend NestJS**
    - Immutable audit log viewer dengan diff JSONB, form CAPA insiden mutu, skema database Prisma PostgreSQL, dan integrasi API.

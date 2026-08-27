@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import ModulePageLayout from "@/components/common/ModulePageLayout";
+import ProofOfDeliveryViewer from "@/components/logistics/ProofOfDeliveryViewer";
 
 export const metadata: Metadata = {
   title: "Bukti Penerimaan (Proof of Delivery) | ERP MBG",
@@ -14,6 +15,8 @@ export default function ProofOfDeliveryPage() {
       badgeText="Proof of Delivery (PoD)"
       pageTitle="Verifikasi Bukti Penerimaan (Foto & TTD Digital)"
       description="Penyimpanan bukti serah terima porsi makanan higienis di sekolah, geotagging foto serah terima, dan tanda tangan digital pengelola lokasi."
-    />
+    >
+      <ProofOfDeliveryViewer />
+    </ModulePageLayout>
   );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import ModulePageLayout from "@/components/common/ModulePageLayout";
+import ShipmentManagement from "@/components/logistics/ShipmentManagement";
 
 export const metadata: Metadata = {
   title: "Pengiriman & Pelacakan Resi | ERP MBG",
@@ -14,6 +15,8 @@ export default function ShipmentsPage() {
       badgeText="Tracking Resi Pengiriman"
       pageTitle="Manajemen Surat Jalan & Tracking Pengiriman MBG"
       description="Pembuatan nomor resi surat jalan (Waybill), monitoring armada kurir, estimasi waktu tiba (ETA vs Aktual), dan update status pengantaran."
-    />
+    >
+      <ShipmentManagement />
+    </ModulePageLayout>
   );
 }

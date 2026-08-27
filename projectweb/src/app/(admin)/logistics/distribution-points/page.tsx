@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import ModulePageLayout from "@/components/common/ModulePageLayout";
+import DistributionPointsTable from "@/components/logistics/DistributionPointsTable";
 
 export const metadata: Metadata = {
   title: "Titik Distribusi (Sekolah & Sasaran) | ERP MBG",
@@ -14,6 +15,8 @@ export default function DistributionPointsPage() {
       badgeText="Geolokasi & Pemetaan"
       pageTitle="Daftar Titik Distribusi & Lokasi Sekolah Sasaran"
       description="Database sekolah dan lembaga penerima MBG, koordinat geolokasi (Lat/Lng) untuk optimasi rute armada pengantaran, dan kontak pengelola lokasi."
-    />
+    >
+      <DistributionPointsTable />
+    </ModulePageLayout>
   );
 }

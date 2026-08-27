@@ -948,27 +948,27 @@
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/inventory/alerts/page.tsx": {
-    "mtime": 1787805406.0052464,
-    "seen": 1787806846.394864,
-    "ast_hash": "0a265af8584cf95d8399246cf27a803a",
+    "mtime": 1787807314.7502594,
+    "seen": 1787814659.101145,
+    "ast_hash": "2c36ea8ba80044cc69e3bef355c3e961",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/inventory/cold-chain/page.tsx": {
-    "mtime": 1787805402.1822994,
-    "seen": 1787806846.394864,
-    "ast_hash": "d8c209ff83dfa7883755c0456d81617d",
+    "mtime": 1787807310.8395019,
+    "seen": 1787814659.101145,
+    "ast_hash": "727277c1145945e7fe49473284876085",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/inventory/movements/page.tsx": {
-    "mtime": 1787805397.8676481,
-    "seen": 1787806846.394864,
-    "ast_hash": "30c4fe6d2bd0d6fd8a983a4e282d1f4f",
+    "mtime": 1787807304.702706,
+    "seen": 1787814659.101145,
+    "ast_hash": "8d0e90bf1002cce860ca620f223d0ee0",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/inventory/page.tsx": {
-    "mtime": 1787805393.838605,
-    "seen": 1787806846.394864,
-    "ast_hash": "0a2eaeac945abd278415aac6a0853d1e",
+    "mtime": 1787807300.4753518,
+    "seen": 1787814659.101145,
+    "ast_hash": "e365aa549f3a86ef14fabf76f74ff050",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/layout.tsx": {
@@ -978,39 +978,39 @@
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/logistics/distribution-points/page.tsx": {
-    "mtime": 1787805422.2025785,
-    "seen": 1787806846.394864,
-    "ast_hash": "96aaae0ae80231958d3e63b139f1db80",
+    "mtime": 1787821259.8914554,
+    "seen": 1787821401.2033024,
+    "ast_hash": "737c1d008a41e76f73e3a9fefa8c0b8e",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/logistics/proof-of-delivery/page.tsx": {
-    "mtime": 1787805430.6875615,
-    "seen": 1787806846.394864,
-    "ast_hash": "b1d8cc1e7056ce38d9dff68f8098a205",
+    "mtime": 1787821268.735014,
+    "seen": 1787821401.2033024,
+    "ast_hash": "a02738a1448ce4d375175406416e5242",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/logistics/shipments/page.tsx": {
-    "mtime": 1787805426.5822406,
-    "seen": 1787806846.394864,
-    "ast_hash": "76bdfeadaadf0fb91ed4b706958dcf91",
+    "mtime": 1787821264.267375,
+    "seen": 1787821401.2033024,
+    "ast_hash": "3250b2c1293bec4e4d55c817170ab3bd",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/menu/cost-analysis/page.tsx": {
-    "mtime": 1787805418.8914313,
-    "seen": 1787806846.394864,
-    "ast_hash": "902a072a201b920514110bbbfc42db7a",
+    "mtime": 1787815684.017093,
+    "seen": 1787815874.6830301,
+    "ast_hash": "de8bf28cea7908ab221a4f2ec2aab10c",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/menu/page.tsx": {
-    "mtime": 1787805409.3413312,
-    "seen": 1787806846.394864,
-    "ast_hash": "aeb402a985842c02a5efe1ebfab40cbe",
+    "mtime": 1787815673.693282,
+    "seen": 1787815874.6830301,
+    "ast_hash": "e4cd227dfcd19b72f952c2e601a45e3d",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/menu/recipes/page.tsx": {
-    "mtime": 1787805412.5470123,
-    "seen": 1787806846.394864,
-    "ast_hash": "6219bcd6d70def2dc42b7f039c51330b",
+    "mtime": 1787815678.3931053,
+    "seen": 1787815874.6830301,
+    "ast_hash": "5de6fbeb31fe354259b6fae2231c547d",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/page.tsx": {
@@ -1026,27 +1026,27 @@
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/suppliers/catalog/page.tsx": {
-    "mtime": 1787805386.501452,
-    "seen": 1787806846.394864,
-    "ast_hash": "2f6df858699e1dd0ee6f3d5698f69a3c",
+    "mtime": 1787807251.3169892,
+    "seen": 1787814659.101145,
+    "ast_hash": "c31c2d206b4afd6060d9604d5fa54990",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/suppliers/page.tsx": {
-    "mtime": 1787805379.1507754,
-    "seen": 1787806846.394864,
-    "ast_hash": "070a12bdde559b697d2e4c921657481f",
+    "mtime": 1787807241.278855,
+    "seen": 1787814659.101145,
+    "ast_hash": "5a20f2ea15a04e77a5623c7e87ecf06d",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/suppliers/performance/page.tsx": {
-    "mtime": 1787805390.2627034,
-    "seen": 1787806846.394864,
-    "ast_hash": "253e46be5151013ea0099e3516065ed4",
+    "mtime": 1787807254.979606,
+    "seen": 1787814659.101145,
+    "ast_hash": "aeea8cf276b5d3003a9bacf73aedd500",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/suppliers/verification/page.tsx": {
-    "mtime": 1787805382.5407941,
-    "seen": 1787806846.394864,
-    "ast_hash": "3fc8f4d64412f9c5e071435055391a2c",
+    "mtime": 1787807245.237413,
+    "seen": 1787814659.101145,
+    "ast_hash": "37a110b03d48db6fdc07606df7c5a672",
     "semantic_hash": ""
   },
   "projectweb/src/app/(full-width-pages)/(auth)/layout.tsx": {
@@ -1446,9 +1446,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/components/ui/button/Button.tsx": {
-    "mtime": 1787803363.1123831,
-    "seen": 1787806846.394864,
-    "ast_hash": "cdbde640c4ec0859327142b2b7ccd177",
+    "mtime": 1787807447.9908962,
+    "seen": 1787814659.1017368,
+    "ast_hash": "cafe003b3919f79a5a6893dde8229ac1",
     "semantic_hash": ""
   },
   "projectweb/src/components/ui/dropdown/Dropdown.tsx": {
@@ -1632,9 +1632,9 @@
     "semantic_hash": ""
   },
   "task_md/13_CHECKLIST_TASK.md": {
-    "mtime": 1787806803.7414331,
-    "seen": 1787806846.394864,
-    "ast_hash": "f3cc490af1a4ca7ca048c98809dfa3a7",
+    "mtime": 1787821352.907372,
+    "seen": 1787821401.2033024,
+    "ast_hash": "3ef1bd77792f9028d2cbada62f0fc75c",
     "semantic_hash": ""
   },
   "projectweb/banner.png": {
@@ -3669,6 +3669,138 @@
     "mtime": 1787803363.620888,
     "seen": 1787806846.394864,
     "ast_hash": "e572137ce923d00a309a0bb84923ae55",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/inventory/ColdChainTelemetry.tsx": {
+    "mtime": 1787807287.7515612,
+    "seen": 1787814659.1017368,
+    "ast_hash": "245f4fb7927858ecffb7810a8690218e",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/inventory/InventoryTable.tsx": {
+    "mtime": 1787807277.5299976,
+    "seen": 1787814659.1017368,
+    "ast_hash": "66facca3c9d77e1814df1a3fa2ca8201",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/inventory/LowStockAlerts.tsx": {
+    "mtime": 1787807296.2880852,
+    "seen": 1787814659.1017368,
+    "ast_hash": "3fc17608f8e1d1a229f937742b20d60d",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/inventory/StockMovementModal.tsx": {
+    "mtime": 1787807265.6775894,
+    "seen": 1787814659.1017368,
+    "ast_hash": "7a65cbcbda29cc198e03c17e73f0aee1",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/suppliers/SupplierCatalogGrid.tsx": {
+    "mtime": 1787807227.4800663,
+    "seen": 1787814659.1017368,
+    "ast_hash": "2e55638886bb548ef871e286feb262c4",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/suppliers/SupplierPerformanceScorecard.tsx": {
+    "mtime": 1787807236.7846005,
+    "seen": 1787814659.1017368,
+    "ast_hash": "09668648eac68185e5797c8b472b866e",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/suppliers/SupplierRegistrationModal.tsx": {
+    "mtime": 1787807184.981209,
+    "seen": 1787814659.1017368,
+    "ast_hash": "f7ff479d3849aa9a05ffa7ba6d555dab",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/suppliers/SupplierTable.tsx": {
+    "mtime": 1787807202.5584362,
+    "seen": 1787814659.1017368,
+    "ast_hash": "f2467e591ef720c4638c9d6cec44eb77",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/suppliers/SupplierVerificationQueue.tsx": {
+    "mtime": 1787807215.1258974,
+    "seen": 1787814659.1017368,
+    "ast_hash": "cfcd690c31e07fa4631263606d754d0e",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/menu/MenuCostAnalysis.tsx": {
+    "mtime": 1787815764.2061574,
+    "seen": 1787815874.6830301,
+    "ast_hash": "d6155713bb5cd4b4442d57480bbddef6",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/menu/MenuPlannerCalendar.tsx": {
+    "mtime": 1787815411.368108,
+    "seen": 1787815874.6830301,
+    "ast_hash": "3524caa64a93c9d1b7462d261119f3d0",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/menu/RecipeBuilder.tsx": {
+    "mtime": 1787815428.1227136,
+    "seen": 1787815874.6830301,
+    "ast_hash": "55b7c41bd6e742504a334c291d30e438",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/CreateShipmentModal.tsx": {
+    "mtime": 1787821171.2892044,
+    "seen": 1787821401.2033024,
+    "ast_hash": "bfdcabf1c3a192ef09ccc969570ced91",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/DistributionPointModal.tsx": {
+    "mtime": 1787821119.0486379,
+    "seen": 1787821401.2033024,
+    "ast_hash": "78e0179bb6a02db4f09209eae84fdcb1",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/DistributionPointsTable.tsx": {
+    "mtime": 1787821157.2399533,
+    "seen": 1787821401.2033024,
+    "ast_hash": "c092348ecf1925c007bae749dc50a741",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/DistributionRouteMap.tsx": {
+    "mtime": 1787821135.6762526,
+    "seen": 1787821401.2033024,
+    "ast_hash": "3e0830a95cb7f46409d7679d6550d71a",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/LiveTrackingModal.tsx": {
+    "mtime": 1787821183.8755817,
+    "seen": 1787821401.2033024,
+    "ast_hash": "fe7bd603ee1828eeff0a25f02d3719ec",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/PodDetailModal.tsx": {
+    "mtime": 1787821243.148175,
+    "seen": 1787821401.2033024,
+    "ast_hash": "28a27ceded2e4a4fb353a890e420eef0",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/PodSubmissionModal.tsx": {
+    "mtime": 1787821230.64418,
+    "seen": 1787821401.2033024,
+    "ast_hash": "a12874c712b3962019e3f145c14ced79",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/ProofOfDeliveryViewer.tsx": {
+    "mtime": 1787821255.0217159,
+    "seen": 1787821401.2033024,
+    "ast_hash": "ce57a7b7cc546de08af3175aef458dd6",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/ShipmentManagement.tsx": {
+    "mtime": 1787821212.9989238,
+    "seen": 1787821401.2033024,
+    "ast_hash": "ac2e6d34f53c2c821e80abc5398f1e30",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/logistics/ShipmentWaybillPrintModal.tsx": {
+    "mtime": 1787821196.8768468,
+    "seen": 1787821401.2033024,
+    "ast_hash": "e65b25bfe021fda884a25016b562344f",
     "semantic_hash": ""
   }
 }
