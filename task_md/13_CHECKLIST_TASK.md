@@ -18,7 +18,8 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - **Modul 7: Kualitas, ISO & Audit Trail:** ✅ Selesai (100% - UI & CAPA Form)
 - **Modul 8: SDM, Tenaga Kerja & Payroll:** ✅ Selesai (100% - UI, Shift, MCU & Slip Gaji)
 - **Modul 9: Pengguna & Sistem (RBAC):** ✅ Selesai (100% - UI, RBAC Matrix, Session & Cetak SK)
-- **Backend (NestJS + Prisma + PostgreSQL):** ⚪ Menunggu Fase Integrasi
+- **Backend Architecture (`projectapi`):** ✅ Selesai (100% - NestJS + Prisma ORM + 10 Domain REST API)
+- **Database Schema & Seeder:** ✅ Selesai (100% - PostgreSQL Prisma Schema 10 Domain + Seed Data Riil)
 
 
 ---
@@ -137,12 +138,46 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - [x] **Cetak Surat Keputusan Otorisasi Hak Akses Sistem Resmi (`UserAccessReportPrintModal.tsx`):** Generator SK Otorisasi RBAC berstandar ISO 27001 lengkap dengan kop BGN, matriks izin, QR Code SHA-256, dan tanda tangan digital CISO & Pegawai.
 
 
+
+---
+
+### 🚀 Backend API & Database Layer (`projectapi`) (`01_TECH_STACK_&_INFRA.md` & `02_DATABASE_SCHEMA.md`)
+- [x] Inisialisasi arsitektur modular backend **NestJS 10 + TypeScript** di folder mandiri `projectapi`.
+- [x] Konfigurasi **Prisma ORM (v6.19)** terhubung ke PostgreSQL dengan logging query event & connection lifecycle (`PrismaService` & `PrismaModule`).
+- [x] **Skema Database Prisma Komprehensif (`schema.prisma`):**
+  - **Auth, User & RBAC:** `User` (10 Peran BGN), `UserSession` (Token Hash, Multi-sesi), `AuditLog` (Immutable SHA-256 Hash Chained).
+  - **Supplier Management:** `Supplier`, `SupplierCertificate` (ISO/Halal/HACCP), `SupplierProduct`, `PurchaseOrder`, `PurchaseOrderItem`.
+  - **Inventory & Cold Chain IoT:** `Warehouse`, `Product`, `Stock`, `StockMovement` (IN/OUT/ADJUST), `ColdChainSensor`, `SensorReading`.
+  - **Menu & Nutrisi AKG:** `Recipe`, `RecipeIngredient`, `DailyMenu` (Kalender Siklus).
+  - **Dapur Sentral SPPG:** `KitchenUnit`, `ProductionBatch`, `CcpTelemetryLog` (Suhu Inti Masak & Warmer), `OrganolepticQc`, `KitchenRequisition`, `RequisitionItem`.
+  - **Logistik & Distribusi:** `DistributionPoint` (GIS Lat/Lng), `DistributionRoute`, `FleetVehicle` (Armada Box Thermal), `Shipment`, `DeliveryProof` (PoD).
+  - **Manajemen Aset Tetap:** `FixedAsset`, `AssetMaintenance`, `HygieneInspection` (ISO 22000).
+  - **Finansial & Anggaran:** `Budget` (Pagu DPA), `BudgetAllocation` (4 Pos Belanja), `Expenditure` (BKK & Pajak PPh/PPN), `SupplierInvoice` (3-Way Match), `Payment` (SP2D), `KitchenPettyCash`.
+  - **Kepatuhan Mutu & ISO:** `QualityIncident`, `AuditLog`.
+  - **SDM & Tenaga Kerja:** `Employee`, `ShiftSchedule`, `ShiftAssignment`, `DailyAttendance` (Gatekeeper Higiene), `PayrollRun`, `PayrollItem`, `EmployeeMcu`.
+- [x] **Seeder Data Riil (`prisma/seed.ts`):** Inisialisasi data SPPG Harmoni, 10 Akun Pengguna BGN, Komoditas Bahan Baku, Resep AKG Standar Kemenkes, Titik Distribusi Sekolah, Armada Box, Aset Dapur, dan Pagu Anggaran APBN 2026.
+- [x] **Dokumentasi REST API Swagger / OpenAPI (`/api/docs`):** Terkonfigurasi dengan 12 tag grup endpoint dan autentikasi JWT Bearer.
+- [x] **Global Infrastructure:** `HttpExceptionFilter` (Format Error Standar), `TransformInterceptor` (Format Response JSON Terpadu), `RolesGuard` & `@Roles()` Decorator.
+- [x] **12 Modul Endpoint REST API Controller & Service:**
+  - `/api/v1/health` - Status server & liveness database
+  - `/api/v1/auth` - Login JWT & Profil
+  - `/api/v1/users` - Master Pengguna & RBAC
+  - `/api/v1/suppliers` - Rekanan & Scorecard
+  - `/api/v1/inventory` - Stok, Mutasi, Cold Chain IoT & Alerts
+  - `/api/v1/menu` - Resep, AKG & Analisis Biaya Porsi
+  - `/api/v1/kitchen` - Batch Masak, CCP HACCP & Requisition
+  - `/api/v1/logistics` - Titik Sekolah, Armada, Resi Waybill & PoD
+  - `/api/v1/assets` - Master Aset, Servis & Inspeksi Sanitasi
+  - `/api/v1/finance` - Realisasi Anggaran, BKK, Invoices & SP2D
+  - `/api/v1/compliance` - Audit Trail Forensik & Matriks ISO
+  - `/api/v1/employees` - Direktori Staf, Shift, Presensi & Payroll
+
 ---
 
 ## 🎯 Pilihan Prioritas untuk Task Selanjutnya
 
-1. **Opsi 1: Setup Backend Architecture (NestJS + Prisma ORM + PostgreSQL)**
-   - Desain skema `schema.prisma` terpadu mencakup 10 domain entity (Users, Roles, Suppliers, Inventory, Recipes, Shipments, Assets, Budgets, AuditLogs, Employees) dengan Prisma Studio dan seed data komprehensif.
-2. **Opsi 2: Integrasi REST API & State Management TanStack Query**
-   - Implementasi endpoint REST API CRUD terproteksi JWT Bearer & RBAC Guard, menghubungkan UI frontend ke PostgreSQL secara real-time.
+1. **Opsi 1: Integrasi TanStack Query & Frontend API Client (`projectweb` ↔ `projectapi`)**
+   - Menyiapkan Axios / Fetch Client dengan interceptor JWT Bearer di `projectweb`, menghubungkan form dan tabel UI frontend ke endpoint REST API `projectapi` secara dinamis.
+2. **Opsi 2: Penyempurnaan Dashboard Analytics Khusus**
+   - Mengembangkan GIS Command Center interaktif di `/dashboard/logistics` dan AKG Macro/Micro Nutrition Intelligence Center di `/dashboard/nutrition` dengan generator laporan cetak resmi.
 

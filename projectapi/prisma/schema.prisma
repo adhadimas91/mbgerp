@@ -1,0 +1,1130 @@
+// Prisma Schema Definition for ERP Manajemen Makanan Bergizi Gratis (MBG) Nasional
+// Standardized on PostgreSQL with complete multi-domain enterprise relations
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ==========================================
+// 1. ENUMS (Tata Kelola, Operasional & Kualitas)
+// ==========================================
+
+enum UserRole {
+  ADMIN_PUSAT          // Administrator Pusat BGN
+  ADMIN_REGIONAL       // Koordinator Wilayah / Dinas
+  KEPALA_SPPG          // Kepala Sentra Produksi Pangan Gizi
+  AHLI_GIZI            // Nutrisionis & Quality Release
+  PETUGAS_GUDANG       // Inventory, Cold Chain & Logistik Masuk
+  PETUGAS_DAPUR        // Head Chef / Tim Masak Produksi
+  DRIVER_LOGISTIK      // Pengemudi Armada Distribusi
+  TIM_QC_AUDITOR       // Tim Mutu, ISO & Kepatuhan
+  PPK_KEUANGAN         // Pejabat Pembuat Komitmen / Bendahara
+  SUPPLIER             // Rekanan Vendor Penyedia Bahan
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  PENDING_VERIFICATION
+}
+
+enum SupplierStatus {
+  ACTIVE
+  PENDING_REVIEW
+  SUSPENDED
+  BLACKLISTED
+}
+
+enum SupplierTier {
+  PLATINUM
+  GOLD
+  SILVER
+  BRONZE
+}
+
+enum ProductCategory {
+  PROTEIN_HEWANI
+  PROTEIN_NABATI
+  KARBOHIDRAT
+  SAYURAN_SEGAR
+  BUAH_SEGAR
+  BUMBU_MINYAK
+  SUSU_OLAHAN
+  KEMASAN_SANITASI
+}
+
+enum StorageType {
+  DRY_STORAGE
+  CHILLER        // 1°C - 4°C
+  FREEZER        // -18°C
+  ROOM_TEMP
+}
+
+enum StockMovementType {
+  IN_PURCHASE
+  OUT_PRODUCTION
+  ADJUSTMENT_GAIN
+  ADJUSTMENT_LOSS
+  RETURN_SUPPLIER
+  EXPIRED_DISPOSAL
+}
+
+enum AgeGroup {
+  PAUD_TK
+  SD_KELAS_1_3
+  SD_KELAS_4_6
+  SMP
+  SMA_SMK
+  IBU_HAMIL_MENYUSUI
+}
+
+enum CookingLine {
+  LINI_1_KARBO
+  LINI_2_PROTEIN_HEWANI
+  LINI_3_SAYUR
+  LINI_4_PROTEIN_NABATI
+  LINI_5_PACKAGING
+}
+
+enum BatchStatus {
+  PLANNED
+  IN_PREPARATION
+  COOKING
+  QC_TESTING
+  PACKED
+  DISPATCHED
+  COMPLETED
+  CANCELLED
+}
+
+enum ShipmentStatus {
+  SCHEDULED
+  LOADING
+  IN_TRANSIT
+  DELIVERED
+  RETURNED
+  CANCELLED
+}
+
+enum AssetCondition {
+  EXCELLENT
+  GOOD
+  FAIR
+  POOR
+  UNDER_MAINTENANCE
+  RETIRED
+}
+
+enum MaintenanceType {
+  PREVENTIVE
+  CORRECTIVE
+  EMERGENCY
+  CALIBRATION
+}
+
+enum BudgetCategory {
+  RAW_INGREDIENTS      // 75%
+  OPERATIONAL_KITCHEN  // 15%
+  LOGISTICS_DISTRIBUTION // 8%
+  QUALITY_CONTROL      // 2%
+  CONTINGENCY
+}
+
+enum PaymentStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED_PPK
+  PAID_SP2D
+  REJECTED
+}
+
+enum IncidentSeverity {
+  MINOR
+  MODERATE
+  MAJOR
+  CRITICAL
+}
+
+enum IncidentStatus {
+  REPORTED
+  UNDER_INVESTIGATION
+  CAPA_PROPOSED
+  CAPA_APPROVED
+  CLOSED
+}
+
+enum ShiftType {
+  SHIFT_1_PAGI_DINI    // 02:00 - 07:00 (Persiapan & Masak)
+  SHIFT_2_SIANG        // 05:00 - 11:00 (Packing & Loading)
+  SHIFT_3_SORE         // 09:00 - 16:00 (Sanitasi & Bahan Esok)
+}
+
+// ==========================================
+// 2. DOMAIN: PENGGUNA, PERAN & KEAMANAN (RBAC)
+// ==========================================
+
+model User {
+  id                   String            @id @default(uuid())
+  email                String            @unique
+  username             String            @unique
+  passwordHash         String
+  fullName             String
+  phone                String?
+  role                 UserRole          @default(PETUGAS_DAPUR)
+  status               UserStatus        @default(ACTIVE)
+  twoFactorEnabled     Boolean           @default(false)
+  twoFactorSecret      String?
+  assignedRegion       String?           // e.g. "Jawa Barat - Kota Bogor"
+  kitchenUnitId        String?
+  kitchenUnit          KitchenUnit?      @relation(fields: [kitchenUnitId], references: [id])
+  employeeId           String?           @unique
+  employee             Employee?         @relation(fields: [employeeId], references: [id])
+  supplierId           String?           @unique
+  supplier             Supplier?         @relation(fields: [supplierId], references: [id])
+  lastLoginAt          DateTime?
+  lastLoginIp          String?
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  // Relations
+  sessions             UserSession[]
+  auditLogs            AuditLog[]
+  createdExpenditures  Expenditure[]     @relation("CreatedExpenditures")
+  approvedExpenditures Expenditure[]     @relation("ApprovedExpenditures")
+  qualitySignatures    OrganolepticQc[]  @relation("QcInspector")
+  shipmentsHandled     Shipment[]        @relation("DriverShipments")
+  inspectionsAudited   HygieneInspection[] @relation("InspectorAudits")
+
+  @@index([role, status])
+  @@index([email])
+}
+
+model UserSession {
+  id           String    @id @default(uuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash    String    @unique
+  ipAddress    String?
+  userAgent    String?
+  deviceInfo   String?
+  expiresAt    DateTime
+  isRevoked    Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+
+  @@index([userId, isRevoked])
+}
+
+// ==========================================
+// 3. DOMAIN: SUPPLIER & REKANAN PENYEDIA
+// ==========================================
+
+model Supplier {
+  id                  String             @id @default(uuid())
+  code                String             @unique // e.g. "SUP-BGN-001"
+  name                String
+  legalName           String?            // PT / CV / Koperasi
+  nib                 String?            // Nomor Induk Berusaha
+  npwp                String?
+  category            String             // e.g. "Protein Hewani & Telur"
+  contactPerson       String
+  phone               String
+  email               String             @unique
+  address             String
+  city                String
+  province            String
+  dailyCapacityKg     Float              @default(1000)
+  tier                SupplierTier       @default(GOLD)
+  status              SupplierStatus     @default(ACTIVE)
+  ratingScore         Float              @default(4.8) // Skala 5.0
+  onTimeDeliveryRate  Float              @default(98.5) // Persen
+  qualityAcceptanceRate Float            @default(99.2) // Persen
+  iso22000Certified   Boolean            @default(true)
+  halalCertified      Boolean            @default(true)
+  bankName            String?
+  bankAccountNumber   String?
+  bankAccountHolder   String?
+  createdAt           DateTime           @default(now())
+  updatedAt           DateTime           @updatedAt
+
+  user                User?
+  products            SupplierProduct[]
+  invoices            SupplierInvoice[]
+  purchaseOrders      PurchaseOrder[]
+  certificates        SupplierCertificate[]
+
+  @@index([status, tier])
+}
+
+model SupplierCertificate {
+  id             String    @id @default(uuid())
+  supplierId     String
+  supplier       Supplier  @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  type           String    // "HALAL_BPJPH", "ISO_22000", "HACCP", "NIB_LEGALITAS"
+  certificateNo  String
+  issuedBy       String
+  validFrom      DateTime
+  validUntil     DateTime
+  documentUrl    String?
+  status         String    @default("VERIFIED") // VERIFIED, PENDING, EXPIRED
+  createdAt      DateTime  @default(now())
+
+  @@index([supplierId, status])
+}
+
+model SupplierProduct {
+  id             String          @id @default(uuid())
+  supplierId     String
+  supplier       Supplier        @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  productId      String
+  product        Product         @relation(fields: [productId], references: [id])
+  unitPrice      Float           // Harga per unit
+  govCeilingPrice Float?         // Harga Acuan Pemerintah (HAP Bapanas)
+  minOrderQty    Float           @default(10)
+  leadTimeDays   Int             @default(1)
+  isAvailable    Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@unique([supplierId, productId])
+}
+
+// ==========================================
+// 4. DOMAIN: GUDANG, INVENTORY & COLD CHAIN IoT
+// ==========================================
+
+model Warehouse {
+  id           String            @id @default(uuid())
+  code         String            @unique // e.g. "WH-BOGOR-01"
+  name         String
+  type         String            // "CENTRAL_HUB", "KITCHEN_STORAGE"
+  location     String
+  city         String
+  totalAreaM2  Float?
+  dryCapacityKg Float            @default(10000)
+  coldCapacityKg Float           @default(5000)
+  managerName  String?
+  contactPhone String?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+
+  kitchenUnit  KitchenUnit?
+  stocks       Stock[]
+  movements    StockMovement[]
+  sensors      ColdChainSensor[]
+
+  @@index([code])
+}
+
+model Product {
+  id                 String              @id @default(uuid())
+  sku                String              @unique // e.g. "PRD-AYAM-01"
+  name               String
+  category           ProductCategory
+  unit               String              // "kg", "liter", "pcs", "ikat", "tray"
+  storageType        StorageType         @default(ROOM_TEMP)
+  minStockThreshold  Float               @default(50)
+  idealStockLevel    Float               @default(200)
+  shelfLifeDays      Int                 @default(3)
+  standardUnitPrice  Float               @default(0)
+  nutritionPer100g   Json?               // { calories: 239, protein: 27, carbs: 0, fat: 14 }
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+
+  stocks             Stock[]
+  stockMovements     StockMovement[]
+  supplierProducts   SupplierProduct[]
+  recipeIngredients  RecipeIngredient[]
+  poItems            PurchaseOrderItem[]
+  requisitionItems   RequisitionItem[]
+
+  @@index([category, storageType])
+}
+
+model Stock {
+  id             String          @id @default(uuid())
+  warehouseId    String
+  warehouse      Warehouse       @relation(fields: [warehouseId], references: [id], onDelete: Cascade)
+  productId      String
+  product        Product         @relation(fields: [productId], references: [id])
+  quantity       Float           @default(0)
+  reservedQty    Float           @default(0) // Direservasi untuk masak hari ini
+  batchLotNumber String?
+  expiryDate     DateTime?
+  lastRestocked  DateTime?
+  updatedAt      DateTime        @updatedAt
+
+  @@unique([warehouseId, productId])
+  @@index([productId])
+}
+
+model StockMovement {
+  id             String            @id @default(uuid())
+  warehouseId    String
+  warehouse      Warehouse         @relation(fields: [warehouseId], references: [id])
+  productId      String
+  product        Product           @relation(fields: [productId], references: [id])
+  type           StockMovementType
+  quantity       Float
+  previousQty    Float
+  newQty         Float
+  batchNumber    String?
+  referenceNo    String?           // e.g. PO No, SPK No
+  temperatureIn  Float?            // Suhu saat diterima (Cold chain check)
+  reason         String?
+  actorId        String?
+  createdAt      DateTime          @default(now())
+
+  @@index([warehouseId, productId, type])
+  @@index([createdAt])
+}
+
+model ColdChainSensor {
+  id             String          @id @default(uuid())
+  sensorCode     String          @unique // e.g. "SENSOR-CHILLER-01"
+  warehouseId    String
+  warehouse      Warehouse       @relation(fields: [warehouseId], references: [id])
+  roomName       String          // "Ruang Pendingin Daging (Chiller A)"
+  sensorType     String          // "TEMPERATURE_HUMIDITY"
+  minThreshold   Float           // Batas bawah e.g. 1.0°C
+  maxThreshold   Float           // Batas atas e.g. 4.0°C
+  currentTemp    Float           @default(2.5)
+  currentHumidity Float?         @default(85)
+  batteryLevel   Int             @default(95)
+  status         String          @default("NORMAL") // NORMAL, WARNING, CRITICAL, OFFLINE
+  lastPingAt     DateTime        @default(now())
+  createdAt      DateTime        @default(now())
+
+  readings       SensorReading[]
+
+  @@index([warehouseId, status])
+}
+
+model SensorReading {
+  id             String          @id @default(uuid())
+  sensorId       String
+  sensor         ColdChainSensor @relation(fields: [sensorId], references: [id], onDelete: Cascade)
+  temperature    Float
+  humidity       Float?
+  isBreach       Boolean         @default(false)
+  timestamp      DateTime        @default(now())
+
+  @@index([sensorId, timestamp])
+}
+
+// ==========================================
+// 5. DOMAIN: MENU, RESEP & NUTRISI AKG
+// ==========================================
+
+model Recipe {
+  id                 String             @id @default(uuid())
+  code               String             @unique // e.g. "RCP-MBG-001"
+  name               String             // "Ayam Bakar Madu Kecap + Sayur Sop"
+  category           String             // "Paket Menu Lengkap"
+  targetAgeGroup     AgeGroup           @default(SD_KELAS_4_6)
+  targetCaloriesKcal Float              @default(650)
+  targetProteinG     Float              @default(28.5)
+  targetCarbsG       Float              @default(85)
+  targetFatG         Float              @default(18)
+  targetFiberG       Float              @default(7.5)
+  standardCostPorsi  Float              @default(13850) // HPP per porsi
+  preparationTimeMin Int                @default(90)
+  cookingTimeMin     Int                @default(60)
+  instructions       String?            @db.Text
+  halalVerified      Boolean            @default(true)
+  nutritionApproved  Boolean            @default(true)
+  nutritionistPic    String?            // Nama Ahli Gizi PIC
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  ingredients        RecipeIngredient[]
+  dailyMenus         DailyMenu[]
+  productionBatches  ProductionBatch[]
+
+  @@index([targetAgeGroup])
+}
+
+model RecipeIngredient {
+  id             String    @id @default(uuid())
+  recipeId       String
+  recipe         Recipe    @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  productId      String
+  product        Product   @relation(fields: [productId], references: [id])
+  quantityPerPorsi Float   // Takaran gram / ml per porsi
+  estimatedCost  Float     @default(0)
+  isMandatory    Boolean   @default(true)
+
+  @@unique([recipeId, productId])
+}
+
+model DailyMenu {
+  id             String          @id @default(uuid())
+  kitchenUnitId  String
+  kitchenUnit    KitchenUnit     @relation(fields: [kitchenUnitId], references: [id])
+  recipeId       String
+  recipe         Recipe          @relation(fields: [recipeId], references: [id])
+  serveDate      DateTime        @db.Date
+  dayOfWeek      String          // "SENIN", "SELASA", dll
+  plannedPortions Int            @default(3500)
+  status         String          @default("APPROVED") // DRAFT, REVIEW, APPROVED, COOKED
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@unique([kitchenUnitId, serveDate])
+  @@index([serveDate])
+}
+
+// ==========================================
+// 6. DOMAIN: DAPUR SENTRAL SPPG & PRODUKSI
+// ==========================================
+
+model KitchenUnit {
+  id             String            @id @default(uuid())
+  code           String            @unique // e.g. "SPPG-HARMONI-01"
+  name           String            // "Dapur Sentral SPPG Harmoni Bogor"
+  address        String
+  city           String
+  province       String
+  dailyCapacity  Int               @default(5000)
+  headChefName   String?
+  nutritionistName String?
+  warehouseId    String?           @unique
+  warehouse      Warehouse?        @relation(fields: [warehouseId], references: [id])
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  users          User[]
+  dailyMenus     DailyMenu[]
+  batches        ProductionBatch[]
+  requisitions   KitchenRequisition[]
+  routes         DistributionRoute[]
+  fixedAssets    FixedAsset[]
+  employees      Employee[]
+  pettyCash      KitchenPettyCash[]
+
+  @@index([code])
+}
+
+model ProductionBatch {
+  id                 String             @id @default(uuid())
+  batchNumber        String             @unique // e.g. "BATCH-20260827-01"
+  kitchenUnitId      String
+  kitchenUnit        KitchenUnit        @relation(fields: [kitchenUnitId], references: [id])
+  recipeId           String
+  recipe             Recipe             @relation(fields: [recipeId], references: [id])
+  cookingDate        DateTime           @db.Date
+  cookingLine        CookingLine        @default(LINI_1_KARBO)
+  targetPortions     Int                @default(3500)
+  actualPortions     Int?
+  startTime          DateTime?
+  completionTime     DateTime?
+  dispatchTargetTime DateTime?
+  status             BatchStatus        @default(PLANNED)
+  spkNumber          String?            // Surat Perintah Masak
+  chefInCharge       String?
+  notes              String?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  ccpLogs            CcpTelemetryLog[]
+  qcTests            OrganolepticQc[]
+  shipments          Shipment[]
+
+  @@index([kitchenUnitId, cookingDate, status])
+}
+
+model CcpTelemetryLog {
+  id             String          @id @default(uuid())
+  batchId        String
+  batch          ProductionBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  ccpStage       String          // "CORE_COOKING_TEMP", "HOT_HOLDING_WARMER", "STEAM_SANITIZER"
+  targetMinTemp  Float           // ≥ 75.0°C untuk masak inti, ≥ 60.0°C untuk warmer
+  actualTemp     Float
+  isCompliant    Boolean         @default(true)
+  timestamp      DateTime        @default(now())
+  operatorName   String?
+
+  @@index([batchId, ccpStage])
+}
+
+model OrganolepticQc {
+  id             String          @id @default(uuid())
+  batchId        String
+  batch          ProductionBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  tasteScore     Int             // 1 - 5
+  aromaScore     Int             // 1 - 5
+  textureScore   Int             // 1 - 5
+  visualScore    Int             // 1 - 5
+  overallGrade   String          // "GRADE_A_LULUS", "GRADE_B_REVISI", "GRADE_C_REJECT"
+  retentionSampleCode String?    // e.g. "RET-BOGOR-20260827-01" (Disimpan 2x24 jam)
+  retentionFridge String?        // "CH-RET-01"
+  inspectorId    String
+  inspector      User            @relation("QcInspector", fields: [inspectorId], references: [id])
+  signatureData  String?         @db.Text // Base64 digital signature
+  isReleased     Boolean         @default(true)
+  testedAt       DateTime        @default(now())
+
+  @@index([batchId, overallGrade])
+}
+
+model KitchenRequisition {
+  id             String          @id @default(uuid())
+  requisitionNo  String          @unique // e.g. "REQ-SPPG-20260827-01"
+  kitchenUnitId  String
+  kitchenUnit    KitchenUnit     @relation(fields: [kitchenUnitId], references: [id])
+  urgency        String          @default("NORMAL") // NORMAL, URGENT, KRITIS
+  reason         String?
+  requestedBy    String
+  approvedBy     String?
+  status         String          @default("PENDING") // PENDING, APPROVED, DISPATCHED, REJECTED
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  items          RequisitionItem[]
+
+  @@index([kitchenUnitId, status])
+}
+
+model RequisitionItem {
+  id             String              @id @default(uuid())
+  requisitionId  String
+  requisition    KitchenRequisition  @relation(fields: [requisitionId], references: [id], onDelete: Cascade)
+  productId      String
+  product        Product             @relation(fields: [productId], references: [id])
+  quantity       Float
+  unit           String
+
+  @@index([requisitionId])
+}
+
+// ==========================================
+// 7. DOMAIN: LOGISTIK, ARMADA & DISTRIBUSI
+// ==========================================
+
+model DistributionPoint {
+  id             String          @id @default(uuid())
+  code           String          @unique // e.g. "SCH-BGR-001"
+  name           String          // "SD Negeri Pajajaran 01 Bogor"
+  type           String          // "SD", "SMP", "SMA", "PAUD", "POSYANDU"
+  address        String
+  district       String
+  city           String
+  latitude       Float           @default(-6.5971)
+  longitude      Float           @default(106.8060)
+  targetPortions Int             @default(450)
+  contactPerson  String
+  contactPhone   String
+  dropOffWindow  String          @default("09:30 - 10:30 WIB")
+  distanceKm     Float           @default(4.2)
+  isActive       Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  shipments      Shipment[]
+
+  @@index([district, city])
+}
+
+model DistributionRoute {
+  id             String          @id @default(uuid())
+  code           String          @unique // e.g. "ROUTE-BOGOR-TIMUR-01"
+  name           String          // "Klaster Bogor Timur - Pajajaran"
+  kitchenUnitId  String
+  kitchenUnit    KitchenUnit     @relation(fields: [kitchenUnitId], references: [id])
+  totalStops     Int             @default(4)
+  totalDistanceKm Float          @default(18.5)
+  estimatedMin   Int             @default(45)
+  isActive       Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+
+  shipments      Shipment[]
+
+  @@index([kitchenUnitId])
+}
+
+model FleetVehicle {
+  id                 String      @id @default(uuid())
+  plateNumber        String      @unique // e.g. "B 9482 BGN"
+  vehicleModel       String      // "Isuzu Traga Box Cold Insulation"
+  capacityPortions   Int         @default(1200)
+  thermalStorageTemp Float       @default(62.0) // Suhu warmer box
+  gpsDeviceId        String?
+  driverName         String?
+  driverPhone        String?
+  stnkExpiry         DateTime?
+  serviceExpiry      DateTime?
+  status             String      @default("READY") // READY, ON_DUTY, MAINTENANCE
+  createdAt          DateTime    @default(now())
+  updatedAt          DateTime    @updatedAt
+
+  shipments          Shipment[]
+
+  @@index([status])
+}
+
+model Shipment {
+  id                   String            @id @default(uuid())
+  waybillNumber        String            @unique // e.g. "WB-MBG-20260827-01"
+  productionBatchId    String
+  productionBatch      ProductionBatch   @relation(fields: [productionBatchId], references: [id])
+  distributionPointId  String
+  distributionPoint    DistributionPoint @relation(fields: [distributionPointId], references: [id])
+  routeId              String?
+  route                DistributionRoute? @relation(fields: [routeId], references: [id])
+  vehicleId            String?
+  vehicle              FleetVehicle?     @relation(fields: [vehicleId], references: [id])
+  driverId             String?
+  driver               User?             @relation("DriverShipments", fields: [driverId], references: [id])
+  driverName           String?
+  portionsShipped      Int               @default(450)
+  loadingTempC         Float             @default(64.5) // Suhu muat ≥ 60°C ISO 22000
+  departureTime        DateTime?
+  estimatedArrivalTime DateTime?
+  actualArrivalTime    DateTime?
+  status               ShipmentStatus    @default(SCHEDULED)
+  bastNumber           String?           // Berita Acara Serah Terima
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+
+  deliveryProof        DeliveryProof?
+
+  @@index([productionBatchId, status])
+  @@index([distributionPointId])
+}
+
+model DeliveryProof {
+  id             String          @id @default(uuid())
+  shipmentId     String          @unique
+  shipment       Shipment        @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  receivedTime   DateTime        @default(now())
+  receivedPortions Int           @default(450)
+  tempAtReceiptC Float           @default(61.2) // Suhu terima
+  recipientName  String          // "Drs. M. Hidayat (Kepsek)"
+  recipientNip   String?
+  photoUrl       String?
+  signatureData  String?         @db.Text // Base64 digital signature
+  latitude       Float?
+  longitude      Float?
+  isOrganolepticOk Boolean       @default(true)
+  notes          String?
+  createdAt      DateTime        @default(now())
+
+  @@index([shipmentId])
+}
+
+// ==========================================
+// 8. DOMAIN: MANAJEMEN ASET TETAP & SANITASI
+// ==========================================
+
+model FixedAsset {
+  id                 String             @id @default(uuid())
+  assetCode          String             @unique // e.g. "AST-BGN-BGR-001"
+  name               String             // "Kuali Elektrik Steam Tilting Kettle 100L"
+  category           String             // "MESIN_MEMASAK", "COLD_STORAGE", "ARMADA_BOX", "PERALATAN_HIGIENE"
+  kitchenUnitId      String?
+  kitchenUnit        KitchenUnit?       @relation(fields: [kitchenUnitId], references: [id])
+  brandModel         String?
+  serialNumber       String?
+  purchaseDate       DateTime           @db.Date
+  purchaseCost       Float
+  economicLifeYears  Int                @default(5)
+  salvageValue       Float              @default(0)
+  currentBookValue   Float              @default(0)
+  condition          AssetCondition     @default(EXCELLENT)
+  locationRoom       String?            // "Lini Masak 1"
+  qrCodeUrl          String?
+  lastMaintenance    DateTime?
+  nextMaintenance    DateTime?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  maintenanceOrders  AssetMaintenance[]
+  inspections        HygieneInspection[]
+
+  @@index([category, condition])
+}
+
+model AssetMaintenance {
+  id             String          @id @default(uuid())
+  orderNumber    String          @unique // e.g. "WO-AST-20260827-01"
+  assetId        String
+  asset          FixedAsset      @relation(fields: [assetId], references: [id], onDelete: Cascade)
+  type           MaintenanceType @default(PREVENTIVE)
+  description    String
+  technicianName String
+  cost           Float           @default(0)
+  scheduledDate  DateTime        @db.Date
+  completedDate  DateTime?
+  status         String          @default("SCHEDULED") // SCHEDULED, IN_PROGRESS, COMPLETED
+  notes          String?
+  createdAt      DateTime        @default(now())
+
+  @@index([assetId, status])
+}
+
+model HygieneInspection {
+  id             String          @id @default(uuid())
+  inspectionCode String          @unique // e.g. "INS-SAN-20260827-01"
+  assetId        String?
+  asset          FixedAsset?     @relation(fields: [assetId], references: [id])
+  areaOrMachine  String          // "Kuali Steam 100L Lini 1"
+  inspectorId    String
+  inspector      User            @relation("InspectorAudits", fields: [inspectorId], references: [id])
+  scorePercentage Float          @default(96.5) // Grade A/B/C
+  grade          String          @default("GRADE_A")
+  passedSanitation Boolean       @default(true)
+  findings       String?
+  capaAction     String?
+  signatureData  String?         @db.Text
+  inspectedAt    DateTime        @default(now())
+
+  @@index([inspectorId, inspectedAt])
+}
+
+// ==========================================
+// 9. DOMAIN: FINANSIAL, ANGGARAN & PEMBAYARAN
+// ==========================================
+
+model Budget {
+  id               String             @id @default(uuid())
+  fiscalYear       Int                @default(2026)
+  dpaCode          String             @unique // e.g. "DPA-BGN-2026-BGR-01"
+  regionName       String             // "Kota Bogor"
+  totalCeilingPagu Float              // Total Pagu APBN BGN e.g. Rp 15,000,000,000
+  allocatedAmount  Float              @default(0)
+  realizedAmount   Float              @default(0)
+  remainingAmount  Float              @default(0)
+  status           String             @default("ACTIVE") // ACTIVE, REVISED, CLOSED
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  allocations      BudgetAllocation[]
+  expenditures     Expenditure[]
+
+  @@index([fiscalYear, regionName])
+}
+
+model BudgetAllocation {
+  id             String         @id @default(uuid())
+  budgetId       String
+  budget         Budget         @relation(fields: [budgetId], references: [id], onDelete: Cascade)
+  category       BudgetCategory
+  percentage     Float          // 75% Bahan Baku, 15% Dapur, 8% Logistik, 2% Mutu
+  allocatedPagu  Float
+  realizedPagu   Float          @default(0)
+  remainingPagu  Float          @default(0)
+
+  @@unique([budgetId, category])
+}
+
+model Expenditure {
+  id             String         @id @default(uuid())
+  receiptNumber  String         @unique // e.g. "BKK-BGN-20260827-01"
+  budgetId       String
+  budget         Budget         @relation(fields: [budgetId], references: [id])
+  category       BudgetCategory
+  description    String
+  grossAmount    Float
+  taxPph22       Float          @default(0) // PPh Pasal 22 (1.5%)
+  taxPph23       Float          @default(0) // PPh Pasal 23 (2.0%)
+  taxPpn11       Float          @default(0) // PPN 11%
+  netAmount      Float
+  paymentMethod  String         @default("TRANSFER_BANK_BUMN")
+  creatorId      String
+  creator        User           @relation("CreatedExpenditures", fields: [creatorId], references: [id])
+  approverId     String?
+  approver       User?          @relation("ApprovedExpenditures", fields: [approverId], references: [id])
+  status         PaymentStatus  @default(DRAFT)
+  sp2dNumber     String?        // Surat Perintah Pencairan Dana
+  ntpnTaxReceipt String?        // Nomor Transaksi Penerimaan Negara
+  spkReference   String?
+  invoiceUrl     String?
+  transactedAt   DateTime       @default(now())
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  @@index([budgetId, category, status])
+  @@index([transactedAt])
+}
+
+model SupplierInvoice {
+  id             String          @id @default(uuid())
+  invoiceNumber  String          @unique // e.g. "INV-PTD-2026-088"
+  supplierId     String
+  supplier       Supplier        @relation(fields: [supplierId], references: [id])
+  poNumber       String?
+  bastNumber     String?
+  totalAmount    Float
+  taxAmount      Float           @default(0)
+  netPayable     Float
+  dueDate        DateTime        @db.Date
+  match3WayOk    Boolean         @default(true) // PO vs BAST vs Invoice Valid
+  status         PaymentStatus   @default(DRAFT)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  payments       Payment[]
+
+  @@index([supplierId, status])
+}
+
+model Payment {
+  id               String          @id @default(uuid())
+  voucherNumber    String          @unique // e.g. "BPV-BGN-20260827-01"
+  invoiceId        String
+  invoice          SupplierInvoice @relation(fields: [invoiceId], references: [id])
+  amountPaid       Float
+  bankSource       String          // "Bank Mandiri Kas BGN"
+  bankAccountDest  String
+  transferRef      String?
+  sp2dNumber       String?
+  reconciliationId String?
+  reconciled       Boolean         @default(false)
+  paidAt           DateTime        @default(now())
+  createdAt        DateTime        @default(now())
+
+  @@index([invoiceId, reconciled])
+}
+
+model PurchaseOrder {
+  id             String              @id @default(uuid())
+  poNumber       String              @unique // e.g. "PO-BGN-20260827-01"
+  supplierId     String
+  supplier       Supplier            @relation(fields: [supplierId], references: [id])
+  orderDate      DateTime            @default(now())
+  expectedDate   DateTime            @db.Date
+  totalAmount    Float
+  status         String              @default("ISSUED") // ISSUED, RECEIVED_PARTIAL, RECEIVED_FULL, CANCELLED
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  items          PurchaseOrderItem[]
+
+  @@index([supplierId, status])
+}
+
+model PurchaseOrderItem {
+  id             String        @id @default(uuid())
+  poId           String
+  po             PurchaseOrder @relation(fields: [poId], references: [id], onDelete: Cascade)
+  productId      String
+  product        Product       @relation(fields: [productId], references: [id])
+  quantity       Float
+  unitPrice      Float
+  subtotal       Float
+
+  @@index([poId])
+}
+
+model KitchenPettyCash {
+  id             String      @id @default(uuid())
+  kitchenUnitId  String
+  kitchenUnit    KitchenUnit @relation(fields: [kitchenUnitId], references: [id])
+  voucherNo      String      @unique // e.g. "PC-BGR-20260827-01"
+  type           String      // "IN_REPLENISH", "OUT_EXPENSE"
+  category       String      // "LPG_GAS", "AIR_RO", "ICE_TUBE", "SANITASI_URGENT"
+  amount         Float
+  description    String
+  recordedBy     String
+  balanceAfter   Float
+  receiptUrl     String?
+  transactedAt   DateTime    @default(now())
+
+  @@index([kitchenUnitId, transactedAt])
+}
+
+// ==========================================
+// 10. DOMAIN: KEPATUHAN MUTU, ISO & AUDIT TRAIL
+// ==========================================
+
+model AuditLog {
+  id             String    @id @default(uuid())
+  userId         String?
+  user           User?     @relation(fields: [userId], references: [id])
+  action         String    // "CREATE", "UPDATE", "DELETE", "APPROVE", "LOGIN", "EXPORT"
+  entityName     String    // "Stock", "Expenditure", "Recipe", "User", "Shipment"
+  entityId       String
+  description    String?
+  oldValues      Json?     // Snapshot nilai lama
+  newValues      Json?     // Snapshot nilai baru
+  ipAddress      String?
+  userAgent      String?
+  integrityHash  String?   // SHA-256 Chained Hash untuk pencegahan tampering (ISO 27001)
+  prevHash       String?   // Hash dari audit log sebelumnya
+  createdAt      DateTime  @default(now())
+
+  @@index([entityName, entityId])
+  @@index([userId, action])
+  @@index([createdAt])
+}
+
+model QualityIncident {
+  id             String           @id @default(uuid())
+  incidentCode   String           @unique // e.g. "INC-QC-20260827-01"
+  title          String           // "Penyimpangan Suhu Cold Storage Chiller-01"
+  severity       IncidentSeverity @default(MODERATE)
+  location       String           // "Ruang Pendingin SPPG Harmoni"
+  reportedBy     String
+  occurredAt     DateTime
+  description    String           @db.Text
+  immediateAction String?         @db.Text
+  rootCause5Why  Json?            // { why1: "", why2: "", why3: "", why4: "", why5: "" }
+  capaPlan       String?          @db.Text // Corrective & Preventive Action
+  capaApprovedBy String?
+  leadAuditorSig String?          @db.Text
+  status         IncidentStatus   @default(REPORTED)
+  closedAt       DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@index([severity, status])
+}
+
+// ==========================================
+// 11. DOMAIN: SDM, TENAGA KERJA & PAYROLL
+// ==========================================
+
+model Employee {
+  id                 String               @id @default(uuid())
+  nik                String               @unique // Nomor Induk Kependudukan (KTP)
+  nip                String?              @unique // Nomor Induk Pegawai MBG e.g. "MBG-EMP-001"
+  fullName           String
+  gender             String               // "L", "P"
+  birthDate          DateTime?            @db.Date
+  phone              String
+  address            String?
+  position           String               // "Head Chef", "Ahli Gizi", "Helper", "Driver Armada", "Petugas QC"
+  department         String               // "Dapur Sentral", "Logistik", "Manajemen Mutu"
+  kitchenUnitId      String?
+  kitchenUnit        KitchenUnit?         @relation(fields: [kitchenUnitId], references: [id])
+  employmentType     String               @default("KONTRAK_BGN") // KONTRAK_BGN, TETAP, HARIAN
+  joinDate           DateTime             @db.Date
+  baseSalary         Float                @default(4500000)
+  hygieneAllowance   Float                @default(500000)
+  bpjsKesehatanNo    String?
+  bpjsKetenagakerjaanNo String?
+  bankName           String?
+  bankAccountNumber  String?
+  foodHandlerCertified Boolean            @default(true)
+  foodHandlerExpiry  DateTime?            @db.Date
+  lastMcuDate        DateTime?            @db.Date
+  mcuStatus          String               @default("FIT_FOR_FOOD_SERVICE") // FIT_FOR_FOOD_SERVICE, UNFIT, PENDING
+  isActive           Boolean              @default(true)
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+
+  user               User?
+  shiftAssignments   ShiftAssignment[]
+  attendances        DailyAttendance[]
+  payrollItems       PayrollItem[]
+  mcuRecords         EmployeeMcu[]
+
+  @@index([position, isActive])
+  @@index([kitchenUnitId])
+}
+
+model ShiftSchedule {
+  id             String            @id @default(uuid())
+  code           String            @unique // e.g. "SHIFT-2026-W35"
+  name           String            // "Shift Minggu ke-35 Dapur SPPG Harmoni"
+  startDate      DateTime          @db.Date
+  endDate        DateTime          @db.Date
+  createdAt      DateTime          @default(now())
+
+  assignments    ShiftAssignment[]
+}
+
+model ShiftAssignment {
+  id             String        @id @default(uuid())
+  scheduleId     String
+  schedule       ShiftSchedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+  employeeId     String
+  employee       Employee      @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  shiftDate      DateTime      @db.Date
+  shiftType      ShiftType     @default(SHIFT_1_PAGI_DINI)
+  assignedDuty   String?       // "Lini 1 Karbohidrat Masak Nasi"
+  status         String        @default("SCHEDULED") // SCHEDULED, PRESENT, ABSENT, SICK, LEAVE
+
+  @@unique([employeeId, shiftDate])
+  @@index([shiftDate, shiftType])
+}
+
+model DailyAttendance {
+  id             String    @id @default(uuid())
+  employeeId     String
+  employee       Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  attendanceDate DateTime  @db.Date
+  checkInTime    DateTime?
+  checkOutTime   DateTime?
+  bodyTempC      Float     @default(36.5) // Skrining Suhu < 37.3°C ISO 22000
+  passedApdCheck Boolean   @default(true) // Celemek, Hairnet, Masker, Sarung Tangan, Sepatu Boot
+  passedSkinCheck Boolean  @default(true) // Bebas luka terbuka / infeksi kulit
+  gatekeeperPic  String?   // Petugas pemeriksa pintu steril
+  status         String    @default("PRESENT") // PRESENT, LATE, ABSENT, SICK_FIT_ISOLATION
+  notes          String?
+  createdAt      DateTime  @default(now())
+
+  @@unique([employeeId, attendanceDate])
+  @@index([attendanceDate, status])
+}
+
+model PayrollRun {
+  id             String        @id @default(uuid())
+  periodCode     String        @unique // e.g. "PAY-2026-08"
+  periodMonth    Int           // 8
+  periodYear     Int           // 2026
+  totalEmployees Int           @default(32)
+  totalGross     Float         @default(0)
+  totalDeductions Float        @default(0)
+  totalNetPayable Float        @default(0)
+  status         PaymentStatus @default(DRAFT)
+  sp2dNumber     String?
+  approvedByPpk  String?
+  processedAt    DateTime?
+  createdAt      DateTime      @default(now())
+
+  items          PayrollItem[]
+
+  @@index([periodYear, periodMonth])
+}
+
+model PayrollItem {
+  id             String     @id @default(uuid())
+  payrollRunId   String
+  payrollRun     PayrollRun @relation(fields: [payrollRunId], references: [id], onDelete: Cascade)
+  employeeId     String
+  employee       Employee   @relation(fields: [employeeId], references: [id])
+  baseSalary     Float
+  allowances     Float      @default(0) // Tunjangan higiene & shift dini
+  portionBonus   Float      @default(0) // Insentif target porsi
+  deductionBpjs  Float      @default(0) // BPJS Ketenagakerjaan & Kesehatan
+  deductionPph21 Float      @default(0) // Pajak PPh 21
+  netSalary      Float
+  status         String     @default("PENDING") // PENDING, TRANSFERRED
+
+  @@unique([payrollRunId, employeeId])
+  @@index([employeeId])
+}
+
+model EmployeeMcu {
+  id                 String    @id @default(uuid())
+  employeeId         String
+  employee           Employee  @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  examinationDate    DateTime  @db.Date
+  clinicLaboratory   String    // "Labkesda Kota Bogor"
+  typhoidTest        String    @default("NEGATIVE") // Typhoid Widal/Tubex Negatif
+  tbcThoraxTest      String    @default("CLEAR")    // Rontgen Toraks Normal
+  hepatitisATest     String    @default("NEGATIVE") // Anti-HAV IgM Negatif
+  skinCheck          String    @default("NORMAL")
+  fitConclusion      String    @default("FIT_FOR_FOOD_SERVICE")
+  validUntil         DateTime  @db.Date
+  certificateDocUrl  String?
+  createdAt          DateTime  @default(now())
+
+  @@index([employeeId, examinationDate])
+}

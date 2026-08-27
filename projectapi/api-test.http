@@ -1,0 +1,241 @@
+### ====================================================================
+### ERP MBG ENTERPRISE API TEST COLLECTION (REST Client / Postman)
+### Base URL: http://localhost:4000/api/v1
+### ====================================================================
+
+@baseUrl = http://localhost:4000/api/v1
+@authToken = {{login.response.body.data.accessToken}}
+
+### --------------------------------------------------------------------
+### 1. HEALTH & SYSTEM LIVENESS
+### --------------------------------------------------------------------
+
+# @name healthCheck
+GET {{baseUrl}}/health
+Content-Type: application/json
+
+### --------------------------------------------------------------------
+### 2. AUTHENTICATION & PROFILE
+### --------------------------------------------------------------------
+
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin_pusat",
+  "password": "MbgAdmin2026!"
+}
+
+###
+
+# @name getProfile
+GET {{baseUrl}}/auth/profile
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+### --------------------------------------------------------------------
+### 3. USERS & RBAC (10 Peran BGN)
+### --------------------------------------------------------------------
+
+# @name listUsers
+GET {{baseUrl}}/users
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name filterUsersByRole
+GET {{baseUrl}}/users?role=KEPALA_SPPG
+Authorization: Bearer {{authToken}}
+
+### --------------------------------------------------------------------
+### 4. SUPPLIER & VENDOR MANAGEMENT
+### --------------------------------------------------------------------
+
+# @name listSuppliers
+GET {{baseUrl}}/suppliers
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getSupplierScorecard
+GET {{baseUrl}}/suppliers/scorecard
+Authorization: Bearer {{authToken}}
+
+### --------------------------------------------------------------------
+### 5. GUDANG, INVENTORY & COLD CHAIN IoT
+### --------------------------------------------------------------------
+
+# @name getInventoryStocks
+GET {{baseUrl}}/inventory/stocks
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getStockMovements
+GET {{baseUrl}}/inventory/movements?limit=10
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getColdChainSensors
+GET {{baseUrl}}/inventory/cold-chain
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getStockAlerts
+GET {{baseUrl}}/inventory/alerts
+Authorization: Bearer {{authToken}}
+
+### --------------------------------------------------------------------
+### 6. MENU, RESEP & NUTRISI AKG
+### --------------------------------------------------------------------
+
+# @name getRecipes
+GET {{baseUrl}}/menu/recipes
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getDailyMealPlans
+GET {{baseUrl}}/menu/daily-plans
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getCostAnalysis
+GET {{baseUrl}}/menu/cost-analysis
+Authorization: Bearer {{authToken}}
+
+### --------------------------------------------------------------------
+### 7. DAPUR SENTRAL SPPG & BATCH PRODUKSI
+### --------------------------------------------------------------------
+
+# @name getKitchenUnits
+GET {{baseUrl}}/kitchen/units
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getProductionBatches
+GET {{baseUrl}}/kitchen/batches
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getKitchenRequisitions
+GET {{baseUrl}}/kitchen/requisitions
+Authorization: Bearer {{authToken}}
+
+### --------------------------------------------------------------------
+### 8. LOGISTIK, ARMADA & DISTRIBUSI
+### --------------------------------------------------------------------
+
+# @name getDistributionPoints
+GET {{baseUrl}}/logistics/distribution-points
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getShipments
+GET {{baseUrl}}/logistics/shipments
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getFleetVehicles
+GET {{baseUrl}}/logistics/fleet
+Authorization: Bearer {{authToken}}
+
+### --------------------------------------------------------------------
+### 9. MANAJEMEN ASET & INSPEKSI SANITASI
+### --------------------------------------------------------------------
+
+# @name getAssets
+GET {{baseUrl}}/assets
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getAssetMaintenanceSchedule
+GET {{baseUrl}}/assets/maintenance
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getHygieneInspections
+GET {{baseUrl}}/assets/hygiene-inspections
+Authorization: Bearer {{authToken}}
+
+### --------------------------------------------------------------------
+### 10. FINANSIAL, ANGGARAN & PEMBAYARAN
+### --------------------------------------------------------------------
+
+# @name getFinanceOverview
+GET {{baseUrl}}/finance/overview
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getBudgets
+GET {{baseUrl}}/finance/budgets?year=2026
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getExpenditures
+GET {{baseUrl}}/finance/expenditures
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getSupplierInvoices
+GET {{baseUrl}}/finance/invoices
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getPayments
+GET {{baseUrl}}/finance/payments
+Authorization: Bearer {{authToken}}
+
+### --------------------------------------------------------------------
+### 11. KEPATUHAN MUTU, ISO & AUDIT TRAIL
+### --------------------------------------------------------------------
+
+# @name getAuditLogs
+GET {{baseUrl}}/compliance/audit-logs?limit=25
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getQualityIncidents
+GET {{baseUrl}}/compliance/incidents
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getIsoOverview
+GET {{baseUrl}}/compliance/iso-overview
+Authorization: Bearer {{authToken}}
+
+### --------------------------------------------------------------------
+### 12. SDM, TENAGA KERJA & PAYROLL
+### --------------------------------------------------------------------
+
+# @name getEmployees
+GET {{baseUrl}}/employees
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getShiftSchedules
+GET {{baseUrl}}/employees/shifts
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name getPayrollRuns
+GET {{baseUrl}}/employees/payroll
+Authorization: Bearer {{authToken}}
