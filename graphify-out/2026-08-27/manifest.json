@@ -1014,15 +1014,15 @@
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/page.tsx": {
-    "mtime": 1787805369.262864,
-    "seen": 1787806846.394864,
-    "ast_hash": "d4886a080e059c190d4022c6dda9d24f",
+    "mtime": 1787827402.553151,
+    "seen": 1787833128.7783046,
+    "ast_hash": "acd9e1aa07c1e9ac704cf27692f90933",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/settings/users/page.tsx": {
-    "mtime": 1787805467.12692,
-    "seen": 1787806846.394864,
-    "ast_hash": "36fdcdc22718b1a120f4e8e34adba467",
+    "mtime": 1787833013.666888,
+    "seen": 1787833128.7783046,
+    "ast_hash": "0daa9fb9c0f9dea58c4820753985da70",
     "semantic_hash": ""
   },
   "projectweb/src/app/(admin)/suppliers/catalog/page.tsx": {
@@ -1584,9 +1584,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/layout/AppSidebar.tsx": {
-    "mtime": 1787826343.2483916,
-    "seen": 1787826900.6381857,
-    "ast_hash": "e0bfc4199e038bfbecc2199bd7968779",
+    "mtime": 1787832573.616163,
+    "seen": 1787833128.7783046,
+    "ast_hash": "2963cf2e40974e07a2a82893d07e1efc",
     "semantic_hash": ""
   },
   "projectweb/src/layout/Backdrop.tsx": {
@@ -1632,9 +1632,9 @@
     "semantic_hash": ""
   },
   "task_md/13_CHECKLIST_TASK.md": {
-    "mtime": 1787825249.5649426,
-    "seen": 1787826220.007622,
-    "ast_hash": "2a365aa496eefd383868e95493aecc15",
+    "mtime": 1787833042.7667832,
+    "seen": 1787833128.7783046,
+    "ast_hash": "be76dc52d2e51b48dbda4259ab0cad0a",
     "semantic_hash": ""
   },
   "projectweb/banner.png": {
@@ -4143,6 +4143,150 @@
     "mtime": 1787826759.4502144,
     "seen": 1787826900.6381857,
     "ast_hash": "07a185a2ca0e9eda0fc81a6f86ee049d",
+    "semantic_hash": ""
+  },
+  "projectweb/src/app/(admin)/dashboard/kitchen/page.tsx": {
+    "mtime": 1787827342.1737423,
+    "seen": 1787833128.7783046,
+    "ast_hash": "0a7381a75ef4fedc8cec28a1246ae52b",
+    "semantic_hash": ""
+  },
+  "projectweb/src/app/(admin)/finance/kitchen/page.tsx": {
+    "mtime": 1787828241.3059957,
+    "seen": 1787833128.7783046,
+    "ast_hash": "3d53fda1d7828fde2ccc004cab721a44",
+    "semantic_hash": ""
+  },
+  "projectweb/src/app/(admin)/finance/page.tsx": {
+    "mtime": 1787827696.5092998,
+    "seen": 1787833128.7783046,
+    "ast_hash": "faf11317d702ad03db1ff0f008876a31",
+    "semantic_hash": ""
+  },
+  "projectweb/src/app/(admin)/finance/reports/page.tsx": {
+    "mtime": 1787832565.0688798,
+    "seen": 1787833128.7783046,
+    "ast_hash": "91b7e466d32541b78885670abde04c25",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/ComprehensiveFinancialReports.tsx": {
+    "mtime": 1787832557.8500652,
+    "seen": 1787833128.7783046,
+    "ast_hash": "aa1cf125a688d7a4faaab1b1f462ed4d",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/FinanceOverviewDashboard.tsx": {
+    "mtime": 1787832593.9925313,
+    "seen": 1787833128.7783046,
+    "ast_hash": "18ac05486c98a983f964a0a4d90b6e1d",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/FinancialReportLraPrintModal.tsx": {
+    "mtime": 1787827665.9353669,
+    "seen": 1787833128.7783046,
+    "ast_hash": "517c915f28f13a1c77ae9fd824f57538",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/FinancialSimulationModal.tsx": {
+    "mtime": 1787827654.4376383,
+    "seen": 1787833128.7783046,
+    "ast_hash": "16d045eaf4f620611f4f4b0ec618318c",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/KitchenCostAnalysisModal.tsx": {
+    "mtime": 1787828188.1724615,
+    "seen": 1787833128.7783046,
+    "ast_hash": "1a136b00effdd09f316355bdee90f19e",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/KitchenExpenseRecordModal.tsx": {
+    "mtime": 1787828170.0017138,
+    "seen": 1787833128.7783046,
+    "ast_hash": "e237a7d172075af460de65edffd26658",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/KitchenFinancialDashboard.tsx": {
+    "mtime": 1787828235.720273,
+    "seen": 1787833128.7783046,
+    "ast_hash": "54209e90d5345a0c16964b92cede6d6c",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/KitchenFinancialReportPrintModal.tsx": {
+    "mtime": 1787828204.4973543,
+    "seen": 1787833128.7783046,
+    "ast_hash": "1405211eda591daba3fe6e204c93c1f2",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/finance/OfficialFinancialReportPrintModal.tsx": {
+    "mtime": 1787832525.513659,
+    "seen": 1787833128.7783046,
+    "ast_hash": "95e5f336b609f88016faa78ed0e4eaf8",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/kitchen/KitchenOverviewDashboard.tsx": {
+    "mtime": 1787828278.7636535,
+    "seen": 1787833128.7783046,
+    "ast_hash": "e093c00a9594b8fa99b19ce4f7d1a50b",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/kitchen/KitchenRequisitionModal.tsx": {
+    "mtime": 1787827306.2009697,
+    "seen": 1787833128.7783046,
+    "ast_hash": "0a4d5914e5b61db1f3eb8ec66317174f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/kitchen/KitchenSpkPrintModal.tsx": {
+    "mtime": 1787827296.325073,
+    "seen": 1787833128.7783046,
+    "ast_hash": "b536964785e015d2de7f4938b4dc94fe",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/kitchen/OrganolepticQualityModal.tsx": {
+    "mtime": 1787827285.4685714,
+    "seen": 1787833128.7783046,
+    "ast_hash": "d7405da0411c32942ddb5ccf213c6aa2",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/kitchen/UpdateProductionBatchModal.tsx": {
+    "mtime": 1787827269.7022097,
+    "seen": 1787833128.7783046,
+    "ast_hash": "d6b10d80f7cb8de5f605b04eae1e7723",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/RolePermissionMatrixModal.tsx": {
+    "mtime": 1787832945.9736915,
+    "seen": 1787833128.7783046,
+    "ast_hash": "df4f8ef910e0cec7d57998fde6eab192",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/UserAccessReportPrintModal.tsx": {
+    "mtime": 1787832913.6544967,
+    "seen": 1787833128.7783046,
+    "ast_hash": "419746d798c7cef3be81359f0105ebac",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/UserDetailModal.tsx": {
+    "mtime": 1787832961.8856432,
+    "seen": 1787833128.7783046,
+    "ast_hash": "f16f41c38b58b58ce57e0c48afba067c",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/UserFormModal.tsx": {
+    "mtime": 1787832974.554022,
+    "seen": 1787833128.7783046,
+    "ast_hash": "5117c8bf64679d7d4625a33e2c196f09",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/UserManagementTable.tsx": {
+    "mtime": 1787833004.3624434,
+    "seen": 1787833128.7783046,
+    "ast_hash": "a11bb29a05c6c84b296e25891fade9de",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/UserSecuritySessionsModal.tsx": {
+    "mtime": 1787832934.3481467,
+    "seen": 1787833128.7783046,
+    "ast_hash": "14c4ba409151f20c95ec0f0975fa9b2b",
     "semantic_hash": ""
   }
 }

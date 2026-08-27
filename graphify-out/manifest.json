@@ -1584,9 +1584,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/layout/AppSidebar.tsx": {
-    "mtime": 1787832573.616163,
-    "seen": 1787833128.7783046,
-    "ast_hash": "2963cf2e40974e07a2a82893d07e1efc",
+    "mtime": 1787833351.2407012,
+    "seen": 1787833664.0544467,
+    "ast_hash": "797158db62f9e6fef911887f24c2d4aa",
     "semantic_hash": ""
   },
   "projectweb/src/layout/Backdrop.tsx": {
@@ -1632,9 +1632,9 @@
     "semantic_hash": ""
   },
   "task_md/13_CHECKLIST_TASK.md": {
-    "mtime": 1787833042.7667832,
-    "seen": 1787833128.7783046,
-    "ast_hash": "be76dc52d2e51b48dbda4259ab0cad0a",
+    "mtime": 1787833607.6350899,
+    "seen": 1787833664.0544467,
+    "ast_hash": "9bacde48c9e78c4f03797c534d96b43a",
     "semantic_hash": ""
   },
   "projectweb/banner.png": {
@@ -4287,6 +4287,42 @@
     "mtime": 1787832934.3481467,
     "seen": 1787833128.7783046,
     "ast_hash": "14c4ba409151f20c95ec0f0975fa9b2b",
+    "semantic_hash": ""
+  },
+  "projectweb/src/app/(admin)/settings/roles/page.tsx": {
+    "mtime": 1787833444.639759,
+    "seen": 1787833664.0544467,
+    "ast_hash": "60e1b8b2de16d6bb1901fb202e007e54",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/CreateRoleModal.tsx": {
+    "mtime": 1787833406.7956932,
+    "seen": 1787833664.0544467,
+    "ast_hash": "810650021b93c9253cc58aed90ec3950",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/RoleDetailModal.tsx": {
+    "mtime": 1787833394.357583,
+    "seen": 1787833664.0544467,
+    "ast_hash": "70d77aeba08099f7e962210dd02b761b",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/RoleHierarchyModal.tsx": {
+    "mtime": 1787833385.3065214,
+    "seen": 1787833664.0544467,
+    "ast_hash": "759e2020f0c8b069151cd03fcbbceb5f",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/RoleManagementDashboard.tsx": {
+    "mtime": 1787833437.1438103,
+    "seen": 1787833664.0544467,
+    "ast_hash": "d86f43736587a14b9aaaadcf4816bacb",
+    "semantic_hash": ""
+  },
+  "projectweb/src/components/settings/RoleMatrixPrintModal.tsx": {
+    "mtime": 1787833372.4327116,
+    "seen": 1787833664.0544467,
+    "ast_hash": "f2a7cb160d156ffe3a168930d305e2c9",
     "semantic_hash": ""
   }
 }
