@@ -122,14 +122,20 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ---
 
-### ⚙️ Modul 9: Pengguna, Keamanan (RBAC) & Sistem (`01_TECH_STACK_&_INFRA.md` & `02_DATABASE_SCHEMA.md`)
-- [x] Layout & Rute Manajemen Pengguna (`/settings/users`, `/profile`).
-- [x] **Tabel Master Pengguna & Kredensial Sistem (`UserManagementTable.tsx`):** Manajemen 10 peran pengguna (ADMIN_PUSAT, ADMIN_REGIONAL, KEPALA_SPPG, AHLI_GIZI, INSPEKTUR_MUTU_QC, BENDAHARA_PPK, TIM_LOGISTIK_DRIVER, PETUGAS_GUDANG, SUPPLIER_VENDOR, AUDITOR_EKSTERNAL), tracking 2FA TOTP ISO 27001, status akun, IP/lokasi login terakhir, dan quick status toggle.
+### ⚙️ Modul 9: Pengguna, Keamanan (RBAC) & Manajemen Peran (`01_TECH_STACK_&_INFRA.md` & `02_DATABASE_SCHEMA.md`)
+- [x] Layout & Rute Manajemen Pengguna & Peran (`/settings/users`, `/settings/roles`, `/profile`).
+- [x] **Dashboard Manajemen Peran & Hak Akses (`RoleManagementDashboard.tsx` & `/settings/roles`):** Katalog 10 peran utama BGN + kemampuan kustomisasi peran baru, visualisasi Grid Card & Master Table, filter tingkat risiko keamanan (Critical, High, Medium, Low), pelacak jumlah pengguna ter-assign per peran, dan fitur kloning peran.
+- [x] **Formulir Pembuatan & Edit Peran Sistem (`CreateRoleModal.tsx`):** Penentuan nama peran, slug kode unik, kategori tugas, kebijakan batas waktu sesi (Session Timeout), penegakan 2FA (MFA Enforced), dan pemilihan cakupan modul terintegrasi.
+- [x] **Rincian Peran & Daftar Staf Pemegang Wewenang (`RoleDetailModal.tsx`):** Detail spesifikasi peran, indikator tingkat risiko ISO 27001, serta daftar nama pegawai dan unit SPPG yang mengemban peran tersebut.
+- [x] **Bagan Visualisasi Hirarki & Eskalasi Otorisasi MBG (`RoleHierarchyModal.tsx`):** Alur rantai komando wewenang bertingkat (Level 1: Pusat BGN Nasional & BPK, Level 2: Regional & PPK Keuangan, Level 3: Dapur Sentral SPPG, QC & Driver Armada).
+- [x] **Cetak Master Matriks Hak Akses & Peran Resmi (`RoleMatrixPrintModal.tsx`):** Generator cetak format Landscape dokumen resmi Master RBAC Matrix untuk pelaporan audit BPK / KAN / BSSN lengkap dengan QR Code SHA-256 dan pengesahan CISO.
+- [x] **Tabel Master Pengguna & Kredensial Sistem (`UserManagementTable.tsx`):** Manajemen pengguna lintas 10 peran, tracking 2FA TOTP ISO 27001, status akun, IP/lokasi login terakhir, dan quick status toggle.
 - [x] **Form Registrasi & Edit Pengguna (`UserFormModal.tsx`):** Form pembuatan akun baru dengan generator password acak yang aman, penugasan wilayah/SPPG, konfigurasi kewajiban 2FA, dan tanggal kedaluwarsa akun.
 - [x] **Matriks Hak Akses Granular / RBAC Matrix (`RolePermissionMatrixModal.tsx`):** Konfigurasi izin 7 aksi (Read, Create, Update, Delete, Approve, Export, Print) lintas 9 modul ERP MBG berprinsip *Least Privilege*.
 - [x] **Monitoring Sesi Login & Keamanan ISO 27001 (`UserSecuritySessionsModal.tsx`):** Manajemen multi-sesi token aktif, fitur putuskan sesi (kick/revoke session), riwayat event login/2FA, proteksi brute-force, dan reset counter kegagalan.
 - [x] **Profil Rincian Pengguna & Wewenang (`UserDetailModal.tsx`):** Viewer komprehensif identitas pegawai, unit penugasan, status keamanan, dan pintasan konfigurasi wewenang.
 - [x] **Cetak Surat Keputusan Otorisasi Hak Akses Sistem Resmi (`UserAccessReportPrintModal.tsx`):** Generator SK Otorisasi RBAC berstandar ISO 27001 lengkap dengan kop BGN, matriks izin, QR Code SHA-256, dan tanda tangan digital CISO & Pegawai.
+
 
 ---
 

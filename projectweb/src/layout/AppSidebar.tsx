@@ -127,10 +127,12 @@ const governanceNavItems: NavItem[] = [
     name: "Pengguna & Sistem",
     subItems: [
       { name: "Manajemen Pengguna (RBAC)", path: "/settings/users" },
+      { name: "Manajemen Peran & Akses", path: "/settings/roles", new: true },
       { name: "Profil Saya", path: "/profile" },
     ],
   },
 ];
+
 
 const AppSidebar: React.FC = () => {
   const { isExpanded, isMobileOpen, isHovered, setIsHovered } = useSidebar();
