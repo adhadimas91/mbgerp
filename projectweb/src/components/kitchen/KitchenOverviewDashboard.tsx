@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ProductionBatchLine, UpdateProductionBatchModal } from "./UpdateProductionBatchModal";
 import { OrganolepticRecord, OrganolepticQualityModal } from "./OrganolepticQualityModal";
 import { KitchenSpkPrintModal } from "./KitchenSpkPrintModal";
 import { KitchenRequisitionModal, KitchenRequisitionItem } from "./KitchenRequisitionModal";
+import kitchenService from "@/services/kitchen.service";
 
 const initialLines: ProductionBatchLine[] = [
   {
@@ -127,7 +128,7 @@ export const KitchenOverviewDashboard: React.FC = () => {
   const cookedProteinTotal = lines.find((l) => l.id === "LINE-02")?.completedPortions || 2850;
   const progressPercent = Math.round((completedTotal / targetTotal) * 100);
 
-  const handleSaveRequisition = (req: {
+  const handleSaveRequisition = async (req: {
     code: string;
     requestTime: string;
     requestedBy: string;
@@ -137,6 +138,17 @@ export const KitchenOverviewDashboard: React.FC = () => {
   }) => {
     setRequisitionNotif(`Permintaan bahan ${req.code} (${req.items.length} item) berhasil dikirim ke Gudang!`);
     setTimeout(() => setRequisitionNotif(null), 6000);
+
+    try {
+      await kitchenService.createRequisition({
+        requestedBy: req.requestedBy,
+        urgency: req.urgency,
+        items: req.items,
+        reason: `Kebutuhan lini masak ${req.targetLine}`,
+      });
+    } catch {
+      // demo fallback
+    }
   };
 
   const spkData = {

@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Badge from "../ui/badge/Badge";
 import Button from "../ui/button/Button";
 import { Shipment, CreateShipmentModal } from "./CreateShipmentModal";
 import { LiveTrackingModal } from "./LiveTrackingModal";
 import { ShipmentWaybillPrintModal } from "./ShipmentWaybillPrintModal";
+import logisticsService from "@/services/logistics.service";
 
 const initialShipments: Shipment[] = [
   {
@@ -58,25 +59,25 @@ const initialShipments: Shipment[] = [
     schoolNpsn: "20100350",
     district: "Kec. Menteng, Jakarta Pusat",
     menuName: "Nasi Daging Semur Daging Sapi + Sup Sayur Wortel + Telur Puyuh Rebus",
-    portions: 480,
+    portions: 450,
     centralKitchen: "SPPG Harmoni (Central Kitchen 01)",
     fleetVehicle: "Blindvan Box Chiller (B 9482 MBG)",
     driverName: "Budi Santoso",
     driverPhone: "0812-9876-5432",
-    departureTime: "09:40 WIB",
-    estimatedArrival: "10:10 WIB",
-    loadingTemperature: 63.5,
+    departureTime: "10:00 WIB",
+    estimatedArrival: "10:25 WIB",
+    loadingTemperature: 65.0,
     sealNumber: "SEAL-MBG-88103",
     status: "IN_TRANSIT",
     podStatus: "PENDING",
-    currentLocationLat: -6.1843,
-    currentLocationLng: 106.8284,
+    currentLocationLat: -6.1834,
+    currentLocationLng: 106.8291,
   },
   {
     id: "SHP-104",
     waybillNumber: "SJ-MBG-20260827-0104",
-    schoolName: "SMAN 68 Jakarta Pusat",
-    schoolNpsn: "20100488",
+    schoolName: "SMPN 2 Jakarta Pusat",
+    schoolNpsn: "20100412",
     district: "Kec. Senen, Jakarta Pusat",
     menuName: "Nasi Ayam Kremes + Tempe Orek Manis + Sayur Bening Bayam Jagung",
     portions: 1100,
@@ -116,8 +117,46 @@ const initialShipments: Shipment[] = [
 
 export const ShipmentManagement: React.FC = () => {
   const [shipments, setShipments] = useState<Shipment[]>(initialShipments);
+  const [isLoading, setIsLoading] = useState(false);
   const [activeFilter, setActiveFilter] = useState<string>("ALL");
   const [searchQuery, setSearchQuery] = useState("");
+
+  const fetchShipments = async () => {
+    setIsLoading(true);
+    try {
+      const data = await logisticsService.getShipments();
+      if (Array.isArray(data) && data.length > 0) {
+        const mapped: Shipment[] = data.map((s: any) => ({
+          id: s.id || `SHP-${s.waybillNumber || "00"}`,
+          waybillNumber: s.waybillNumber || "SJ-MBG-2026",
+          schoolName: s.targetSchool || s.distributionPoint?.name || "Sekolah Sasaran MBG",
+          schoolNpsn: s.distributionPoint?.npsn || "20100000",
+          district: s.distributionPoint?.district || "DKI Jakarta",
+          menuName: s.menuName || "Paket Makanan Bergizi Seimbang BGN",
+          portions: Number(s.portionCount || 500),
+          centralKitchen: s.centralKitchen || "SPPG Harmoni 01",
+          fleetVehicle: s.vehiclePlate || "Blindvan Box MBG",
+          driverName: s.driverName || "Driver MBG",
+          driverPhone: s.driverPhone || "0812-xxxx",
+          departureTime: s.departureTime ? new Date(s.departureTime).toLocaleTimeString("id-ID") : "09:00 WIB",
+          estimatedArrival: s.estimatedArrival ? new Date(s.estimatedArrival).toLocaleTimeString("id-ID") : "09:45 WIB",
+          loadingTemperature: Number(s.initialTempC || 65.0),
+          sealNumber: s.sealNumber || "SEAL-MBG-001",
+          status: s.status || "IN_TRANSIT",
+          podStatus: s.status === "DELIVERED" ? "VERIFIED" : "PENDING",
+        }));
+        setShipments(mapped);
+      }
+    } catch {
+      // demo fallback
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchShipments();
+  }, []);
 
   // Modals state
   const [isCreateOpen, setIsCreateOpen] = useState(false);
@@ -144,8 +183,23 @@ export const ShipmentManagement: React.FC = () => {
     return matchesSearch;
   });
 
-  const handleNewShipment = (newShipment: Shipment) => {
+  const handleNewShipment = async (newShipment: Shipment) => {
     setShipments((prev) => [newShipment, ...prev]);
+    try {
+      await logisticsService.createShipment({
+        waybillNumber: newShipment.waybillNumber,
+        driverName: newShipment.driverName,
+        driverPhone: newShipment.driverPhone,
+        vehiclePlate: newShipment.fleetVehicle,
+        targetSchool: newShipment.schoolName,
+        portionCount: newShipment.portions,
+        departureTime: new Date().toISOString(),
+        estimatedArrival: new Date(Date.now() + 45 * 60000).toISOString(),
+        initialTempC: newShipment.loadingTemperature,
+      });
+    } catch {
+      // demo mode
+    }
   };
 
   const handleUpdateStatus = (shipmentId: string, newStatus: Shipment["status"]) => {

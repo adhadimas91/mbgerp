@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Badge from "../ui/badge/Badge";
 import StockMovementModal from "./StockMovementModal";
+import inventoryService from "@/services/inventory.service";
 
 export interface StockItem {
   id: string;
@@ -61,21 +62,20 @@ const initialStocks: StockItem[] = [
   },
   {
     id: "STK-1004",
-    name: "Susu Sapi Murni Pasteurisasi MBG",
-    category: "Susu & Olahan",
-    warehouse: "Cold Storage Susu (Chiller 02)",
-    storageType: "COLD_STORAGE",
-    currentQuantity: 6200,
-    minThreshold: 2000,
-    unit: "Liter",
-    batchNumber: "LOT-20260227-SSU",
-    expiryDate: "2026-03-04",
-    storageTemp: "3.2°C",
+    name: "Minyak Goreng Sawit Kelapa Sawit",
+    category: "Bumbu & Minyak",
+    warehouse: "Gudang Kering Karawang A",
+    storageType: "DRY_STORAGE",
+    currentQuantity: 2400,
+    minThreshold: 800,
+    unit: "liter",
+    batchNumber: "LOT-20260110-MYK",
+    expiryDate: "2026-12-31",
     status: "SAFE",
   },
   {
     id: "STK-1005",
-    name: "Bayam Hidroponik Segar MBG",
+    name: "Bayam Hijau Organik Lembang",
     category: "Sayuran & Buah",
     warehouse: "Chiller Sayuran Segar (6°C)",
     storageType: "COLD_STORAGE",
@@ -119,10 +119,51 @@ const initialStocks: StockItem[] = [
 
 export const InventoryTable: React.FC = () => {
   const [stocks, setStocks] = useState<StockItem[]>(initialStocks);
+  const [isLoading, setIsLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [selectedStorage, setSelectedStorage] = useState("ALL");
   const [isMovementModalOpen, setIsMovementModalOpen] = useState(false);
+
+  const fetchStocks = async () => {
+    setIsLoading(true);
+    try {
+      const data = await inventoryService.getStocks();
+      if (Array.isArray(data) && data.length > 0) {
+        const mapped: StockItem[] = data.map((item: any) => {
+          const qty = Number(item.quantity ?? item.currentQuantity ?? 1000);
+          const min = Number(item.minThreshold ?? 500);
+          let status: "SAFE" | "LOW_STOCK" | "CRITICAL" = "SAFE";
+          if (qty <= min * 0.5) status = "CRITICAL";
+          else if (qty <= min) status = "LOW_STOCK";
+
+          return {
+            id: item.code || item.id || "STK-00",
+            name: item.name || item.product?.name || "Komoditas Bahan Baku",
+            category: (item.category || item.product?.category || "Protein Hewani") as any,
+            warehouse: item.warehouse?.name || item.warehouseName || "Gudang Utama SPPG",
+            storageType: (item.storageType || item.product?.storageType || "DRY_STORAGE") as any,
+            currentQuantity: qty,
+            minThreshold: min,
+            unit: item.unit || item.product?.unit || "kg",
+            batchNumber: item.batchNumber || "LOT-202602-BGN",
+            expiryDate: item.expiryDate ? new Date(item.expiryDate).toISOString().split("T")[0] : "2026-06-30",
+            storageTemp: item.storageTemp || (item.storageType === "COLD_STORAGE" ? "3.2°C" : undefined),
+            status: item.status || status,
+          };
+        });
+        setStocks(mapped);
+      }
+    } catch {
+      // Fallback
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchStocks();
+  }, []);
 
   const filteredStocks = stocks.filter((item) => {
     const matchSearch =
@@ -134,7 +175,7 @@ export const InventoryTable: React.FC = () => {
     return matchSearch && matchCat && matchStorage;
   });
 
-  const handleAddMovement = (movement: any) => {
+  const handleAddMovement = async (movement: any) => {
     // In demo mode, reflect stock adjustments
     if (movement.type === "IN") {
       setStocks((prev) =>
@@ -152,6 +193,18 @@ export const InventoryTable: React.FC = () => {
             : s
         )
       );
+    }
+
+    try {
+      await inventoryService.recordMovement({
+        productId: movement.productId || "PROD-001",
+        type: movement.type,
+        quantity: Number(movement.quantity),
+        temperature: movement.temperature ? Number(movement.temperature) : undefined,
+        notes: movement.notes,
+      });
+    } catch {
+      // demo mode fallback
     }
   };
 

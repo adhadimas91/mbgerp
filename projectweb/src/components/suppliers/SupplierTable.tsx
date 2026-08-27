@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Badge from "../ui/badge/Badge";
 import SupplierRegistrationModal from "./SupplierRegistrationModal";
+import supplierService from "@/services/supplier.service";
 
 export interface SupplierData {
   id: string;
@@ -83,15 +84,29 @@ const initialSuppliers: SupplierData[] = [
     phone: "0812-7788-9900",
     email: "anita@nusantaradairy.id",
     status: "APPROVED",
-    rating: 4.95,
-    dailyCapacity: "4.500 Liter/hari",
-    certifications: ["ISO 22000", "ISO 9001", "Halal MUI", "BPOM"],
+    rating: 4.9,
+    dailyCapacity: "5.000 liter/hari",
+    certifications: ["ISO 22000", "Halal MUI", "HACCP"],
     address: "Pangalengan, Kabupaten Bandung",
-    lastAuditDate: "10 Feb 2026",
+    lastAuditDate: "28 Jan 2026",
   },
   {
     id: "SUP-106",
-    name: "UD. Mina Bahari Laut Kidul",
+    name: "UD. Bumbu Rempah Alami Mandiri",
+    category: "Bumbu & Rempah",
+    contactPerson: "Mansyur Hidayat",
+    phone: "0819-3344-5566",
+    email: "mansyur@rempahalami.co.id",
+    status: "APPROVED",
+    rating: 4.6,
+    dailyCapacity: "800 kg/hari",
+    certifications: ["P-IRT", "Halal MUI"],
+    address: "Pasar Induk Kramat Jati, Jakarta Timur",
+    lastAuditDate: "10 Feb 2026",
+  },
+  {
+    id: "SUP-107",
+    name: "Koperasi Nelayan Mina Bahari",
     category: "Protein Hewani",
     contactPerson: "Agus Salim",
     phone: "0813-5566-7788",
@@ -107,11 +122,45 @@ const initialSuppliers: SupplierData[] = [
 
 export const SupplierTable: React.FC = () => {
   const [suppliers, setSuppliers] = useState<SupplierData[]>(initialSuppliers);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("ALL");
   const [selectedStatus, setSelectedStatus] = useState<string>("ALL");
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [selectedSupplierDetail, setSelectedSupplierDetail] = useState<SupplierData | null>(null);
+
+  const fetchSuppliers = async () => {
+    setIsLoading(true);
+    try {
+      const data = await supplierService.getAll();
+      if (Array.isArray(data) && data.length > 0) {
+        // Map backend model to frontend schema
+        const mapped: SupplierData[] = data.map((item: any) => ({
+          id: item.code || item.id,
+          name: item.name,
+          category: item.category || "Protein Hewani",
+          contactPerson: item.contactPerson || item.picName || "PIC Vendor",
+          phone: item.phone || "0812-xxxx",
+          email: item.email || "vendor@mbg.id",
+          status: item.status || "APPROVED",
+          rating: item.rating ? Number(item.rating) : 4.8,
+          dailyCapacity: item.dailyCapacity || "3.000 kg/hari",
+          certifications: item.certificates?.map((c: any) => c.certType || c.name) || ["ISO 22000", "Halal"],
+          address: item.address || "Jakarta",
+          lastAuditDate: item.updatedAt ? new Date(item.updatedAt).toLocaleDateString("id-ID") : "15 Jan 2026",
+        }));
+        setSuppliers(mapped);
+      }
+    } catch {
+      // Graceful fallback to initialSuppliers
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchSuppliers();
+  }, []);
 
   const filteredSuppliers = suppliers.filter((sup) => {
     const matchSearch =
@@ -125,16 +174,36 @@ export const SupplierTable: React.FC = () => {
     return matchSearch && matchCategory && matchStatus;
   });
 
-  const handleAddSupplier = (newSup: SupplierData) => {
+  const handleAddSupplier = async (newSup: SupplierData) => {
     setSuppliers([newSup, ...suppliers]);
+    try {
+      await supplierService.create({
+        name: newSup.name,
+        category: newSup.category,
+        contactPerson: newSup.contactPerson,
+        phone: newSup.phone,
+        email: newSup.email,
+        address: newSup.address,
+        dailyCapacity: newSup.dailyCapacity,
+        certifications: newSup.certifications,
+        status: newSup.status,
+      });
+    } catch (err) {
+      console.warn("Backend save skipped in demo mode", err);
+    }
   };
 
-  const handleToggleStatus = (id: string, newStatus: "APPROVED" | "PENDING" | "REJECTED") => {
+  const handleToggleStatus = async (id: string, newStatus: "APPROVED" | "PENDING" | "REJECTED") => {
     setSuppliers(
       suppliers.map((s) => (s.id === id ? { ...s, status: newStatus } : s))
     );
     if (selectedSupplierDetail && selectedSupplierDetail.id === id) {
       setSelectedSupplierDetail({ ...selectedSupplierDetail, status: newStatus });
+    }
+    try {
+      await supplierService.verify(id, { status: newStatus });
+    } catch {
+      // offline fallback
     }
   };
 

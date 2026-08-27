@@ -20,7 +20,7 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - **Modul 9: Pengguna & Sistem (RBAC):** ✅ Selesai (100% - UI, RBAC Matrix, Session & Cetak SK)
 - **Backend Architecture (`projectapi`):** ✅ Selesai (100% - NestJS + Prisma ORM + 10 Domain REST API)
 - **Database Schema & Seeder:** ✅ Selesai (100% - PostgreSQL Prisma Schema 10 Domain + Seed Data Riil)
-
+- **Fullstack Dynamic Data Binding (`projectweb` ↔ `projectapi`):** ✅ Selesai (100% - Axios Client, AuthContext, Live Status Badge, 10 Domain Services & Dynamic Component Hooks)
 
 ---
 
@@ -31,7 +31,7 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 - [x] Folder `uiweb` dipertahankan 100% utuh sebagai acuan desain murni.
 - [x] Desain dan integrasi aset Logo ERP MBG (Light, Dark, dan Icon mode).
 - [x] Kustomisasi navigasi sidebar `AppSidebar.tsx` untuk 9 modul ERP MBG.
-- [x] Kustomisasi header `AppHeader.tsx` dengan pencarian cepat (`Ctrl+K`) & badge Admin Pusat.
+- [x] Kustomisasi header `AppHeader.tsx` dengan pencarian cepat (`Ctrl+K`), live backend health status badge, & quick role simulation switcher (10 akun BGN).
 - [x] Pembuatan widget status kepatuhan ISO 22000, 9001, 27001 di sidebar.
 - [x] Pembuatan layout standar submodul `ModulePageLayout.tsx`.
 - [x] Pembuatan 26 halaman rute submodul (bebas dari error 404).
@@ -40,7 +40,32 @@ Dokumen ini memuat daftar periksa (*checklist*) komprehensif seluruh modul, fitu
 
 ---
 
-### 📦 Modul 1: Supplier & Vendor Management (`03_MODULE_SUPPLIER_MGMT.md`)
+### 🌐 Layer Integrasi Frontend-Backend (`projectweb/src/services` & `projectweb/src/context`)
+- [x] **Axios HTTP Client (`lib/api.ts`):** Request interceptor token JWT Bearer, response transformer, error handler, dan timeout protection.
+- [x] **Auth Context & Role Switcher (`context/AuthContext.tsx`):** Manajemen login/logout, token storage, izin granular RBAC, serta simulasi pergantian 8-10 peran BGN secara instan.
+- [x] **Live Backend Health Indicator (`BackendStatusBadge.tsx`):** Telemetri liveness backend `/api/v1/health` dengan visualisasi hijau/kuning dan auto-fallback ke mode data simulasi cerdas saat offline.
+- [x] **10 Modular API Services:**
+  - `supplierService` (CRUD rekanan, filter komoditas, verifikasi ISO/Halal)
+  - `inventoryService` (Stok, mutasi masuk/keluar, IoT Cold Chain)
+  - `kitchenService` (Batch masak SPPG, CCP HACCP, organoleptik, requisition slip)
+  - `menuService` (Resep, kalkulasi makronutrisi AKG, analisis biaya HPP)
+  - `logisticsService` (Titik distribusi sekolah, armada termal, waybill, live tracking, PoD)
+  - `financeService` (Realisasi DPA APBN, BKK, faktur rekanan, SP2D, rekonsiliasi bank)
+  - `assetService` (Master aset, depresiasi garis lurus, work order servis, sanitasi alat)
+  - `complianceService` (Log audit forensik SHA-256 diff, matriks ISO, form CAPA)
+  - `employeeService` (Direktori staf, presensi higiene gatekeeper, payroll slip)
+  - `userService` (Master akun, assign role, revoke active session)
+
+---
+
+## 🎯 Pilihan Prioritas untuk Task Selanjutnya
+
+1. **Opsi 1: Interactive GIS Live Command Center & Nutrition Analytics Center**
+   - Mengembangkan GIS Command Center interaktif di `/dashboard/logistics` dengan simulator pergerakan armada box termal dan AKG Macro/Micro Nutrition Intelligence Center di `/dashboard/nutrition`.
+2. **Opsi 2: Real-time WebSockets & IoT Stream Engine**
+   - Menghubungkan Socket.IO Gateway di NestJS (`projectapi`) dengan listener frontend di Next.js untuk push sensor telemetri cold storage dan lini masak secara live tanpa refresh.
+3. **Opsi 3: End-to-End Testing (Playwright) & CI/CD Pipeline**
+   - Membuat pengujian otomatis alur hulu ke hilir (Order Masak → QC Ahli Gizi → Surat Jalan → BAST Sekolah) dan workflow GitHub Actions.
 - [x] Layout & Rute Halaman Supplier (`/suppliers`, `/verification`, `/catalog`, `/performance`).
 - [x] **Tabel Data Supplier Master (`SupplierTable.tsx`):** Filter status (Approved, Pending, Rejected), filter kategori komoditas, pencarian instan, dan rating bintang.
 - [x] **Form Registrasi Vendor (`SupplierRegistrationModal.tsx`):** NIB, NPWP, legalitas usaha, kapasitas suplai harian, dan upload dokumen sertifikat.
