@@ -23,7 +23,7 @@ export class MenuController {
     return this.menuService.getRecipe(id);
   }
 
-  @Get('daily-plans')
+  @Get(['daily-plans', 'daily-menus'])
   @ApiOperation({ summary: 'Kalender perencanaan siklus menu harian' })
   async getDailyMenus() {
     return this.menuService.getDailyMenus();

@@ -20,11 +20,19 @@ Repository ini terdiri dari beberapa direktori utama:
 ## 🚀 Memulai Proyek (Development Setup)
 
 ### 1. Menjalankan Backend API (`projectapi`)
+> 📖 Panduan lengkap & troubleshooting database: [`PANDUAN_MENJALANKAN_PROJECTAPI.md`](file:///d:/dev2026/mbgerp/PANDUAN_MENJALANKAN_PROJECTAPI.md)
+
 ```bash
+# Start PostgreSQL Database (Docker)
+docker compose up -d
+
+# Jalankan Backend API
 cd projectapi
 npm install
 npm run prisma:generate
-npm run start:dev
+npm run prisma:migrate
+npm run prisma:seed
+npm run dev
 ```
 - **API URL:** `http://localhost:4000/api/v1`
 - **Swagger Docs:** `http://localhost:4000/api/docs`

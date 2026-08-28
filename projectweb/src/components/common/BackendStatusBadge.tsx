@@ -23,7 +23,12 @@ export default function BackendStatusBadge() {
       const res = await apiClient.get("/health", { timeout: 3000 });
       const data = res.data?.data || res.data;
       setHealth(data);
-      setIsOnline(data?.status === "ok" || data?.database?.connected === true);
+      const isHealthy =
+        data?.status === "ok" ||
+        data?.status === "UP" ||
+        data?.database?.connected === true ||
+        data?.components?.database?.status === "HEALTHY";
+      setIsOnline(isHealthy);
     } catch (err) {
       setIsOnline(false);
     } finally {

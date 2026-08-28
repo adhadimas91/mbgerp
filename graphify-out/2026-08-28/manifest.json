@@ -1122,9 +1122,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/components/common/BrandLogo.tsx": {
-    "mtime": 1787883281.2946515,
-    "seen": 1787884495.8707082,
-    "ast_hash": "c9b2ff189654152c80c96b48cc9affa3",
+    "mtime": 1787837206.314229,
+    "seen": 1787837248.1744874,
+    "ast_hash": "6976112a3cbcf64c43d437e3bf26ff5c",
     "semantic_hash": ""
   },
   "projectweb/src/components/common/ChartTab.tsx": {
@@ -1518,9 +1518,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/components/user-profile/UserMetaCard.tsx": {
-    "mtime": 1787883281.3140066,
-    "seen": 1787884495.8717108,
-    "ast_hash": "a174a007b95d408cd32fe8bdf16db3f6",
+    "mtime": 1787837206.3161864,
+    "seen": 1787837248.1744874,
+    "ast_hash": "c9ce42e72d2d6c81fb4d89cfe485b677",
     "semantic_hash": ""
   },
   "projectweb/src/components/videos/FourIsToThree.tsx": {
@@ -1572,9 +1572,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/icons/index.tsx": {
-    "mtime": 1787883281.3150144,
-    "seen": 1787884495.8717108,
-    "ast_hash": "35bd2ada4128e38d2b98416aec4d5941",
+    "mtime": 1787837206.3171878,
+    "seen": 1787837248.1744874,
+    "ast_hash": "ca4742fc718b7da4a5513f0b64cef25a",
     "semantic_hash": ""
   },
   "projectweb/src/layout/AppHeader.tsx": {
@@ -1596,15 +1596,15 @@
     "semantic_hash": ""
   },
   "projectweb/src/layout/SidebarWidget.tsx": {
-    "mtime": 1787883281.3150144,
-    "seen": 1787884495.8717108,
-    "ast_hash": "7ab66d21910a8e95ea76bc8fd1c17974",
+    "mtime": 1787837206.3181922,
+    "seen": 1787837248.1744874,
+    "ast_hash": "68657c6d5016c6cc704b25e945203c3e",
     "semantic_hash": ""
   },
   "projectweb/src/svg.d.ts": {
-    "mtime": 1787883375.307955,
-    "seen": 1787884495.8717108,
-    "ast_hash": "43ab4a559a8ef4ab84f9b70a3c0262e0",
+    "mtime": 1787837195.9314396,
+    "seen": 1787837248.1744874,
+    "ast_hash": "6a2f8b5d42be17ed0a867c2d6c90ae20",
     "semantic_hash": ""
   },
   "projectweb/tsconfig.json": {
@@ -3696,9 +3696,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/components/suppliers/SupplierCatalogGrid.tsx": {
-    "mtime": 1787883281.3130028,
-    "seen": 1787884495.8717108,
-    "ast_hash": "e21b8e6ecae1f27134d9d8a86a5483b8",
+    "mtime": 1787837206.3152206,
+    "seen": 1787837248.1744874,
+    "ast_hash": "02b78666df1269613c0b18d86baf1d03",
     "semantic_hash": ""
   },
   "projectweb/src/components/suppliers/SupplierPerformanceScorecard.tsx": {
@@ -4332,9 +4332,9 @@
     "semantic_hash": ""
   },
   "projectapi/package.json": {
-    "mtime": 1787884459.724618,
-    "seen": 1787884495.8707082,
-    "ast_hash": "78b08d4f35d5a4a2bae8b0b1be39e4a9",
+    "mtime": 1787834730.632049,
+    "seen": 1787834956.8044834,
+    "ast_hash": "1b072d57a95108c7bf3c277cc4ee97aa",
     "semantic_hash": ""
   },
   "projectapi/prisma/seed.ts": {
@@ -4428,9 +4428,9 @@
     "semantic_hash": ""
   },
   "projectapi/src/modules/compliance/compliance.controller.ts": {
-    "mtime": 1787883473.8638704,
-    "seen": 1787884495.8707082,
-    "ast_hash": "146ff66aaababc750306a5d78a33da99",
+    "mtime": 1787834324.7881033,
+    "seen": 1787834557.1648488,
+    "ast_hash": "32cd765c0e03f55dc33104d152d22a60",
     "semantic_hash": ""
   },
   "projectapi/src/modules/compliance/compliance.module.ts": {
@@ -4464,9 +4464,9 @@
     "semantic_hash": ""
   },
   "projectapi/src/modules/finance/finance.controller.ts": {
-    "mtime": 1787883482.6644263,
-    "seen": 1787884495.8707082,
-    "ast_hash": "5a0433f0d456a23ca28de6a1a982d7e6",
+    "mtime": 1787834312.7193637,
+    "seen": 1787834557.1648488,
+    "ast_hash": "c51e92c72a9657943efbc115366c320c",
     "semantic_hash": ""
   },
   "projectapi/src/modules/finance/finance.module.ts": {
@@ -4548,9 +4548,9 @@
     "semantic_hash": ""
   },
   "projectapi/src/modules/menu/menu.controller.ts": {
-    "mtime": 1787883478.4386513,
-    "seen": 1787884495.8707082,
-    "ast_hash": "bd91a807e5c523e29c8064a7739289a7",
+    "mtime": 1787834241.851116,
+    "seen": 1787834557.1648488,
+    "ast_hash": "d18bcc9202498ccccee7d30bcffad262",
     "semantic_hash": ""
   },
   "projectapi/src/modules/menu/menu.module.ts": {
@@ -4566,9 +4566,9 @@
     "semantic_hash": ""
   },
   "projectapi/src/modules/suppliers/suppliers.controller.ts": {
-    "mtime": 1787883469.5378983,
-    "seen": 1787884495.8707082,
-    "ast_hash": "d38d1f31144ea6ccce67f3772f2cb1e4",
+    "mtime": 1787834213.7945518,
+    "seen": 1787834557.1648488,
+    "ast_hash": "b5facd876e1c851802192dd409e9b662",
     "semantic_hash": ""
   },
   "projectapi/src/modules/suppliers/suppliers.module.ts": {
@@ -4650,9 +4650,9 @@
     "semantic_hash": ""
   },
   "projectweb/src/components/common/BackendStatusBadge.tsx": {
-    "mtime": 1787883454.5055528,
-    "seen": 1787884495.8707082,
-    "ast_hash": "6cca14d6a5a5f9798384ee608216514e",
+    "mtime": 1787837195.553869,
+    "seen": 1787837248.1744874,
+    "ast_hash": "8afc86a446c43e83f1d1080e3ed53035",
     "semantic_hash": ""
   },
   "projectweb/src/context/AuthContext.tsx": {

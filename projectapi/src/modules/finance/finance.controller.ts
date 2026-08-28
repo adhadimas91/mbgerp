@@ -11,7 +11,7 @@ import { BudgetCategory, PaymentStatus } from '@prisma/client';
 export class FinanceController {
   constructor(private readonly financeService: FinanceService) {}
 
-  @Get('overview')
+  @Get(['overview', 'reports'])
   @ApiOperation({ summary: 'Ringkasan eksekutif realisasi anggaran & serapan APBN' })
   async getOverview() {
     return this.financeService.getFinancialOverview();

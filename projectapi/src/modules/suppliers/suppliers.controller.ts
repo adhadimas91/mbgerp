@@ -21,7 +21,7 @@ export class SuppliersController {
     return this.suppliersService.findAll({ status, tier, search });
   }
 
-  @Get('scorecard')
+  @Get(['scorecard', 'scorecards'])
   @ApiOperation({ summary: 'Ringkasan evaluasi skor KPI performa & mutu vendor' })
   async getScorecard() {
     return this.suppliersService.getScorecardSummary();

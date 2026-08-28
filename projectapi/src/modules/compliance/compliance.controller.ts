@@ -26,7 +26,7 @@ export class ComplianceController {
     return this.complianceService.getQualityIncidents();
   }
 
-  @Get('iso-overview')
+  @Get(['iso-overview', 'iso-standards'])
   @ApiOperation({ summary: 'Matriks kepatuhan standar ISO 22000, 9001, 27001 & Halal' })
   async getIsoOverview() {
     return this.complianceService.getIsoComplianceOverview();

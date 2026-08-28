@@ -1,16 +1,16 @@
-# Graph Report - mbgerp  (2026-08-28)
+# Graph Report - mbgerp  (2026-08-27)
 
 ## Corpus Check
-- 449 files · ~866,935 words
+- 449 files · ~864,742 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2016 nodes · 3129 edges · 172 communities (117 shown, 55 thin omitted)
+- 2005 nodes · 3098 edges · 161 communities (117 shown, 44 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 30 edges (avg confidence: 0.84)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `be0df3b4`
+- Built from commit: `7b86a70c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -20,18 +20,18 @@
 - dependencies
 - Database Schema Design
 - useModal
-- uiweb/src/app/(admin)/page.tsx
+- uiweb/src/components/ecommerce/RecentOrders.tsx
 - compilerOptions
 - uiweb/src/components/common/PageBreadCrumb.tsx
 - projectweb/src/context/ThemeContext.tsx
 - devDependencies
 - verification/page.tsx
-- FinanceOverviewDashboard.tsx
+- projectweb/src/components/calendar/Calendar.tsx
 - projectweb/src/app/(admin)/page.tsx
 - projectweb/src/components/tables/BasicTableOne.tsx
 - AssetRegistryTable.tsx
 - Changelog
-- projectweb/src/app/(admin)/(others-pages)/(forms)/form-elements/page.tsx
+- projectweb/src/components/common/ComponentCard.tsx
 - ERP MBG System Overview
 - uiweb/src/components/common/ComponentCard.tsx
 - Deployment, High Availability & Scalability
@@ -55,14 +55,14 @@
 - BudgetManagement.tsx
 - RoleManagementDashboard.tsx
 - HygieneInspectionsAudit.tsx
-- projectweb/src/components/common/ComponentCard.tsx
-- InventoryService
+- uiweb/src/components/ecommerce/DemographicCard.tsx
+- uiweb/src/components/ecommerce/CountryMap.tsx
 - api.ts
 - projectweb/src/app/(admin)/(ui-elements)/images/page.tsx
 - projectweb/src/app/(admin)/(ui-elements)/videos/page.tsx
-- catalog/page.tsx
+- ModulePageLayout
 - .login
-- LogisticsService
+- uiweb/src/context/ThemeContext.tsx
 - EmployeeRegistryTable.tsx
 - AuthContext.tsx
 - proof-of-delivery/page.tsx
@@ -83,7 +83,7 @@
 - projectweb/src/components/form/form-elements/SelectInputs.tsx
 - 🌐 3. Katalog Endpoint REST API
 - FinanceController
-- projectweb/src/components/ui/badge/Badge.tsx
+- RecipeBuilder.tsx
 - uiweb/src/components/form/form-elements/SelectInputs.tsx
 - uiweb/package.json
 - SupplierTable.tsx
@@ -98,19 +98,19 @@
 - projectweb/eslint.config.mjs
 - projectweb/jsvectormap.d.ts
 - projectweb/next.config.ts
-- projectweb/src/components/ui/button/Button.tsx
+- projectweb/src/components/ui/badge/Badge.tsx
 - inventory/alerts/page.tsx
 - PrismaService
 - projectweb/src/layout/AppHeader.tsx
 - EmployeesController
-- projectweb/package.json
+- projectweb/src/app/(full-width-pages)/(error-pages)/error-404/page.tsx
 - KitchenController
 - LogisticsController
-- projectweb/src/components/form/Label.tsx
+- useModal
 - MenuController
 - IncidentReportManagement.tsx
 - IsoComplianceMatrix.tsx
-- projectweb/src/app/(admin)/(ui-elements)/avatars/page.tsx
+- uiweb/src/app/(admin)/page.tsx
 - AuditLogViewer.tsx
 - SuppliersController
 - ComplianceController
@@ -118,7 +118,7 @@
 - InventoryController
 - UsersController
 - UserSecuritySessionsModal.tsx
-- overrides
+- app.module.ts
 - compilerOptions
 - ModulePageLayout.tsx
 - scripts
@@ -131,25 +131,25 @@
 - overrides
 - nest-cli.json
 - DistributionPointsTable.tsx
-- .check
+- HealthController
 - ERP MBG — Sistem Manajemen Makanan Bergizi Gratis Nasional
 - test-api.ts
-- users/page.tsx
+- uiweb/src/app/(full-width-pages)/(error-pages)/error-404/page.tsx
 - seed.ts
 - menu/page.tsx
 - cost-analysis/page.tsx
-- distribution-points/page.tsx
+- @nestjs/cli
 - @nestjs/testing
-- shipments/page.tsx
-- recipes/page.tsx
+- ts-node
+- @types/bcrypt
 - @types/node
 - typescript
-- prisma
+- RolePermissionMatrixModal.tsx
 - uiweb/src/app/(admin)/(others-pages)/(chart)/bar-chart/page.tsx
 - scripts
-- source-map-support
-- ts-loader
-- autoprefixer
+- NotificationDropdown
+- NotificationDropdown
+- UserDropdown
 - flatpickr
 - @fullcalendar/daygrid
 - @fullcalendar/react
@@ -159,41 +159,30 @@
 - @react-jvectormap/world
 - tailwind-merge
 - @tailwindcss/postcss
-- flatpickr
-- @fullcalendar/core
-- @fullcalendar/list
-- @fullcalendar/react
-- @fullcalendar/timegrid
-- react
-- react-dnd
-- react-dom
-- @react-jvectormap/world
-- tailwind-merge
-- @tailwindcss/forms
 
 ## God Nodes (most connected - your core abstractions)
 1. `ModulePageLayout()` - 36 edges
 2. `PrismaService` - 32 edges
 3. `ComponentCard()` - 24 edges
 4. `ComponentCard()` - 24 edges
-5. `Badge()` - 22 edges
-6. `Button()` - 22 edges
+5. `Badge()` - 21 edges
+6. `Button()` - 21 edges
 7. `compilerOptions` - 19 edges
-8. `Modal()` - 19 edges
-9. `useModal()` - 19 edges
-10. `useModal()` - 19 edges
+8. `useModal()` - 19 edges
+9. `Modal()` - 18 edges
+10. `useModal()` - 17 edges
 
 ## Surprising Connections (you probably didn't know these)
+- `RolePermissionMatrixModalProps` --references--> `UserAccount`  [EXTRACTED]
+  projectweb/src/components/settings/RolePermissionMatrixModal.tsx → projectweb/src/components/settings/UserManagementTable.tsx
+- `UserSecuritySessionsModalProps` --references--> `UserAccount`  [EXTRACTED]
+  projectweb/src/components/settings/UserSecuritySessionsModal.tsx → projectweb/src/components/settings/UserManagementTable.tsx
 - `Fixed Asset Management Module` --shares_data_with--> `Fixed Assets & Maintenance Schema`  [INFERRED]
   task_md/12_MODULE_ASSET_MGMT.md → task_md/02_DATABASE_SCHEMA.md
 - `Audit Trail & Tamper-Proof Logging Module` --implements--> `Audit Logs Schema`  [INFERRED]
   task_md/10_AUDIT_TRAIL_MGMT.md → task_md/02_DATABASE_SCHEMA.md
 - `Inventory & Warehouse Management Module` --shares_data_with--> `Warehouse & Stocks Schema`  [INFERRED]
   task_md/04_MODULE_INVENTORY_MGMT.md → task_md/02_DATABASE_SCHEMA.md
-- `ISO 27001 Information Security & Encryption` --conceptually_related_to--> `Audit Trail & Tamper-Proof Logging Module`  [INFERRED]
-  task_md/11_ISO_COMPLIANCE_&_QUALITY.md → task_md/10_AUDIT_TRAIL_MGMT.md
-- `AdminLayout()` --calls--> `useSidebar()`  [EXTRACTED]
-  projectweb/src/app/(admin)/layout.tsx → projectweb/src/context/SidebarContext.tsx
 
 ## Import Cycles
 - None detected.
@@ -202,15 +191,15 @@
 - **MBG Governance, Audit Trail & ISO Compliance Framework** — task_md_07_module_finansial_budget_finance_module, task_md_10_audit_trail_mgmt_audit_module, task_md_11_iso_compliance_quality_compliance_module, task_md_08_module_dashboard_report_dashboard_module [INFERRED 0.85]
 - **MBG End-to-End Supply Chain & Distribution Pipeline** — task_md_03_module_supplier_mgmt_supplier_management, task_md_04_module_inventory_mgmt_inventory_management, task_md_05_module_menu_nutrisi_menu_management, task_md_06_module_logistik_distribusi_logistics_module [INFERRED 0.85]
 
-## Communities (172 total, 55 thin omitted)
+## Communities (161 total, 44 thin omitted)
 
 ### Community 0 - "uiweb/src/components/form/Label.tsx"
 Cohesion: 0.14
 Nodes (13): metadata, metadata, SignInForm(), SignUpForm(), DatePicker(), PropsType, CountryCode, PhoneInput() (+5 more)
 
 ### Community 1 - "uiweb/src/layout/AppHeader.tsx"
-Cohesion: 0.07
-Nodes (24): AdminLayout(), metadata, outfit, GridShape(), ThemeToggleButton(), ThemeTogglerTwo(), NotificationDropdown(), UserDropdown() (+16 more)
+Cohesion: 0.23
+Nodes (11): AdminLayout(), SidebarContext, SidebarContextType, useSidebar(), AppHeader(), AppSidebar(), NavItem, navItems (+3 more)
 
 ### Community 2 - "dependencies"
 Cohesion: 0.07
@@ -224,9 +213,9 @@ Nodes (44): Fixed Assets & Maintenance Schema, Audit Logs Schema, Budget & Payme
 Cohesion: 0.14
 Nodes (17): metadata, metadata, metadata, CalendarEvent, DefaultModal(), FormInModal(), FullScreenModal(), ModalBasedAlerts() (+9 more)
 
-### Community 5 - "uiweb/src/app/(admin)/page.tsx"
-Cohesion: 0.05
-Nodes (40): metadata, ChartTab(), CountryMap(), CountryMapProps, Marker, MarkerStyle, VectorMap, DemographicCard() (+32 more)
+### Community 5 - "uiweb/src/components/ecommerce/RecentOrders.tsx"
+Cohesion: 0.13
+Nodes (20): Product, tableData, BasicTableOne(), Order, tableData, Badge(), BadgeColor, BadgeProps (+12 more)
 
 ### Community 6 - "compilerOptions"
 Cohesion: 0.07
@@ -237,8 +226,8 @@ Cohesion: 0.07
 Nodes (18): metadata, metadata, metadata, metadata, metadata, metadata, Calendar(), LineChartOne() (+10 more)
 
 ### Community 8 - "projectweb/src/context/ThemeContext.tsx"
-Cohesion: 0.16
-Nodes (9): metadata, GridShape(), ThemeToggleButton(), ThemeTogglerTwo(), Theme, ThemeContext, ThemeContextType, ThemeProvider() (+1 more)
+Cohesion: 0.27
+Nodes (7): ThemeToggleButton(), ThemeTogglerTwo(), Theme, ThemeContext, ThemeContextType, ThemeProvider(), useTheme()
 
 ### Community 9 - "devDependencies"
 Cohesion: 0.09
@@ -248,17 +237,17 @@ Nodes (23): devDependencies, eslint, eslint-config-next, @eslint/eslintrc, postc
 Cohesion: 0.33
 Nodes (4): metadata, initialQueue, SupplierVerificationQueue(), VerificationItem
 
-### Community 11 - "FinanceOverviewDashboard.tsx"
-Cohesion: 0.12
-Nodes (14): metadata, BrandLogo(), BrandLogoProps, FinanceOverviewDashboard(), ReactApexChart, RECENT_TRANSACTIONS, REGIONAL_BUDGETS, RegionalData (+6 more)
+### Community 11 - "projectweb/src/components/calendar/Calendar.tsx"
+Cohesion: 0.33
+Nodes (3): metadata, Calendar(), CalendarEvent
 
 ### Community 12 - "projectweb/src/app/(admin)/page.tsx"
-Cohesion: 0.12
-Nodes (9): metadata, DemographicCard(), MonthlySalesChart(), MonthlyTarget(), MbgMetrics(), MbgNutritionGauge(), MbgRecentShipments(), mockShipments (+1 more)
+Cohesion: 0.13
+Nodes (7): metadata, DemographicCard(), MonthlySalesChart(), MonthlyTarget(), MbgRecentShipments(), mockShipments, ShipmentItem
 
 ### Community 13 - "projectweb/src/components/tables/BasicTableOne.tsx"
-Cohesion: 0.14
-Nodes (16): metadata, Product, tableData, BasicTableOne(), Order, tableData, Table(), TableBody() (+8 more)
+Cohesion: 0.18
+Nodes (14): Product, tableData, Order, tableData, Table(), TableBody(), TableBodyProps, TableCell() (+6 more)
 
 ### Community 14 - "AssetRegistryTable.tsx"
 Cohesion: 0.11
@@ -268,9 +257,9 @@ Nodes (19): metadata, metadata, AssetDetailModal(), AssetDetailModalProps, Asset
 Cohesion: 0.06
 Nodes (31): Breaking Changes, Changelog, Cloning the Repository, Components, Demos, Feature Comparison, Free Version, Installation (+23 more)
 
-### Community 16 - "projectweb/src/app/(admin)/(others-pages)/(forms)/form-elements/page.tsx"
-Cohesion: 0.10
-Nodes (17): metadata, DefaultInputs(), DropzoneComponent(), FileInputExample(), InputGroup(), InputStates(), RadioButtons(), TextAreaInput() (+9 more)
+### Community 16 - "projectweb/src/components/common/ComponentCard.tsx"
+Cohesion: 0.07
+Nodes (28): metadata, metadata, BarChartOne(), ReactApexChart, ComponentCard(), ComponentCardProps, CheckboxComponents(), DefaultInputs() (+20 more)
 
 ### Community 17 - "ERP MBG System Overview"
 Cohesion: 0.40
@@ -293,20 +282,20 @@ Cohesion: 0.15
 Nodes (14): metadata, BankReconciliationEntry, BankReconciliationModal(), BankReconciliationModalProps, INITIAL_BANK_MUTATIONS, PaymentInvoiceDetailModal(), PaymentInvoiceDetailModalProps, INITIAL_INVOICES (+6 more)
 
 ### Community 41 - "devDependencies"
-Cohesion: 0.09
-Nodes (23): devDependencies, eslint, eslint-config-next, @eslint/eslintrc, postcss, @svgr/webpack, tailwindcss, @types/node (+15 more)
+Cohesion: 0.05
+Nodes (38): devDependencies, eslint, eslint-config-next, @eslint/eslintrc, postcss, @svgr/webpack, tailwindcss, @types/node (+30 more)
 
 ### Community 42 - "🎯 Pilihan Prioritas untuk Task Selanjutnya"
 Cohesion: 0.11
 Nodes (17): 🚀 Backend API & Database Layer (`projectapi`) (`01_TECH_STACK_&_INFRA.md` & `02_DATABASE_SCHEMA.md`), 📋 Checklist Lengkap Modul & Task, 🏗️ Fase 0: Setup Proyek & Arsitektur Frontend UI, 🌐 Layer Integrasi Frontend-Backend (`projectweb/src/services` & `projectweb/src/context`), Master Checklist & Progress Review ERP MBG, 🏬 Modul 2: Gudang & Inventory (`04_MODULE_INVENTORY_MGMT.md`), 🥗 Modul 3: Menu & Nutrisi (`05_MODULE_MENU_&_NUTRISI.md`), 🚚 Modul 4: Logistik & Distribusi (`06_MODULE_LOGISTIK_DISTRIBUSI.md`) (+9 more)
 
 ### Community 43 - "dependencies"
-Cohesion: 0.09
-Nodes (23): axios, dependencies, apexcharts, axios, @fullcalendar/daygrid, @fullcalendar/interaction, next, react-apexcharts (+15 more)
+Cohesion: 0.04
+Nodes (47): axios, dependencies, apexcharts, autoprefixer, axios, flatpickr, @fullcalendar/core, @fullcalendar/daygrid (+39 more)
 
 ### Community 44 - "projectweb/src/components/common/PageBreadCrumb.tsx"
-Cohesion: 0.08
-Nodes (16): metadata, metadata, metadata, metadata, metadata, metadata, Calendar(), CalendarEvent (+8 more)
+Cohesion: 0.07
+Nodes (19): metadata, metadata, metadata, metadata, metadata, metadata, metadata, LineChartOne() (+11 more)
 
 ### Community 45 - "ExpenditureManagement.tsx"
 Cohesion: 0.19
@@ -324,17 +313,17 @@ Nodes (15): metadata, ALL_MODULES, CreateRoleModal(), CreateRoleModalProps, Role
 Cohesion: 0.20
 Nodes (10): metadata, HygieneInspectionDetailModal(), HygieneInspectionDetailModalProps, HygieneInspectionsAudit(), INITIAL_AUDITS, DEFAULT_ITEMS, HygieneAuditData, HygieneInspectionItem (+2 more)
 
-### Community 49 - "projectweb/src/components/common/ComponentCard.tsx"
-Cohesion: 0.29
-Nodes (9): metadata, ComponentCard(), ComponentCardProps, DefaultModal(), FormInModal(), FullScreenModal(), ModalBasedAlerts(), VerticallyCenteredModal() (+1 more)
+### Community 49 - "uiweb/src/components/ecommerce/DemographicCard.tsx"
+Cohesion: 0.33
+Nodes (6): ReactApexChart, ReactApexChart, Dropdown(), DropdownProps, DropdownItem(), DropdownItemProps
 
-### Community 50 - "InventoryService"
-Cohesion: 0.21
-Nodes (4): InventoryModule, Module, InventoryService, Injectable
+### Community 50 - "uiweb/src/components/ecommerce/CountryMap.tsx"
+Cohesion: 0.33
+Nodes (5): CountryMap(), CountryMapProps, Marker, MarkerStyle, VectorMap
 
 ### Community 51 - "api.ts"
-Cohesion: 0.10
-Nodes (18): BackendStatusBadge(), HealthData, apiClient, AssetPayload, assetService, complianceService, IncidentPayload, EmployeePayload (+10 more)
+Cohesion: 0.11
+Nodes (16): BackendStatusBadge(), HealthData, apiClient, AssetPayload, assetService, complianceService, IncidentPayload, EmployeePayload (+8 more)
 
 ### Community 52 - "projectweb/src/app/(admin)/(ui-elements)/images/page.tsx"
 Cohesion: 0.31
@@ -344,41 +333,41 @@ Nodes (4): metadata, ResponsiveImage(), ThreeColumnImageGrid(), TwoColumnImageGr
 Cohesion: 0.28
 Nodes (5): metadata, VideosExample(), AspectRatio, YouTubeEmbed(), YouTubeEmbedProps
 
-### Community 54 - "catalog/page.tsx"
-Cohesion: 0.33
-Nodes (4): metadata, CatalogItem, initialCatalog, SupplierCatalogGrid()
+### Community 54 - "ModulePageLayout"
+Cohesion: 0.15
+Nodes (6): metadata, metadata, metadata, ModulePageLayout(), DistributionPointsTable(), ShipmentManagement()
 
 ### Community 55 - ".login"
-Cohesion: 0.10
+Cohesion: 0.11
 Nodes (19): ApiProperty, Body, Headers, Ip, IsNotEmpty, IsString, MinLength, Post (+11 more)
 
-### Community 56 - "LogisticsService"
-Cohesion: 0.21
-Nodes (4): LogisticsModule, Module, LogisticsService, Injectable
+### Community 56 - "uiweb/src/context/ThemeContext.tsx"
+Cohesion: 0.19
+Nodes (9): outfit, ThemeToggleButton(), ThemeTogglerTwo(), SidebarProvider(), Theme, ThemeContext, ThemeContextType, ThemeProvider() (+1 more)
 
 ### Community 57 - "EmployeeRegistryTable.tsx"
 Cohesion: 0.07
 Nodes (38): AddCertificationModal(), AddCertificationModalProps, CertificationDetailModal(), CertificationDetailModalProps, CertificationMcuMatrix(), EmployeeCertRecord, INITIAL_CERT_RECORDS, CreateShiftModal() (+30 more)
 
 ### Community 58 - "AuthContext.tsx"
-Cohesion: 0.17
-Nodes (10): outfit, UserDropdown(), AuthContext, AuthContextType, AuthProvider(), DEFAULT_BGN_ACCOUNTS, DefaultAccount, useAuth() (+2 more)
+Cohesion: 0.21
+Nodes (8): outfit, AuthContext, AuthContextType, AuthProvider(), DEFAULT_BGN_ACCOUNTS, DefaultAccount, UserProfile, SidebarProvider()
 
 ### Community 60 - "uiweb/src/app/(admin)/(ui-elements)/videos/page.tsx"
 Cohesion: 0.28
 Nodes (5): metadata, VideosExample(), AspectRatio, YouTubeEmbed(), YouTubeEmbedProps
 
 ### Community 62 - "UserManagementTable.tsx"
-Cohesion: 0.15
-Nodes (17): DEFAULT_MODULES, getInitialRolePermissions(), ModulePermission, RolePermissionMatrixModal(), RolePermissionMatrixModalProps, UserAccessReportPrintModal(), UserAccessReportPrintModalProps, UserDetailModal() (+9 more)
+Cohesion: 0.16
+Nodes (14): metadata, UserAccessReportPrintModal(), UserAccessReportPrintModalProps, UserDetailModal(), UserDetailModalProps, UserFormModal(), UserFormModalProps, INITIAL_USERS (+6 more)
 
 ### Community 63 - "InventoryTable.tsx"
 Cohesion: 0.22
 Nodes (6): metadata, metadata, initialStocks, InventoryTable(), StockItem, StockMovementModal()
 
 ### Community 64 - "KitchenOverviewDashboard.tsx"
-Cohesion: 0.12
-Nodes (16): metadata, initialLines, initialOrganoleptic, KitchenOverviewDashboard(), KitchenRequisitionItem, KitchenRequisitionModal(), KitchenRequisitionModalProps, OrganolepticQualityModal() (+8 more)
+Cohesion: 0.06
+Nodes (28): metadata, metadata, FinanceOverviewDashboard(), ReactApexChart, RECENT_TRANSACTIONS, REGIONAL_BUDGETS, RegionalData, FinancialReportLraPrintModal() (+20 more)
 
 ### Community 65 - "2. Struktur Submodul & Fitur Utama"
 Cohesion: 0.22
@@ -389,16 +378,16 @@ Cohesion: 0.12
 Nodes (15): metadata, CostBreakdownItem, KitchenCostAnalysisModal(), KitchenCostAnalysisModalProps, KitchenExpenseItem, KitchenExpenseRecordModal(), KitchenExpenseRecordModalProps, INITIAL_EXPENSES (+7 more)
 
 ### Community 67 - "projectweb/src/components/ecommerce/DemographicCard.tsx"
-Cohesion: 0.24
-Nodes (7): ReactApexChart, ReactApexChart, NotificationDropdown(), Dropdown(), DropdownProps, DropdownItem(), DropdownItemProps
+Cohesion: 0.33
+Nodes (6): ReactApexChart, ReactApexChart, Dropdown(), DropdownProps, DropdownItem(), DropdownItemProps
 
 ### Community 68 - "dependencies"
 Cohesion: 0.06
-Nodes (35): bcrypt, busboy, class-transformer, class-validator, @nestjs/common, @nestjs/config, @nestjs/core, @nestjs/jwt (+27 more)
+Nodes (33): bcrypt, class-transformer, class-validator, @nestjs/common, @nestjs/config, @nestjs/core, @nestjs/jwt, @nestjs/passport (+25 more)
 
 ### Community 69 - "devDependencies"
 Cohesion: 0.13
-Nodes (15): @nestjs/cli, @nestjs/schematics, devDependencies, @nestjs/cli, @nestjs/schematics, ts-node, tsconfig-paths, @types/bcrypt (+7 more)
+Nodes (15): @nestjs/schematics, prisma, devDependencies, @nestjs/schematics, prisma, source-map-support, ts-loader, tsconfig-paths (+7 more)
 
 ### Community 70 - "projectweb/src/components/ecommerce/CountryMap.tsx"
 Cohesion: 0.22
@@ -409,8 +398,8 @@ Cohesion: 0.29
 Nodes (5): metadata, ColdChainTelemetry(), ReactApexChart, sensors, SensorUnit
 
 ### Community 72 - "nutrition/page.tsx"
-Cohesion: 0.32
-Nodes (4): metadata, ChartTab(), Chart, StatisticsChart()
+Cohesion: 0.27
+Nodes (5): metadata, ChartTab(), Chart, StatisticsChart(), MbgNutritionGauge()
 
 ### Community 73 - "reports/page.tsx"
 Cohesion: 0.27
@@ -428,9 +417,9 @@ Nodes (22): 🏛️ 1. Arsitektur Backend (`projectapi`), 🗄️ 2. Skema Datab
 Cohesion: 0.11
 Nodes (12): FinanceController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Query, UseGuards (+4 more)
 
-### Community 77 - "projectweb/src/components/ui/badge/Badge.tsx"
-Cohesion: 0.13
-Nodes (12): metadata, ReactApexChart, IngredientMaster, masterIngredients, presets, RecipeIngredientItem, RecipePreset, Badge() (+4 more)
+### Community 77 - "RecipeBuilder.tsx"
+Cohesion: 0.22
+Nodes (7): metadata, IngredientMaster, masterIngredients, presets, RecipeBuilder(), RecipeIngredientItem, RecipePreset
 
 ### Community 78 - "uiweb/src/components/form/form-elements/SelectInputs.tsx"
 Cohesion: 0.24
@@ -452,41 +441,37 @@ Nodes (4): metadata, SupplierPerformanceScorecard(), VendorPerformance, vendorSc
 Cohesion: 0.14
 Nodes (11): AssetsController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Param, Query (+3 more)
 
-### Community 92 - "projectweb/src/components/ui/button/Button.tsx"
-Cohesion: 0.13
-Nodes (23): StockMovementModalProps, CreateShipmentModal(), CreateShipmentModalProps, Shipment, LiveTrackingModal(), LiveTrackingModalProps, PodDetailModal(), PodDetailModalProps (+15 more)
+### Community 92 - "projectweb/src/components/ui/badge/Badge.tsx"
+Cohesion: 0.09
+Nodes (32): StockMovementModalProps, CreateShipmentModal(), CreateShipmentModalProps, Shipment, LiveTrackingModal(), LiveTrackingModalProps, PodDetailModal(), PodDetailModalProps (+24 more)
 
 ### Community 93 - "inventory/alerts/page.tsx"
 Cohesion: 0.33
 Nodes (4): metadata, initialAlerts, LowStockAlerts(), StockAlert
 
 ### Community 94 - "PrismaService"
-Cohesion: 0.09
-Nodes (16): Global, AssetsModule, Module, AuthModule, Module, JwtStrategy, Injectable, HealthController (+8 more)
+Cohesion: 0.19
+Nodes (4): JwtStrategy, Injectable, PrismaService, Injectable
 
 ### Community 95 - "projectweb/src/layout/AppHeader.tsx"
-Cohesion: 0.23
-Nodes (11): AdminLayout(), SidebarContext, SidebarContextType, useSidebar(), AppHeader(), AppSidebar(), governanceNavItems, NavItem (+3 more)
+Cohesion: 0.18
+Nodes (12): AdminLayout(), UserDropdown(), useAuth(), SidebarContext, SidebarContextType, useSidebar(), AppHeader(), AppSidebar() (+4 more)
 
 ### Community 96 - "EmployeesController"
 Cohesion: 0.12
 Nodes (13): EmployeesController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Param, Query (+5 more)
-
-### Community 97 - "projectweb/package.json"
-Cohesion: 0.22
-Nodes (8): name, private, scripts, build, dev, lint, start, version
 
 ### Community 98 - "KitchenController"
 Cohesion: 0.11
 Nodes (13): KitchenController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Param, Query (+5 more)
 
 ### Community 99 - "LogisticsController"
-Cohesion: 0.22
-Nodes (9): LogisticsController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Param, Query (+1 more)
+Cohesion: 0.11
+Nodes (13): LogisticsController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Param, Query (+5 more)
 
-### Community 100 - "projectweb/src/components/form/Label.tsx"
+### Community 100 - "useModal"
 Cohesion: 0.10
-Nodes (20): metadata, metadata, metadata, SignInForm(), SignUpForm(), DatePicker(), PropsType, CheckboxComponents() (+12 more)
+Nodes (20): metadata, metadata, metadata, metadata, SignInForm(), SignUpForm(), DefaultModal(), FormInModal() (+12 more)
 
 ### Community 101 - "MenuController"
 Cohesion: 0.11
@@ -500,49 +485,49 @@ Nodes (10): metadata, CreateIncidentReportModal(), CreateIncidentReportModalProp
 Cohesion: 0.22
 Nodes (10): metadata, AddCertificateModal(), AddCertificateModalProps, IsoCertificate, CertificateDetailModal(), CertificateDetailModalProps, IsoAuditReportPrintModal(), IsoAuditReportPrintModalProps (+2 more)
 
-### Community 104 - "projectweb/src/app/(admin)/(ui-elements)/avatars/page.tsx"
-Cohesion: 0.25
-Nodes (6): metadata, Avatar(), AvatarProps, sizeClasses, statusColorClasses, statusSizeClasses
+### Community 104 - "uiweb/src/app/(admin)/page.tsx"
+Cohesion: 0.12
+Nodes (9): metadata, ChartTab(), DemographicCard(), EcommerceMetrics(), MonthlySalesChart(), MonthlyTarget(), RecentOrders(), Chart (+1 more)
 
 ### Community 105 - "AuditLogViewer.tsx"
 Cohesion: 0.24
 Nodes (8): metadata, AuditLogDetailModal(), AuditLogDetailModalProps, AuditLogEntry, AuditLogViewer(), INITIAL_AUDIT_LOGS, AuditReportPrintModal(), AuditReportPrintModalProps
 
 ### Community 106 - "SuppliersController"
-Cohesion: 0.13
-Nodes (13): SuppliersController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Param, Query (+5 more)
+Cohesion: 0.14
+Nodes (11): SuppliersController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Param, Query (+3 more)
 
 ### Community 107 - "ComplianceController"
 Cohesion: 0.12
 Nodes (12): ComplianceController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Query, UseGuards (+4 more)
 
 ### Community 117 - "InventoryController"
-Cohesion: 0.24
-Nodes (8): InventoryController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Query, UseGuards
+Cohesion: 0.12
+Nodes (12): InventoryController, ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Query, UseGuards (+4 more)
 
 ### Community 118 - "UsersController"
-Cohesion: 0.13
-Nodes (13): ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Param, Query, UseGuards (+5 more)
+Cohesion: 0.15
+Nodes (11): ApiBearerAuth, ApiOperation, ApiTags, Controller, Get, Param, Query, UseGuards (+3 more)
 
 ### Community 119 - "UserSecuritySessionsModal.tsx"
-Cohesion: 0.33
-Nodes (5): AuthSecurityLog, MOCK_AUTH_LOGS, MOCK_SESSIONS, SessionEntry, UserSecuritySessionsModal()
-
-### Community 120 - "overrides"
 Cohesion: 0.29
-Nodes (7): overrides, @react-jvectormap/core, @react-jvectormap/world, react, react-dom, react, react-dom
+Nodes (6): AuthSecurityLog, MOCK_AUTH_LOGS, MOCK_SESSIONS, SessionEntry, UserSecuritySessionsModal(), UserSecuritySessionsModalProps
+
+### Community 120 - "app.module.ts"
+Cohesion: 0.14
+Nodes (13): Global, AssetsModule, Module, AuthModule, Module, HealthModule, Module, SuppliersModule (+5 more)
 
 ### Community 121 - "compilerOptions"
 Cohesion: 0.10
 Nodes (19): compilerOptions, allowSyntheticDefaultImports, baseUrl, declaration, emitDecoratorMetadata, experimentalDecorators, forceConsistentCasingInFileNames, incremental (+11 more)
 
 ### Community 122 - "ModulePageLayout.tsx"
-Cohesion: 0.20
-Nodes (7): metadata, metadata, metadata, metadata, ModulePageLayout(), ModulePageLayoutProps, EmployeeNavigationTabs()
+Cohesion: 0.18
+Nodes (6): metadata, metadata, metadata, metadata, ModulePageLayoutProps, EmployeeNavigationTabs()
 
 ### Community 123 - "scripts"
-Cohesion: 0.12
-Nodes (16): scripts, build, dev, format, lint, prisma:format, prisma:generate, prisma:migrate (+8 more)
+Cohesion: 0.13
+Nodes (15): scripts, build, format, lint, prisma:format, prisma:generate, prisma:migrate, prisma:seed (+7 more)
 
 ### Community 124 - "main.ts"
 Cohesion: 0.18
@@ -580,9 +565,9 @@ Nodes (5): collection, compilerOptions, deleteOutDir, $schema, sourceRoot
 Cohesion: 0.39
 Nodes (6): DistributionPoint, DistributionPointModal(), DistributionPointModalProps, initialPoints, DistributionRouteMap(), DistributionRouteMapProps
 
-### Community 133 - ".check"
-Cohesion: 0.50
-Nodes (3): ApiOperation, Get, ApiResponse
+### Community 133 - "HealthController"
+Cohesion: 0.25
+Nodes (6): HealthController, ApiOperation, ApiTags, Controller, Get, ApiResponse
 
 ### Community 134 - "ERP MBG — Sistem Manajemen Makanan Bergizi Gratis Nasional"
 Cohesion: 0.25
@@ -592,9 +577,13 @@ Nodes (7): 1. Menjalankan Backend API (`projectapi`), 2. Menjalankan Frontend We
 Cohesion: 0.40
 Nodes (5): colors, request(), results, runTestSuite(), TestResult
 
-### Community 136 - "users/page.tsx"
-Cohesion: 0.24
-Nodes (4): metadata, UserManagementTable(), CreateUserPayload, userService
+### Community 139 - "cost-analysis/page.tsx"
+Cohesion: 0.40
+Nodes (3): metadata, MenuCostAnalysis(), ReactApexChart
+
+### Community 146 - "RolePermissionMatrixModal.tsx"
+Cohesion: 0.40
+Nodes (5): DEFAULT_MODULES, getInitialRolePermissions(), ModulePermission, RolePermissionMatrixModal(), RolePermissionMatrixModalProps
 
 ### Community 147 - "uiweb/src/app/(admin)/(others-pages)/(chart)/bar-chart/page.tsx"
 Cohesion: 0.40
@@ -605,24 +594,24 @@ Cohesion: 0.40
 Nodes (5): scripts, build, dev, lint, start
 
 ## Knowledge Gaps
-- **666 isolated node(s):** `$schema`, `collection`, `sourceRoot`, `deleteOutDir`, `name` (+661 more)
+- **660 isolated node(s):** `$schema`, `collection`, `sourceRoot`, `deleteOutDir`, `name` (+655 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **55 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **44 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ApiResponse` connect `.check` to `api.ts`, `.login`?**
-  _High betweenness centrality (0.177) - this node is a cross-community bridge._
-- **Why does `HealthController` connect `PrismaService` to `.check`?**
-  _High betweenness centrality (0.084) - this node is a cross-community bridge._
-- **Why does `ModulePageLayout()` connect `ModulePageLayout.tsx` to `users/page.tsx`, `menu/page.tsx`, `FinanceOverviewDashboard.tsx`, `distribution-points/page.tsx`, `cost-analysis/page.tsx`, `AssetRegistryTable.tsx`, `shipments/page.tsx`, `recipes/page.tsx`, `verification/page.tsx`, `PaymentManagement.tsx`, `ExpenditureManagement.tsx`, `BudgetManagement.tsx`, `RoleManagementDashboard.tsx`, `HygieneInspectionsAudit.tsx`, `catalog/page.tsx`, `proof-of-delivery/page.tsx`, `InventoryTable.tsx`, `KitchenOverviewDashboard.tsx`, `KitchenFinancialDashboard.tsx`, `projectweb/src/components/ecommerce/CountryMap.tsx`, `ColdChainTelemetry.tsx`, `nutrition/page.tsx`, `reports/page.tsx`, `SupplierTable.tsx`, `performance/page.tsx`, `inventory/alerts/page.tsx`, `IncidentReportManagement.tsx`, `IsoComplianceMatrix.tsx`, `AuditLogViewer.tsx`?**
+- **Why does `ApiResponse` connect `HealthController` to `api.ts`, `.login`?**
+  _High betweenness centrality (0.172) - this node is a cross-community bridge._
+- **Why does `ModulePageLayout()` connect `ModulePageLayout` to `menu/page.tsx`, `cost-analysis/page.tsx`, `verification/page.tsx`, `AssetRegistryTable.tsx`, `PaymentManagement.tsx`, `ExpenditureManagement.tsx`, `BudgetManagement.tsx`, `RoleManagementDashboard.tsx`, `HygieneInspectionsAudit.tsx`, `proof-of-delivery/page.tsx`, `UserManagementTable.tsx`, `InventoryTable.tsx`, `KitchenOverviewDashboard.tsx`, `KitchenFinancialDashboard.tsx`, `projectweb/src/components/ecommerce/CountryMap.tsx`, `ColdChainTelemetry.tsx`, `nutrition/page.tsx`, `reports/page.tsx`, `RecipeBuilder.tsx`, `SupplierTable.tsx`, `performance/page.tsx`, `inventory/alerts/page.tsx`, `IncidentReportManagement.tsx`, `IsoComplianceMatrix.tsx`, `AuditLogViewer.tsx`, `ModulePageLayout.tsx`?**
+  _High betweenness centrality (0.088) - this node is a cross-community bridge._
+- **Why does `HealthController` connect `HealthController` to `app.module.ts`, `PrismaService`?**
   _High betweenness centrality (0.081) - this node is a cross-community bridge._
 - **What connects `$schema`, `collection`, `sourceRoot` to the rest of the system?**
-  _666 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _660 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `uiweb/src/components/form/Label.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
-- **Should `uiweb/src/layout/AppHeader.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07149758454106281 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.07407407407407407 - nodes in this community are weakly interconnected._
+- **Should `Database Schema Design` be split into smaller, more focused modules?**
+  _Cohesion score 0.049682875264270614 - nodes in this community are weakly interconnected._
